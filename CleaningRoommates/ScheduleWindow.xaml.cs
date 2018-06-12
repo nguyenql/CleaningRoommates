@@ -42,7 +42,7 @@ namespace CleaningRoommates
              //меняем пользователя
 
              List<WhoWhenClean> changedDayScheduleUsers = ChangeUsers(results, us2,us1);
-             RenewButtons(changedDayScheduleUsers);*/
+             RenewButtons(changedDayScheduleUsers);
 
             //RenewButtons(results);
 

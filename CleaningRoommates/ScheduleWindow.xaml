@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:ctr="clr-namespace:Controls;assembly=Controls"
         xmlns:local="clr-namespace:CleaningRoommates"
         mc:Ignorable="d"
         Title="Schedule" Height="400" Width="600">
@@ -87,8 +88,23 @@
                 </Setter.Value>
             </Setter>
         </Style>-->
+        <!--<ControlTemplate x:Key="ThreePresentersList" TargetType="ListBox">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <ItemsPresenter Grid.Column="1"/>
 
 
+            </Grid>
+        </ControlTemplate>-->
     </Window.Resources>
 
     <Grid>
@@ -201,7 +217,83 @@
                     </Grid.RowDefinitions>
                     <Button Name="buttonSwap"  Template="{StaticResource btTemplate}" Content="Swap" Margin="4.5,5,5,5" Grid.Column="4" Grid.Row="0"></Button>
 
-                    <DataGrid Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="1" Margin="5" AutoGenerateColumns="False">
+
+                    <ListBox Name="listBoxMessages" 
+                        Grid.Column="0" 
+                        Grid.ColumnSpan="5" 
+                        Grid.Row="1" 
+                        Margin="5">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <Grid ShowGridLines="True">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                </Grid>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBoxItem Content="From" Margin="5" Grid.Row="0" Grid.Column="0"/>
+                        <ListBoxItem Content="Messages" Margin="5" Grid.Row="0" Grid.Column="1"/>
+                        <ListBoxItem Content="Date"  Grid.Row="0" Grid.Column="2"/>
+                        <ListBoxItem Content="From Bind"  Grid.Row="1" Grid.Column="0"/>
+                        <ListBoxItem Content="Messages Bind"  Grid.Row="1" Grid.Column="1"/>
+                        <ListBoxItem Content="Date Bind" Grid.Row="1" Grid.Column="2"/>
+                        
+                    </ListBox>
+
+
+                    <!--<ListBox 
+                        Name="listBoxMessages" 
+                        
+                        Grid.Column="0" 
+                        Grid.ColumnSpan="5" 
+                        Grid.Row="1" 
+                        Margin="5"
+                        Template="{StaticResource ThreePresentersList}"/>-->
+                    
+                    
+                    
+                    <!--<ListBox Name="listBoxMessages" Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="1" Margin="5">
+                        <ListBox.Template>
+                            <ControlTemplate>
+                                <DockPanel>
+                                    <Grid DockPanel.Dock="Top" Height="30">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="0">From</Label>
+                                        <Label Grid.Column="1">Message</Label>
+                                        <Label Grid.Column="2">Date</Label>
+                                    </Grid>
+                                    <ItemsPresenter></ItemsPresenter>
+                                </DockPanel>
+                            </ControlTemplate>
+                        </ListBox.Template>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="0,2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="Система" Grid.Column="0"></TextBlock>
+                                    <TextBlock Text="а" Grid.Column="1"></TextBlock>
+                                    <TextBlock Text="вв" Grid.Column="2"></TextBlock>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>-->
+
+                    <!--<DataGrid Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="1" Margin="5" AutoGenerateColumns="False">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="From" Width="1*"/>
                             <DataGridTextColumn Header="Message Type" Width="1*"/>
@@ -222,7 +314,7 @@
                                 </DockPanel>
                             </DataTemplate>
                         </DataGrid.RowDetailsTemplate>
-                    </DataGrid>
+                    </DataGrid>-->
                 </Grid>
             </TabItem>
 
