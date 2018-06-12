@@ -153,5 +153,11 @@
     <Resource Include="Resources\logo_blue.png" />
     <Resource Include="Resources\welcome-photos2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{528ca3a8-405f-4a0e-acdf-419c75751b67}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
