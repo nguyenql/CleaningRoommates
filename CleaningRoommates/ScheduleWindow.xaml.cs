@@ -27,6 +27,8 @@ namespace CleaningRoommates
 
             //Изначальный алгоритм
 
+            User us1 = new User() { Id = 0 };
+            User us2 = new User() { Id = 1 };
             List<WhoWhenClean> results = Algoritm.WhoWillCleanToday();
             CreateButtons(results);
 
