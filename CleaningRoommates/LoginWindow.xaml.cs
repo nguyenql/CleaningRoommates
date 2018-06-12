@@ -26,7 +26,9 @@ namespace CleaningRoommates
 
         private void ButtonClickOk(object sender, RoutedEventArgs e)
         {
-            Close();
+            ScheduleWindow window = new ScheduleWindow();
+            window.ShowDialog();
+            Close();    
         }
 
         private void ButtonClickCancel(object sender, RoutedEventArgs e)

@@ -22,6 +22,8 @@ namespace CleaningRoommates
         public ScheduleWindow()
         {
             InitializeComponent();
+            schGrid.ShowGridLines = true;
+
         }
     }
 }
