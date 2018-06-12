@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleaningRoommates", "CleaningRoommates\CleaningRoommates.csproj", "{132D8358-F501-4F60-A9B6-B240394718CF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{528CA3A8-405F-4A0E-ACDF-419C75751B67}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{132D8358-F501-4F60-A9B6-B240394718CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{132D8358-F501-4F60-A9B6-B240394718CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{132D8358-F501-4F60-A9B6-B240394718CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{528CA3A8-405F-4A0E-ACDF-419C75751B67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{528CA3A8-405F-4A0E-ACDF-419C75751B67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{528CA3A8-405F-4A0E-ACDF-419C75751B67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{528CA3A8-405F-4A0E-ACDF-419C75751B67}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
