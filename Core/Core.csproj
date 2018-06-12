@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Algoritm.cs" />
     <Compile Include="Context.cs" />
     <Compile Include="DbRepository.cs" />
     <Compile Include="Migrations\201806121409037_First.cs" />
