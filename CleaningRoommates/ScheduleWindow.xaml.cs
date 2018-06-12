@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using Core;
 using Core.Model;
 
+
 namespace CleaningRoommates
 {
     /// <summary>
@@ -23,7 +24,7 @@ namespace CleaningRoommates
     {
         public ScheduleWindow()
         {
-            InitializeComponent();
+           /* InitializeComponent();
 
             //Изначальный алгоритм
 
@@ -42,7 +43,7 @@ namespace CleaningRoommates
             RenewButtons(changedDayScheduleUsers);*/
             
             //RenewButtons(results);
-            
+            */
             
         }
         
