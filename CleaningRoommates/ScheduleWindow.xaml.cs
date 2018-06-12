@@ -124,5 +124,11 @@ namespace CleaningRoommates
             }
             return maxDay;
         }
+
+        private void buttonProfile_Click(object sender, RoutedEventArgs e)
+        {
+            ProfileWindow window = new ProfileWindow();
+            window.ShowDialog();
+        }
     }
 }

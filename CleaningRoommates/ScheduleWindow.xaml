@@ -131,7 +131,11 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Button Name="buttonProfile" Grid.Column="6" Template="{StaticResource btTemplate}"/>
+            <Button 
+                Name="buttonProfile"
+                Click="buttonProfile_Click"
+                Grid.Column="6" 
+                Template="{StaticResource btTemplate}"/>
         </Grid>
 
         <TabControl Grid.Row="1" Width="Auto" Background="AliceBlue">
