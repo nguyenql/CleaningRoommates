@@ -62,6 +62,9 @@ namespace CleaningRoommates
             {
                 Button newButton = new Button();
 
+                newButton.Height = 25;
+                newButton.Width = 25;
+
                 Grid.SetRow(newButton, time.UseId);
 
                 if (time.DayId <= idOfMaxDayInGrid)

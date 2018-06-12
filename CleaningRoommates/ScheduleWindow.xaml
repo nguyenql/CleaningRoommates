@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
-        xmlns:ctr="clr-namespace:Controls;assembly=Controls"
         xmlns:local="clr-namespace:CleaningRoommates"
         mc:Ignorable="d"
         Title="Schedule" Height="400" Width="600">
@@ -44,6 +43,13 @@
             </Border>
 
         </ControlTemplate>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Kristen ITC"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
 
         <!--<Style TargetType="{x:Type TabItem}">
             <Setter Property="Template">
@@ -113,8 +119,22 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="4*"/>
         </Grid.RowDefinitions>
+        
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
 
-        <TabControl  Grid.Row="1" Width="Auto" Background="AliceBlue">
+            <Button Name="buttonProfile" Grid.Column="6" Template="{StaticResource btTemplate}"/>
+        </Grid>
+
+        <TabControl Grid.Row="1" Width="Auto" Background="AliceBlue">
             <TabControl.Resources>
                 <Style TargetType="TabItem">
                     <Style.Triggers>
@@ -128,7 +148,7 @@
                 </Style>
             </TabControl.Resources>
             <TabItem Header="Schedule"
-                     FontSize="14"
+                     FontSize="16"
                      FontFamily="Kristen ITC"
                      Template="{StaticResource tcTemp}">
                 <Grid>
@@ -163,15 +183,21 @@
                     <TextBlock
                         Grid.Column="0" 
                         Grid.Row="2"
-                        Text="Alena" />
+                        Text="Alena"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"/>
                     <TextBlock
                         Grid.Column="0" 
                         Grid.Row="3"
-                        Text="Galea" />
+                        Text="Galea" 
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"/>
                     <TextBlock
                         Grid.Column="0" 
                         Grid.Row="4"
-                        Text="Lola" />
+                        Text="Lola" 
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"/>
 
                     <Grid Background="White" 
                           Name="schGrid" 
@@ -200,7 +226,7 @@
             </TabItem>
 
             <TabItem Header="Communication"
-                     FontSize="14"
+                     FontSize="16"
                      FontFamily="Kristen ITC"
                      Template="{StaticResource tcTemp}">
                 <Grid>
@@ -215,7 +241,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <Button Name="buttonSwap"  Template="{StaticResource btTemplate}" Content="Swap" Margin="4.5,5,5,5" Grid.Column="4" Grid.Row="0"></Button>
+                    <Button Name="buttonSwap"  Template="{StaticResource btTemplate}" Content="Swap" Margin="5" Grid.Column="4" Grid.Row="0"></Button>
 
 
                     <ListBox Name="listBoxMessages" 
@@ -240,11 +266,10 @@
                         </ListBox.ItemsPanel>
                         <ListBoxItem Content="From" Margin="5" Grid.Row="0" Grid.Column="0"/>
                         <ListBoxItem Content="Messages" Margin="5" Grid.Row="0" Grid.Column="1"/>
-                        <ListBoxItem Content="Date"  Grid.Row="0" Grid.Column="2"/>
+                        <ListBoxItem Content="Date" Grid.Row="0" Grid.Column="2"/>
                         <ListBoxItem Content="From Bind"  Grid.Row="1" Grid.Column="0"/>
                         <ListBoxItem Content="Messages Bind"  Grid.Row="1" Grid.Column="1"/>
                         <ListBoxItem Content="Date Bind" Grid.Row="1" Grid.Column="2"/>
-                        
                     </ListBox>
 
 
@@ -319,7 +344,7 @@
             </TabItem>
 
             <TabItem Header="Ask WWW Questions"
-                     FontSize="14"
+                     FontSize="16"
                      FontFamily="Kristen ITC"
                      Template="{StaticResource tcTemp}">
                 <Grid Margin="5">
@@ -340,7 +365,7 @@
                             <DataTemplate>
                                 <StackPanel Orientation="Vertical">
                                     <TextBlock FontSize="14" Text="{Binding Title}"/>
-                                    <TextBlock FontSize="10" Text="{Binding Description}"/>
+                                    <TextBlock FontSize="10" Text="{Binding Description}" FontWeight="Light"/>
                                 </StackPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
