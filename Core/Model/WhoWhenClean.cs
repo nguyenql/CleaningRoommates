@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core
+namespace Core.Model
 {
-    public class Class1
+    public class WhoWhenClean
     {
+        public int UseId { get; set; }
+        public int DayId { get; set; }
     }
 }
