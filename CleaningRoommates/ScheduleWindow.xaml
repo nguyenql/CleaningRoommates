@@ -157,7 +157,12 @@
                         Grid.Row="4"
                         Text="Lola" />
 
-                    <Grid Background="White" Name="schGrid" Grid.Column="1" Grid.ColumnSpan="7" Grid.Row="2" Grid.RowSpan="3">
+                    <Grid Background="White" 
+                          Name="schGrid" 
+                          Grid.Column="1" 
+                          Grid.ColumnSpan="7" 
+                          Grid.Row="2" Grid.RowSpan="3"
+                          ShowGridLines="True">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
