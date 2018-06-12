@@ -1,0 +1,94 @@
+﻿<Window x:Class="CleaningRoommates.RoomRegistrationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CleaningRoommates"
+        mc:Ignorable="d"
+        Title="RegistrateRoomWindow" Height="350" Width="500" ResizeMode="NoResize">
+    <Window.Resources>
+        <ControlTemplate TargetType="Button" x:Key="btTemplate">
+            <Border Width="100"
+                    CornerRadius="25" 
+                    BorderBrush="CadetBlue" 
+                    BorderThickness="2"
+                    Background="LightBlue">
+                <Border.Effect>
+                    <DropShadowEffect ShadowDepth="5" 
+                                      Opacity=".5"
+                                      Color="DarkBlue"/>
+                </Border.Effect>
+                <ContentControl FontSize="16"
+                                Margin="5"
+                                FontFamily="Kristen ITC"
+                                HorizontalAlignment="Center" 
+                                VerticalAlignment="Center" 
+                                Content="{TemplateBinding Content}"/>
+            </Border>
+        </ControlTemplate>
+        <ControlTemplate TargetType="TextBox" x:Key="tbTemplate">
+            <Border CornerRadius="25" 
+                    BorderBrush="WhiteSmoke" 
+                    BorderThickness="2"
+                    Background="White"
+                    Margin="1">
+                <Border.Effect>
+                    <DropShadowEffect ShadowDepth="5"
+                                          Opacity=".5"
+                                          Color="DarkBlue"
+                                          BlurRadius="15"/>
+                </Border.Effect>
+                <ContentControl FontSize="18"
+                                FontFamily="Kristen ITC"
+                                VerticalAlignment="Center"/>
+            </Border>
+        </ControlTemplate>
+        <ControlTemplate TargetType="PasswordBox" x:Key="psTemplate">
+            <Border CornerRadius="25" 
+                    BorderBrush="WhiteSmoke" 
+                    BorderThickness="2"
+                    Background="White"
+                    Margin="1">
+                <Border.Effect>
+                    <DropShadowEffect ShadowDepth="5"
+                                          Opacity=".5"
+                                          Color="DarkBlue"
+                                          BlurRadius="15"/>
+                </Border.Effect>
+                <ContentControl FontSize="18"
+                                FontFamily="Kristen ITC"
+                                VerticalAlignment="Center"/>
+            </Border>
+        </ControlTemplate>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Kristen ITC"/>
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Background="AliceBlue">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="50"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Registrate your room" Margin="5" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold"></TextBlock>
+        <TextBlock Margin="5" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right">Room Number</TextBlock>
+        <TextBox Name="textBoxRoomNumber" Template="{StaticResource tbTemplate}" Margin="5" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2"></TextBox>
+        <TextBlock Margin="5" Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right">Room Key</TextBlock>
+        <PasswordBox Name="passwordBox" Template="{StaticResource psTemplate}" Margin="5" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3"></PasswordBox>
+        <DockPanel Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="4" Margin="5,10,5,10">
+            <Button Name="buttonOk" Template="{StaticResource btTemplate}" Content="Ok" Click="ButtonClickOk" FontSize="18" Margin="100,0,0,0"></Button>
+            <Button Name="buttonCancel" Template="{StaticResource btTemplate}" Content="Cancel" Click="ButtonClickCancel"></Button>
+        </DockPanel>
+    </Grid>
+</Window>
