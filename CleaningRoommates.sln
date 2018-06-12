@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleaningRoommates", "CleaningRoommates\CleaningRoommates.csproj", "{132D8358-F501-4F60-A9B6-B240394718CF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{132D8358-F501-4F60-A9B6-B240394718CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{132D8358-F501-4F60-A9B6-B240394718CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{132D8358-F501-4F60-A9B6-B240394718CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{132D8358-F501-4F60-A9B6-B240394718CF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {54473F72-A90C-45E8-851E-15F7BCC621BD}
+	EndGlobalSection
+EndGlobal
