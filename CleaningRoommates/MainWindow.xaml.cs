@@ -29,7 +29,7 @@ namespace CleaningRoommates
         {
             LoginWindow window = new LoginWindow();
             window.ShowDialog();
-            Close();
+            this.Close();
 
         }
 

@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -26,14 +28,55 @@ namespace CleaningRoommates
 
         private void ButtonClickOk(object sender, RoutedEventArgs e)
         {
-            ScheduleWindow window = new ScheduleWindow();
-            window.ShowDialog();
-            Close();    
+            int a = 0;
+
+            if (string.IsNullOrWhiteSpace(textBoxLogin.Text))
+            {
+                MessageBox.Show("Login cannot be empty!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                textBoxLogin.Focus();
+                return;
+            }
+            else if (string.IsNullOrWhiteSpace(passwordBox.Password))
+            {
+                MessageBox.Show("Enter your password!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                passwordBox.Focus();
+                return;
+            }
+            else
+            {
+                using (var context = new Context())
+                {
+                    foreach (var user in context.Users)
+                    {
+                        if ((user.Login == textBoxLogin.Text) && (user.Password == GetHash(passwordBox.Password)))
+                        {
+                            a = 1;
+                            ScheduleWindow window = new ScheduleWindow();
+                            window.ShowDialog();
+                            this.Close();
+                        }
+                    }
+                }
+            }
+
+            if (a == 0)
+            {
+                MessageBox.Show("You entered something wrong! Please, check the data or registrate! ", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
         }
 
         private void ButtonClickCancel(object sender, RoutedEventArgs e)
         {
-            Close();
+            this.Close();
+        }
+
+        private string GetHash(string password)
+        {
+            var md5 = MD5.Create();
+            var hash = md5.ComputeHash(Encoding.UTF8.GetBytes(
+               password));
+            return Convert.ToBase64String(hash);
         }
     }
 }
