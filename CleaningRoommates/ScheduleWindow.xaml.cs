@@ -30,23 +30,20 @@ namespace CleaningRoommates
             List<WhoWhenClean> results = Algoritm.WhoWillCleanToday();
             CreateButtons(results);
 
-            User us1 = new User() { Id = 1 };
-            User us2 = new User() { Id = 0 };
-
-             //Передвишаем расписание на один день вперед
-           /*  int maxDay = GetMaxDayId(results, us1);
-             List<WhoWhenClean> changedDayScheduleDays = ChangeDays(results, maxDay);
-             RenewButtons(changedDayScheduleDays);*/
+            //Передвишаем расписание на один день вперед
+            int maxDay = GetMaxDayId(results, us1);
+            List<WhoWhenClean> changedDayScheduleDays = ChangeDays(results, maxDay);
+            RenewButtons(changedDayScheduleDays);
 
 
-             //меняем пользователя
-             /*
-             List<WhoWhenClean> changedDayScheduleUsers = ChangeUsers(results, us2,us1);
-             RenewButtons(changedDayScheduleUsers);
-             */
+            //меняем пользователя
+
+            List<WhoWhenClean> changedDayScheduleUsers = ChangeUsers(results, us2,us1);
+            RenewButtons(changedDayScheduleUsers);
+            
             //RenewButtons(results);
-
-
+            
+            
         }
         
         public void RenewButtons(List<WhoWhenClean> changedDaySchedule)
