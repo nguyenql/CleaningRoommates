@@ -22,11 +22,12 @@ namespace CleaningRoommates
     public partial class ScheduleWindow : Window
     {
         public ScheduleWindow()
-        {
+        {/*
             InitializeComponent();
             schGrid.ShowGridLines = true;
 
             //Изначальный алгоритм
+
             List<WhoWhenClean> results = Algorithm.WhoWillCleanToday();
             CreateButtons(results);
 
@@ -42,8 +43,9 @@ namespace CleaningRoommates
             RenewButtons(changedDayScheduleUsers);
             */
             //RenewButtons(results);
+            
         }
-
+        /*
         public void RenewButtons(List<WhoWhenClean> changedDaySchedule)
         {
             schGrid.Children.Clear();
@@ -93,7 +95,7 @@ namespace CleaningRoommates
             {
                 if (time.DayId == dayToChangeOfOne)
                 {
-                    time.UseId = another.Id;
+                 //   time.UseId = another.Id;
                 }
 
                 if (time.DayId == dayToChangeOfAnother)
@@ -120,5 +122,6 @@ namespace CleaningRoommates
             }
             return maxDay;
         }
+    */
     }
 }
