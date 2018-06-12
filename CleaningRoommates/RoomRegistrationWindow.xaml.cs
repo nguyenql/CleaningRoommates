@@ -23,5 +23,17 @@ namespace CleaningRoommates
         {
             InitializeComponent();
         }
+
+        private void ButtonClickOk(object sender, RoutedEventArgs e)
+        {
+            Close();
+
+        }
+
+        private void ButtonClickCancel(object sender, RoutedEventArgs e)
+        {
+            Close();
+
+        }
     }
 }
