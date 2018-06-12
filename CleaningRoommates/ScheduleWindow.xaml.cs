@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using Core;
 using Core.Model;
 
+
 namespace CleaningRoommates
 {
     /// <summary>
@@ -23,11 +24,11 @@ namespace CleaningRoommates
     {
         public ScheduleWindow()
         {
-           /* InitializeComponent();
+           InitializeComponent();
 
             //Изначальный алгоритм
 
-            List<WhoWhenClean> results = Algorithm.WhoWillCleanToday();
+            List<WhoWhenClean> results = Algoritm.WhoWillCleanToday();
             CreateButtons(results);
 
             //Передвишаем расписание на один день вперед
@@ -42,7 +43,6 @@ namespace CleaningRoommates
             RenewButtons(changedDayScheduleUsers);
             
             //RenewButtons(results);
-            */
             
         }
         
