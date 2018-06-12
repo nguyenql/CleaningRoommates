@@ -3,11 +3,52 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CleaningRoommates"
+        xmlns:local="clr-namespace:RoomCleaning"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <Label>Hello
-        </Label>
+        Title="MainWindow" Height="700" Width="500" ResizeMode="NoResize">
+    <Window.Resources>
+        <ControlTemplate TargetType="Button" x:Key="btTemplate">
+            <Border CornerRadius="25" 
+                    BorderBrush="CadetBlue" 
+                    BorderThickness="2"
+                    Background="LightBlue">
+                <Border.Effect>
+                    <DropShadowEffect ShadowDepth="5" 
+                                      Opacity=".5"
+                                      Color="DarkBlue"/>
+                </Border.Effect>
+                <ContentControl FontSize="19"
+                                FontFamily="Kristen ITC"
+                                HorizontalAlignment="Center" 
+                                VerticalAlignment="Center" 
+                                Content="{TemplateBinding Content}"/>
+            </Border>
+        </ControlTemplate>
+
+    </Window.Resources>
+    
+    <Grid Background="AliceBlue">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="125"/>
+            <RowDefinition Height="125"/>
+            <RowDefinition Height="125"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <Image Source="Resources/logo_blue.png" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0" Grid.RowSpan="3" Stretch="Fill" Margin="5,10"/>
+        
+        <Button x:Name="ButtonEnterYourRoom" Template="{StaticResource btTemplate}" Click="ButtonClickEnterYourRoom" Margin="5,10,5,10" Grid.Column="1" Grid.Row="3" Content="Enter Your Room"></Button>
+        <Button x:Name="ButtonRegistrateUser" Template="{StaticResource btTemplate}" Click="ButtonClickRegistrateUser" Margin="5,10,5,10" Grid.Column="1" Grid.Row="4" Content="Registration of a new User"></Button>
+        <Button x:Name="ButtonRegistrateRoom" Template="{StaticResource btTemplate}" Click="ButtonClickRegistrateRoom" Margin="5,10,5,10" Grid.Column="1" Grid.Row="5" Content="Registration of a Room"></Button>
+        <!--<TextBlock Margin="5" Grid.Column="1" Grid.Row="1" FontFamily="Kristen ITC" FontSize="28" HorizontalAlignment="Center">CleaningRoommates</TextBlock>-->
     </Grid>
 </Window>

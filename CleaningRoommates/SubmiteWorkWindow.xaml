@@ -1,0 +1,78 @@
+﻿<Window x:Class="CleaningRoommates.SubmiteWorkWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CleaningRoommates"
+        mc:Ignorable="d"
+        Title="SubmiteWorkWindow" Height="350" Width="350" ResizeMode="NoResize">
+    <Window.Resources>
+        <ControlTemplate TargetType="Button" x:Key="btTemplate">
+            <Border Width="100"
+                     Height="35"
+                    CornerRadius="25" 
+                    BorderBrush="CadetBlue" 
+                    BorderThickness="2"
+                    Background="LightBlue">
+                <Border.Effect>
+                    <DropShadowEffect ShadowDepth="5" 
+                                      Opacity=".5"
+                                      Color="DarkBlue"/>
+                </Border.Effect>
+                <ContentControl FontSize="16"
+                                Margin="5"
+                                FontFamily="Kristen ITC"
+                                HorizontalAlignment="Center" 
+                                VerticalAlignment="Center" 
+                                Content="{TemplateBinding Content}"/>
+            </Border>
+        </ControlTemplate>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Kristen ITC"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Kristen ITC"/>
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+        <Style TargetType="CheckBox">
+            <Setter Property="FontFamily" Value="Kristen ITC"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Background" Value="CadetBlue"/>
+            <Setter Property="BorderBrush" Value="DarkSlateBlue"/>
+        </Style>
+
+    </Window.Resources>
+
+    <Grid Background="AliceBlue">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label  Grid.Column="0" 
+                   Grid.Row="0" 
+                   Margin="5" 
+                   VerticalAlignment="Center" HorizontalAlignment="Center">Date of Cleaning</Label>
+        <DatePicker SelectedDate="{Binding Date}" IsEnabled="False" Grid.Column="1" Grid.Row="0" Margin="5" VerticalAlignment="Center"/>
+        <Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5">Performer:</Label>
+        <TextBlock Text="{Binding Name}" Grid.Column="1" Grid.Row="1" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+        <Button Name="buttonSubmite" Template="{StaticResource btTemplate}" Content="Submite" Grid.Column="0" Grid.Row="4" Margin="5"></Button>
+        <Button Name="buttonCancel" Template="{StaticResource btTemplate}" Content="Cancel" Grid.Column="1" Grid.Row="4" Margin="5"></Button>
+        <StackPanel Margin="40,0,30,0" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2">
+            <Label FontWeight="Bold" Margin="5">What did you do?</Label>
+            <CheckBox Margin="5">All</CheckBox>
+            <StackPanel Margin="20,5">
+                <CheckBox Margin="5">Wash the floor</CheckBox>
+                <CheckBox Margin="5">Sweep the floor</CheckBox>
+                <CheckBox Margin="5">Throw out the trash</CheckBox>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
