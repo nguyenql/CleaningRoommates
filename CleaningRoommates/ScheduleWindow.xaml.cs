@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Core;
 using Core.Model;
+using System.Drawing;
 
 
 namespace CleaningRoommates
@@ -24,8 +25,7 @@ namespace CleaningRoommates
     {
         public ScheduleWindow()
         {
-           /* InitializeComponent();
-
+           
             //Изначальный алгоритм
 
             User us1 = new User() { Id = 0 };
@@ -61,6 +61,13 @@ namespace CleaningRoommates
             foreach (var time in results)
             {
                 Button newButton = new Button();
+
+                newButton.Height = 30;
+                newButton.Width = 30;
+                newButton.BorderBrush = Brushes.DeepSkyBlue;
+                newButton.Background = Brushes.LightBlue;
+
+
 
                 Grid.SetRow(newButton, time.UseId);
 
@@ -129,7 +136,14 @@ namespace CleaningRoommates
         private void buttonProfile_Click(object sender, RoutedEventArgs e)
         {
             ProfileWindow window = new ProfileWindow();
-            window.ShowDialog();
+            window.Show();
+        }
+
+        private void buttonLogOut_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow window = new MainWindow();
+            window.Show();
+            this.Close();
         }
     }
 }
