@@ -78,5 +78,10 @@ namespace CleaningRoommates
                password));
             return Convert.ToBase64String(hash);
         }
+
+        private void textBoxLogin_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

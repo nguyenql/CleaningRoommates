@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CleaningRoommates"
-        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="ControlWindow" Height="400" Width="600" ResizeMode="NoResize">
     <Window.Resources>
@@ -75,11 +74,11 @@
                    VerticalAlignment="Center" HorizontalAlignment="Center">Date of Cleaning</Label>
         
         
-        <DatePicker 
-            SelectedDate="{x:Static sys:DateTime.Now}"
+        <ListBox 
             IsEnabled="True" 
             Grid.Column="1" Grid.Row="0" 
-            Margin="5" 
+            Margin="5"
+            Height="40"
             Width="120" 
             VerticalAlignment="Center"
             FontSize="16"

@@ -29,7 +29,7 @@ namespace CleaningRoommates
             Close();
 
         }
-
+        
         private void ButtonClickCancel(object sender, RoutedEventArgs e)
         {
             Close();

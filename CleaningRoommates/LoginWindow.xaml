@@ -26,7 +26,9 @@
                                 Content="{TemplateBinding Content}"/>
             </Border>
         </ControlTemplate>
-        <ControlTemplate TargetType="TextBox" x:Key="tbTemplate">
+        
+        
+        <!--<ControlTemplate TargetType="TextBox" x:Key="tbTemplate">
             <Border CornerRadius="25" 
                     BorderBrush="WhiteSmoke" 
                     BorderThickness="2"
@@ -42,8 +44,8 @@
                                 FontFamily="Kristen ITC"
                                 VerticalAlignment="Center"/>
             </Border>
-        </ControlTemplate>
-        <ControlTemplate TargetType="PasswordBox" x:Key="psTemplate">
+        </ControlTemplate>-->
+        <!--<ControlTemplate TargetType="PasswordBox" x:Key="psTemplate">
             <Border CornerRadius="25" 
                     BorderBrush="WhiteSmoke" 
                     BorderThickness="2"
@@ -59,11 +61,169 @@
                                 FontFamily="Kristen ITC"
                                 VerticalAlignment="Center"/>
             </Border>
-        </ControlTemplate>
+        </ControlTemplate>-->
+        
+        
         <Style TargetType="TextBlock">
             <Setter Property="FontFamily" Value="Kristen ITC"/>
             <Setter Property="FontSize" Value="18"/>
         </Style>
+
+        <!--<Style TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Kristen ITC"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="BorderBrush" Value="CornflowerBlue"/>
+        </Style>-->
+        
+               
+
+        <Style TargetType="TextBox">
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="MinWidth" Value="120"/>
+            <Setter Property="MinHeight" Value="20"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                        <Border CornerRadius="25" 
+                                BorderBrush="WhiteSmoke" 
+                                BorderThickness="2"
+                                Background="White"
+                                Margin="1">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="5"
+                                          Opacity=".5"
+                                          Color="DarkBlue"
+                                          BlurRadius="15"/>
+                            </Border.Effect>
+                            
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal" />
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
+                                                Storyboard.TargetProperty="(Panel.Background).
+                                                                            (SolidColorBrush.Color)">
+                                                <EasingColorKeyFrame KeyTime="0"/>
+                                            </ColorAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="ReadOnly">
+                                        <Storyboard>
+                                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
+                                                Storyboard.TargetProperty="(Panel.Background).
+                                                                            (SolidColorBrush.Color)">
+                                                <EasingColorKeyFrame KeyTime="0"/>
+                                            </ColorAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="MouseOver" />
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                          VerticalAlignment="Center"
+                                          Margin="20 0"/>
+                            
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="PasswordBox">
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="MinWidth" Value="120"/>
+            <Setter Property="MinHeight" Value="20"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="PasswordBox">
+                        <Border CornerRadius="25" 
+                                BorderBrush="WhiteSmoke" 
+                                BorderThickness="2"
+                                Background="White"
+                                Margin="1">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="5"
+                                          Opacity=".5"
+                                          Color="DarkBlue"
+                                          BlurRadius="15"/>
+                            </Border.Effect>
+
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal" />
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
+                                                Storyboard.TargetProperty="(Panel.Background).
+                                                                            (SolidColorBrush.Color)">
+                                                <EasingColorKeyFrame KeyTime="0"/>
+                                            </ColorAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="ReadOnly">
+                                        <Storyboard>
+                                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
+                                                Storyboard.TargetProperty="(Panel.Background).
+                                                                            (SolidColorBrush.Color)">
+                                                <EasingColorKeyFrame KeyTime="0"/>
+                                            </ColorAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="MouseOver" />
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                          VerticalAlignment="Center"
+                                          Margin="20 0"/>
+
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!--<Style x:Key="{x:Type TextBox}" TargetType="{x:Type TextBoxBase}">
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="MinWidth" Value="120"/>
+            <Setter Property="MinHeight" Value="20"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                        <Border CornerRadius="25" 
+                                BorderBrush="WhiteSmoke" 
+                                BorderThickness="2"
+                                Background="White"
+                                Margin="1">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="5"
+                                          Opacity=".5"
+                                          Color="DarkBlue"
+                                          BlurRadius="15"/>
+                            </Border.Effect>
+                            <ContentControl FontSize="18"
+                                FontFamily="Kristen ITC"
+                                VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>-->
+
+        
+
     </Window.Resources>
 
     <Grid Background="AliceBlue">
@@ -88,9 +248,27 @@
 
         <TextBlock Text="Enter personal data to enter your room" Margin="5" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="4" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold"></TextBlock>
         <TextBlock Margin="5" Grid.Column="0" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Right">Login</TextBlock>
-        <TextBox x:Name="textBoxLogin" Template="{StaticResource tbTemplate}" Margin="5" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="5"></TextBox>
+        <TextBox 
+            Name="textBoxLogin" 
+            FontFamily="Kristen ITC"
+            FontSize="18"
+            Margin="5" 
+            Grid.Column="1" 
+            Grid.ColumnSpan="2" 
+            Grid.Row="5" 
+            TextChanged="textBoxLogin_TextChanged">
+            
+        </TextBox>
+        
         <TextBlock Margin="5" Grid.Column="0" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Right">Password</TextBlock>
-        <PasswordBox x:Name="passwordBox" Template="{StaticResource psTemplate}" Margin="5" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="6"></PasswordBox>
+        <PasswordBox x:Name="passwordBox"
+                     FontFamily="Kristen ITC"
+                     FontSize="18"
+                     Margin="5" Grid.Column="1"
+                     Grid.ColumnSpan="2" 
+                     Grid.Row="6">
+            
+        </PasswordBox>
         <DockPanel Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="7" Margin="5,10,5,10">
             <Button x:Name="buttonOk" Template="{StaticResource btTemplate}"  Content="Ok" Click="ButtonClickOk" Margin="100,0,0,0" ></Button>
             <Button x:Name="buttonCancel" Template="{StaticResource btTemplate}" Click="ButtonClickCancel">Cancel</Button>
