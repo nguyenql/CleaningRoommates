@@ -13,7 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Core;
+using Core.Model;
 
 namespace CleaningRoommates
 {
@@ -22,20 +22,24 @@ namespace CleaningRoommates
     /// </summary>
     public partial class SubmiteWorkWindow : Window
     {
-        public SubmiteWorkWindow(List<WhoWhenClean> results)
+        List<WhoWhenClean> results;
+        User user;
+
+        public SubmiteWorkWindow(List<WhoWhenClean> list, User us)//пользователь который в системе
         {
             InitializeComponent();
-            //SubmitLogic. 
-            //Date.Text = SubmitLogic.GetDayOfCleaning();
+
+            results = list;
+            user = us;
+            Date.Text = SubmitLogics.GetDayOfCleaning(results,us);
         }
-        User user = new User();
 
         private void Ok_Click(object sender, RoutedEventArgs e)
         {
-            var swap = new Swap();
+            var control = new Control();
 
             //!!!! в базе данных изменить формат даты на число. Номер дня в году
-            //swap.When = DateTime.;
+            Control.When = DateTime.;
             swap.From = user;
             /*
             if (Deadline.IsChecked == true)
