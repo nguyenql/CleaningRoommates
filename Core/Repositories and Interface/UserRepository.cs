@@ -15,6 +15,7 @@ namespace Core.Repositories_and_Interface
         public UserRepository()
         {
             Restore();
+
         }
 
         private void Restore() // reading data from database
