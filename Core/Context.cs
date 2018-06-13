@@ -12,7 +12,7 @@ namespace Core
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Room> Rooms { get; set; }
-        public DbSet<Control> Controls { get; set; }
+        public DbSet<Submit> Submits { get; set; }
         public DbSet<Swap> Swaps { get; set; }
 
         public Context() : base("RoomCleaning")

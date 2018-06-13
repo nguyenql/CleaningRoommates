@@ -13,7 +13,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Core.Model;
 
 namespace CleaningRoommates
 {
@@ -39,8 +38,8 @@ namespace CleaningRoommates
             var control = new Control();
 
             //!!!! в базе данных изменить формат даты на число. Номер дня в году
-            Control.When = DateTime.;
-            swap.From = user;
+            //Control.When = DateTime.;
+            //swap.From = user;
             /*
             if (Deadline.IsChecked == true)
             {
@@ -74,7 +73,7 @@ namespace CleaningRoommates
             }*/
 
             List<Swap> usersFromDatabase = new List<Swap>();// лист пользователей заменить на тот, что буде получать из базы данных
-            usersFromDatabase.Add(swap);
+            //usersFromDatabase.Add(swap);
         }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

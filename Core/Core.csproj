@@ -65,8 +65,12 @@
     <Compile Include="Migrations\201806131101493_DateInInt.Designer.cs">
       <DependentUpon>201806131101493_DateInInt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806131321430_ControlsToSubmits.cs" />
+    <Compile Include="Migrations\201806131321430_ControlsToSubmits.Designer.cs">
+      <DependentUpon>201806131321430_ControlsToSubmits.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Model\Control.cs" />
+    <Compile Include="Model\Submit.cs" />
     <Compile Include="Model\Room.cs" />
     <Compile Include="Model\Swap.cs" />
     <Compile Include="Model\User.cs" />
@@ -96,6 +100,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806131101493_DateInInt.resx">
       <DependentUpon>201806131101493_DateInInt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806131321430_ControlsToSubmits.resx">
+      <DependentUpon>201806131321430_ControlsToSubmits.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

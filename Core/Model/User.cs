@@ -15,7 +15,7 @@ namespace Core.Model
         public string Password { get; set; }
         public Room Room { get; set; }
         [NotMapped]
-        public List<Control> Controls { get; set; }
+        public List<Submit> Submits { get; set; }
         [NotMapped]
         public List<Swap> Swaps { get; set; }
     }

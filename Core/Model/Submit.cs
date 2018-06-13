@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Core.Model
 {
-    public class Control
+    public class Submit
     {
         public int Id { get; set; }
         public bool Sweep { get; set; }

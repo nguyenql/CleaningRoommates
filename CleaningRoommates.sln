@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleaningRoommates", "Cleani
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{528CA3A8-405F-4A0E-ACDF-419C75751B67}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleSearch", "..\GoogleSearch\GoogleSearch\GoogleSearch.csproj", "{269CC765-105F-40D7-A3F9-B14D64D9A859}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{528CA3A8-405F-4A0E-ACDF-419C75751B67}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{528CA3A8-405F-4A0E-ACDF-419C75751B67}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{528CA3A8-405F-4A0E-ACDF-419C75751B67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{269CC765-105F-40D7-A3F9-B14D64D9A859}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{269CC765-105F-40D7-A3F9-B14D64D9A859}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{269CC765-105F-40D7-A3F9-B14D64D9A859}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{269CC765-105F-40D7-A3F9-B14D64D9A859}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

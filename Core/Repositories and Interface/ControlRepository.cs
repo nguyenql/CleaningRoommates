@@ -7,24 +7,24 @@ using System.Threading.Tasks;
 
 namespace Core.Repositories_and_Interface
 {
-    public class ControlRepository : Interface
+    public class SubmitRepository : Interface
     {
-        public List<Control> Users { get; set; }
+        public List<Submit> Submits { get; set; }
         Context context = new Context();
 
-        public ControlRepository()
+        public SubmitRepository()
         {
             Restore();
         }
 
         private void Restore() // reading data from database
         {
-            Users = Read(context);
+            Submits = Read(context);
         }
 
-        static List<Control> Read(Context context)
+        static List<Submit> Read(Context context)
         {
-            return context.Controls.ToList();
+            return context.Submits.ToList();
         }
 
         public void Save(Context context)
