@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:CleaningRoommates"
         mc:Ignorable="d"
         Title="SubmiteWorkWindow" Height="350" Width="350" ResizeMode="NoResize">
@@ -60,7 +61,11 @@
                    Grid.Row="0" 
                    Margin="5" 
                    VerticalAlignment="Center" HorizontalAlignment="Center">Date of Cleaning</Label>
-        <DatePicker SelectedDate="{Binding Date}" IsEnabled="False" Grid.Column="1" Grid.Row="0" Margin="5" VerticalAlignment="Center"/>
+        <DatePicker  SelectedDate="{x:Static sys:DateTime.Now}"
+                     IsEnabled="True" 
+                     FontSize="16"
+                     FontFamily="Kristen ITC"
+                     Grid.Column="1" Grid.Row="0" Margin="5" VerticalAlignment="Center"/>
         <Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5">Performer:</Label>
         <TextBlock Text="{Binding Name}" Grid.Column="1" Grid.Row="1" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Left"/>
         <Button Name="buttonSubmite" Template="{StaticResource btTemplate}" Content="Submite" Grid.Column="0" Grid.Row="4" Margin="5"></Button>
