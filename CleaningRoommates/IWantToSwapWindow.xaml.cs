@@ -72,5 +72,10 @@ namespace CleaningRoommates
             List<Swap> usersFromDatabase = new List<Swap>();// лист пользователей заменить на тот, что буде получать из базы данных
             usersFromDatabase.Add(swap);
         }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
