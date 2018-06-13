@@ -81,11 +81,10 @@
         <Button Name="buttonCancel" Template="{StaticResource btTemplate}" Content="Cancel" Grid.Column="1" Grid.Row="4" Margin="5"></Button>
         <StackPanel Margin="40,0,30,0" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2">
             <Label FontWeight="Bold" Margin="5">What did you do?</Label>
-            <CheckBox Margin="5">All</CheckBox>
             <StackPanel Margin="20,5">
-                <CheckBox Margin="5">Wash the floor</CheckBox>
-                <CheckBox Margin="5">Sweep the floor</CheckBox>
-                <CheckBox Margin="5">Throw out the trash</CheckBox>
+                <CheckBox Name ="Wash" Margin="5">Wash the floor</CheckBox>
+                <CheckBox Name ="Sweep" Margin="5">Sweep the floor</CheckBox>
+                <CheckBox Name ="Trash" Margin="5">Throw out the trash</CheckBox>
             </StackPanel>
         </StackPanel>
     </Grid>

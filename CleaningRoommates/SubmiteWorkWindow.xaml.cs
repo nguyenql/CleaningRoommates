@@ -23,6 +23,7 @@ namespace CleaningRoommates
     {
         List<WhoWhenClean> results;
         User user;
+        int DateOfCleaning;
 
         public SubmiteWorkWindow(List<WhoWhenClean> list, User us)//пользователь который в системе
         {
@@ -30,52 +31,44 @@ namespace CleaningRoommates
 
             results = list;
             user = us;
-            Date.Text = SubmitLogics.GetDayOfCleaning(results,us);
+            DateOfCleaning = SubmitLogics.GetDayOfCleaning(results, us);
+            //Date.Text = DateOfCleaning;
         }
 
         private void Ok_Click(object sender, RoutedEventArgs e)
         {
-            var control = new Control();
+            var submit = new Submit();
 
             //!!!! в базе данных изменить формат даты на число. Номер дня в году
-            //Control.When = DateTime.;
-            //swap.From = user;
-            /*
-            if (Deadline.IsChecked == true)
+            //submit.WhenDone = ;
+            //submit.From = user;
+           
+            if (Wash.IsChecked == true)
             {
-                swap.DeadLine = true;
-                swap.Sick = false;
-                swap.NotInTheTown = false;
-            }
-            else if (Sick.IsChecked == true)
-            {
-                swap.DeadLine = false;
-                swap.Sick = true;
-                swap.NotInTheTown = false;
-            }
-            else if (Out.IsChecked == true)
-            {
-                swap.DeadLine = false;
-                swap.Sick = false;
-                swap.NotInTheTown = true;
-            }
-            else if (Other.IsChecked == true)
-            {
-                swap.DeadLine = false;
-                swap.Sick = false;
-                swap.NotInTheTown = false;
-                swap.Reason = Reason.Text;
+                submit.Wash = true;
             }
             else
-            {
-                MessageBox.Show("Please, change reason!");
-                return;
-            }*/
+                submit.Wash = false;
 
-            List<Swap> usersFromDatabase = new List<Swap>();// лист пользователей заменить на тот, что буде получать из базы данных
+            if (Sweep.IsChecked == true)
+            {
+                submit.Sweep = true;
+            }
+            else
+                submit.Sweep = false;
+
+            if (Trash.IsChecked == true)
+            {
+                submit.Trash = true;
+            }
+            else
+                submit.Trash = false;
+            MessageBox.Show("Please, change reason!");
+                return;
+
             //usersFromDatabase.Add(swap);
         }
-
+        
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
