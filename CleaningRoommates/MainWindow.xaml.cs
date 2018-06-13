@@ -32,7 +32,7 @@ namespace CleaningRoommates
 
         private void ButtonClickEnterYourRoom(object sender, RoutedEventArgs e)
         {
-            LoginWindow window = new LoginWindow();
+            ScheduleWindow window = new ScheduleWindow();
             window.ShowDialog();
             this.Close();
 
