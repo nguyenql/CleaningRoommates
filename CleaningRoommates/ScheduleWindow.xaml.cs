@@ -22,9 +22,9 @@ namespace CleaningRoommates
     /// </summary>
     public partial class ScheduleWindow : Window
     {
-        public ScheduleWindow()
+        /*public ScheduleWindow()
         {
-           /* InitializeComponent();
+            InitializeComponent();
 
             //Изначальный алгоритм
 
@@ -130,6 +130,6 @@ namespace CleaningRoommates
         {
             ProfileWindow window = new ProfileWindow();
             window.ShowDialog();
-        }
+        }*/
     }
 }
