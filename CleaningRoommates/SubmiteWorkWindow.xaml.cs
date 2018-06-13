@@ -25,7 +25,7 @@ namespace CleaningRoommates
         {
             InitializeComponent();
 
-            //SubmitLogic.GetDayOfCleaning();
+            SubmitLogic.GetDayOfCleaning();
         }
         User user = new User();
 
@@ -70,6 +70,16 @@ namespace CleaningRoommates
 
             List<Swap> usersFromDatabase = new List<Swap>();// лист пользователей заменить на тот, что буде получать из базы данных
             usersFromDatabase.Add(swap);
+        }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void ListBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
