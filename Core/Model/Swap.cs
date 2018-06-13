@@ -13,9 +13,9 @@ namespace Core.Model
         public bool Sick { get; set; }
         public bool NotInTheTown { get; set; }
         public string Reason { get; set; }
-        public DateTime When { get; set; }
-        public DateTime OnWhat { get; set; }
-        public virtual User From { get; set; }
-        public virtual User Agree { get; set; }
+        public int When { get; set; }
+        public int OnWhat { get; set; }
+        public User From { get; set; }
+        public User Agree { get; set; }
     }
 }

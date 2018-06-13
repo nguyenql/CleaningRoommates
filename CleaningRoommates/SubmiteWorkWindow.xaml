@@ -70,9 +70,12 @@
                      FontSize="16"
                     Height="35"
                      FontFamily="Kristen ITC"
-                     Grid.Column="1" Grid.Row="0" Margin="5" VerticalAlignment="Center"/>
+                     Grid.Column="1" Grid.Row="0" Margin="5" VerticalAlignment="Center" SelectionChanged="ListBox_SelectionChanged_1"/>
         <Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5">Performer:</Label>
-        <TextBlock Text="{Binding Name}" Grid.Column="1" Grid.Row="1" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+        <TextBlock Text="{Binding Name}"
+                   Height="35"
+                   Width="120"
+                   Grid.Column="1" Grid.Row="1" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Left"/>
         <Button Name="buttonSubmite" Template="{StaticResource btTemplate}" Content="Submite" Grid.Column="0" Grid.Row="4" Margin="5"></Button>
         <Button Name="buttonCancel" Template="{StaticResource btTemplate}" Content="Cancel" Grid.Column="1" Grid.Row="4" Margin="5"></Button>
         <StackPanel Margin="40,0,30,0" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2">
