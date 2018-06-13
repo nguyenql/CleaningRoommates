@@ -35,7 +35,7 @@ namespace CleaningRoommates
             var swap = new Swap();
 
             //!!!! в базе данных изменить формат даты на число. Номер дня в году
-            //swap.When = DateTime.Today;
+            swap.When = DateTime.Now.DayOfYear;
             swap.From = user;
 
             if (Deadline.IsChecked == true)

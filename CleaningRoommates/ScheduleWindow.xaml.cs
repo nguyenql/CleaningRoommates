@@ -24,13 +24,13 @@ namespace CleaningRoommates
     public partial class ScheduleWindow : Window
     {
         List<WhoWhenClean> results = Algoritm.WhoWillCleanToday();
+        User user = new User() { Id = 1 };
 
         public ScheduleWindow()
         {
             //Изначальный алгоритм
 
-            User us1 = new User() { Id = 0 };
-            User us2 = new User() { Id = 1 };
+            //User us1 = new User() { Id = 0 };
             results = Algoritm.WhoWillCleanToday();
             CreateButtons(results);
 
@@ -95,7 +95,7 @@ namespace CleaningRoommates
 
         private void Click_Submit(object sender, RoutedEventArgs e)
         {
-            SubmiteWorkWindow window = new SubmiteWorkWindow(results);
+            SubmiteWorkWindow window = new SubmiteWorkWindow(results, user);
             window.ShowDialog();
         }
     }
