@@ -173,7 +173,7 @@
         </ControlTemplate>-->
     </Window.Resources>
 
-    <Grid>
+    <Grid Background="LightGray">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -257,14 +257,49 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
 
-                    <TextBlock Text="{Binding Source={x:Static sys:DateTime.Today}, StringFormat='{}{0:MMM dd}'}" Grid.Column="1" Grid.Row="1" Margin="5" VerticalAlignment="Center"></TextBlock>
-                    <TextBlock Text="{Binding Source={x:Static sys:DateTime.Today}, StringFormat='{}{0:MMM dd}'}" Grid.Column="2" Grid.Row="1" Margin="5" VerticalAlignment="Center"></TextBlock>
-                    <TextBlock Text="{Binding Source={x:Static sys:DateTime.Today}, StringFormat='{}{0:MMM dd}'}" Grid.Column="3" Grid.Row="1" Margin="5" VerticalAlignment="Center"></TextBlock>
-                    <TextBlock Text="{Binding Source={x:Static sys:DateTime.Today}, StringFormat='{}{0:MMM dd}'}" Grid.Column="4" Grid.Row="1" Margin="5" VerticalAlignment="Center"></TextBlock>
-                    <TextBlock Text="{Binding Source={x:Static sys:DateTime.Today}, StringFormat='{}{0:MMM dd}'}" Grid.Column="5" Grid.Row="1" Margin="5" VerticalAlignment="Center"></TextBlock>
-                    <TextBlock Text="{Binding Source={x:Static sys:DateTime.Today}, StringFormat='{}{0:MMM dd}'}" Grid.Column="6" Grid.Row="1" Margin="5" VerticalAlignment="Center"></TextBlock>
-                    <TextBlock Text="{Binding Source={x:Static sys:DateTime.Today}, StringFormat='{}{0:MMM dd}'}" Grid.Column="7" Grid.Row="1" Margin="5" VerticalAlignment="Center"></TextBlock>
+                    <TextBlock Text="-3" 
+                               Grid.Column="1" 
+                               Grid.Row="1" 
+                               Margin="5"
+                               VerticalAlignment="Center" 
+                               HorizontalAlignment="Center">
+                    </TextBlock>
+                    <TextBlock Text="-2" 
+                               Grid.Column="2" 
+                               Grid.Row="1" 
+                               Margin="5" 
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center">
 
+                    </TextBlock>
+                    <TextBlock Text="-1" 
+                               Grid.Column="3" 
+                               Grid.Row="1" 
+                               Margin="5" 
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center">
+                    </TextBlock>
+                    <TextBlock Text="{Binding Source={x:Static sys:DateTime.Today}, StringFormat='{}{0:MMM dd}'}" 
+                               Grid.Column="4" Grid.Row="1" Margin="5" 
+                               VerticalAlignment="Center">
+                    </TextBlock>
+                    <TextBlock Text="+1" 
+                               Grid.Column="5" Grid.Row="1" 
+                               Margin="5" 
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"></TextBlock>
+                    <TextBlock Text="+2" 
+                               Grid.Column="6" Grid.Row="1" 
+                               Margin="5" 
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center">
+                    </TextBlock>
+                    <TextBlock Text="+3" 
+                               Grid.Column="7" Grid.Row="1" 
+                               Margin="5" 
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center">
+                    </TextBlock>
                     <TextBlock
                         Grid.Column="0" 
                         Grid.Row="2"
