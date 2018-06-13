@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Core;
 
 namespace CleaningRoommates
 {
@@ -24,8 +25,8 @@ namespace CleaningRoommates
         public SubmiteWorkWindow(List<WhoWhenClean> results)
         {
             InitializeComponent();
-
-            SubmitLogic.GetDayOfCleaning();
+            //SubmitLogic. 
+            //Date.Text = SubmitLogic.GetDayOfCleaning();
         }
         User user = new User();
 
@@ -34,7 +35,7 @@ namespace CleaningRoommates
             var swap = new Swap();
 
             //!!!! в базе данных изменить формат даты на число. Номер дня в году
-            swap.When = DateTime.Today;
+            //swap.When = DateTime.;
             swap.From = user;
             /*
             if (Deadline.IsChecked == true)

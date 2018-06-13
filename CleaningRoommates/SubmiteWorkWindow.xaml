@@ -67,6 +67,7 @@
                    Margin="5" 
                    VerticalAlignment="Center" HorizontalAlignment="Center">Date of Cleaning</Label>
         <ListBox  
+                     Name="Date"
                      FontSize="16"
                     Height="35"
                      FontFamily="Kristen ITC"

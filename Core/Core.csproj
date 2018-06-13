@@ -77,6 +77,8 @@
     <Compile Include="Repositories and Interface\RoomRepository.cs" />
     <Compile Include="Repositories and Interface\SwapRepository.cs" />
     <Compile Include="Repositories and Interface\UserRepository.cs" />
+    <Compile Include="SubmitLogics.cs" />
+    <Compile Include="SwapLogics.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
