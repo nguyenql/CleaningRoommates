@@ -1,4 +1,5 @@
 ﻿using Core.Model;
+using Core.Repositories_and_Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +11,7 @@ namespace Core
     public class Algoritm
     {
         public static List<WhoWhenClean> WhoWillCleanToday()
-        {
-
+        { 
             //алгоритм на на основе номера сегодняшнего дня в году 
             int todayInYear = DateTime.Now.DayOfYear;
             int firstDayInGrid = todayInYear - 3;

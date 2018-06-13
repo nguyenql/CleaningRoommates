@@ -12,8 +12,9 @@ namespace Core.Model
         public bool Sweep { get; set; }
         public bool Wash { get; set; }
         public bool Trash { get; set; }
-        public DateTime When { get; set; }
-        public virtual User Executer { get; set; }
-        public virtual User Checker { get; set; }
+        public int WhenDone { get; set; }
+        public int WhenChecked { get; set; }
+        public User Executer { get; set; }
+        public User Checker { get; set; }
     }
 }

@@ -13,10 +13,10 @@ namespace Core.Model
         public string Name { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
-        public virtual Room Room { get; set; }
+        public Room Room { get; set; }
         [NotMapped]
-        public virtual List<Control> Controls { get; set; }
+        public List<Control> Controls { get; set; }
         [NotMapped]
-        public virtual List<Swap> Swaps { get; set; }
+        public List<Swap> Swaps { get; set; }
     }
 }
