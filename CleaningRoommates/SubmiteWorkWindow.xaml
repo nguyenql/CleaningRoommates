@@ -43,6 +43,11 @@
             <Setter Property="BorderBrush" Value="DarkSlateBlue"/>
         </Style>
 
+        <Style TargetType="ListBox">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+
     </Window.Resources>
 
     <Grid Background="AliceBlue">
@@ -61,9 +66,9 @@
                    Grid.Row="0" 
                    Margin="5" 
                    VerticalAlignment="Center" HorizontalAlignment="Center">Date of Cleaning</Label>
-        <DatePicker  SelectedDate="{x:Static sys:DateTime.Now}"
-                     IsEnabled="True" 
+        <ListBox  
                      FontSize="16"
+                    Height="35"
                      FontFamily="Kristen ITC"
                      Grid.Column="1" Grid.Row="0" Margin="5" VerticalAlignment="Center"/>
         <Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5">Performer:</Label>
