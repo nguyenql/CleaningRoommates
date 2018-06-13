@@ -87,6 +87,7 @@ namespace CleaningRoommates
 
         private void buttonLogOut_Click(object sender, RoutedEventArgs e)
         {
+            results = new List<WhoWhenClean>();
             MainWindow window = new MainWindow();
             window.Show();
             this.Close();
