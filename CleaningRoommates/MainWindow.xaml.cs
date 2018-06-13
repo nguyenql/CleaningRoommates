@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,10 @@ namespace CleaningRoommates
         public MainWindow()
         {
             InitializeComponent();
+            var us = new User() { Id = 1, Name = "1" };
+            IWantToSwapWindow window = new IWantToSwapWindow(us);
+            window.ShowDialog();
+ 
         }
 
         private void ButtonClickEnterYourRoom(object sender, RoutedEventArgs e)

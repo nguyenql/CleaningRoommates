@@ -24,7 +24,7 @@ namespace CleaningRoommates
     {
         public ScheduleWindow()
         {
-           /* InitializeComponent();
+            InitializeComponent();
 
             //Изначальный алгоритм
 

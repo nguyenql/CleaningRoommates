@@ -70,27 +70,28 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="23*"/>
+            <RowDefinition Height="23*"/>
+            <RowDefinition Height="23*"/>
+            <RowDefinition Height="23*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="18*"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition/>
+            <RowDefinition Height="23*"/>
         </Grid.RowDefinitions>
-        <Label Grid.Column="0" Grid.Row="1" Margin="5">Who :</Label>
-        <TextBlock Text="{Binding Name}" Grid.Column="1" Grid.Row="1" Margin="5"/>
-        <Label Grid.Column="0" Grid.Row="2" Margin="5">When :</Label>
-        <DatePicker Grid.Column="1" Grid.Row="2" Margin="5" VerticalAlignment="Center"/>
-        <Label Grid.Column="0" Grid.Row="3" Margin="5">Why :</Label>
-        <DockPanel Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Stretch">
-            <RadioButton GroupName="Reasons" Content="Dealine" Margin="5"></RadioButton>
-            <RadioButton GroupName="Reasons" Content="Sick" Margin="5"></RadioButton>
-            <RadioButton GroupName="Reasons" Content="Lazy" Margin="5"></RadioButton>
-            <RadioButton GroupName="Reasons" Content="Other" Margin="5"></RadioButton>
+        <Label Grid.Column="0" Grid.Row="1" Margin="0,5.4,5,5.2">Who :</Label>
+        <TextBlock Text="{Binding Name}" Name ="Who" Grid.Column="1" Grid.Row="1" Margin="5,5.4,4.2,4.2"/>
+        <Label Grid.Column="0" Grid.Row="2" Margin="0,4.8,5,4.8">When :</Label>
+        <DatePicker SelectedDate="{Binding Date}" Grid.Column="1" Name ="When" Grid.Row="2" Margin="5,10.8,5.2,10.8" VerticalAlignment="Center"/>
+        <Label Grid.Column="0" Grid.Row="3" Margin="0,5.2,5,5.4">Why :</Label>
+        <DockPanel Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3" Margin="5,10.2,4.6,10.4" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+            <RadioButton GroupName="Reasons" Name="Deadline" Content="Dealine" Margin="5"></RadioButton>
+            <RadioButton GroupName="Reasons" Name="Sick" Content="Sick" Margin="5"></RadioButton>
+            <RadioButton GroupName="Reasons" Name="Out" Content="Out of town" Margin="5"></RadioButton>
+            <RadioButton GroupName="Reasons" Name="Other" Content="Other" Margin="5"></RadioButton>
         </DockPanel>
-        <TextBox Template="{StaticResource tbTemplate}" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="4" Margin="5"/>
-        <Button Name="buttonOk" Template="{StaticResource btTemplate}" Content="Ok" Grid.Column="1" Grid.Row="5" Margin="5" ></Button>
-        <Button Name="buttonCancel" Template="{StaticResource btTemplate}" Content="Cancel" Grid.Column="2" Grid.Row="5" Margin="5"></Button>
+        <TextBox Name ="Reason" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="4" Margin="5,4.6,4.6,4.8" Grid.RowSpan="2"/>
+        <Button Name="buttonOk" Template="{StaticResource btTemplate}" Content="Ok" Grid.Column="1" Grid.Row="6" Margin="5,5.2,5.2,5.2" Click="Ok_Click"></Button>
+        <Button Name="buttonCancel" Template="{StaticResource btTemplate}" Content="Cancel" Grid.Column="2" Grid.Row="6" Margin="4.8,5.2,4.6,5.2"></Button>
     </Grid>
 </Window>
