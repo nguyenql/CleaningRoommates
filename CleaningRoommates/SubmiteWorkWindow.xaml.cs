@@ -21,69 +21,59 @@ namespace CleaningRoommates
     /// </summary>
     public partial class SubmiteWorkWindow : Window
     {
-        List<WhoWhenClean> results;
         User user;
+        DateTime DateOfCleaning;
 
-        public SubmiteWorkWindow(List<WhoWhenClean> list, User us)//пользователь который в системе
+        public SubmiteWorkWindow(User us, DateTime dayCleaning)//пользователь который в системе
         {
             InitializeComponent();
 
-            results = list;
             user = us;
-            Date.Text = SubmitLogics.GetDayOfCleaning(results,us);
+            DateOfCleaning = dayCleaning;
+
+            string DateStringOfCleaning = DateOfCleaning.ToString("MMMM dd, yyyy");
+
+            Date.Text = DateStringOfCleaning;
+            Perf.Text = user.Name;
         }
 
         private void Ok_Click(object sender, RoutedEventArgs e)
         {
-            var control = new Control();
+            var submit = new Submit();
+            int DateIntOfCleaning = DateOfCleaning.DayOfYear;
 
             //!!!! в базе данных изменить формат даты на число. Номер дня в году
-            //Control.When = DateTime.;
-            //swap.From = user;
-            /*
-            if (Deadline.IsChecked == true)
+            submit.WhenDone = DateIntOfCleaning;
+            submit.Executer = user;
+
+            if (Wash.IsChecked == true)
             {
-                swap.DeadLine = true;
-                swap.Sick = false;
-                swap.NotInTheTown = false;
-            }
-            else if (Sick.IsChecked == true)
-            {
-                swap.DeadLine = false;
-                swap.Sick = true;
-                swap.NotInTheTown = false;
-            }
-            else if (Out.IsChecked == true)
-            {
-                swap.DeadLine = false;
-                swap.Sick = false;
-                swap.NotInTheTown = true;
-            }
-            else if (Other.IsChecked == true)
-            {
-                swap.DeadLine = false;
-                swap.Sick = false;
-                swap.NotInTheTown = false;
-                swap.Reason = Reason.Text;
+                submit.Wash = true;
             }
             else
+                submit.Wash = false;
+
+            if (Sweep.IsChecked == true)
+            {
+                submit.Sweep = true;
+            }
+            else
+                submit.Sweep = false;
+
+            if (Trash.IsChecked == true)
+            {
+                submit.Trash = true;
+            }
+            else
+                submit.Trash = false;
+
+            if(submit.Wash==false && submit.Trash==false && submit.Sweep ==false)
             {
                 MessageBox.Show("Please, change reason!");
                 return;
-            }*/
-
-            List<Swap> usersFromDatabase = new List<Swap>();// лист пользователей заменить на тот, что буде получать из базы данных
-            //usersFromDatabase.Add(swap);
-        }
-
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void ListBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
-        {
-
+            }
+            //добавляем в базу данных
+            //submitsFromDatabase.Add(submit);
         }
     }
 }

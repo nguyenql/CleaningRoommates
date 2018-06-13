@@ -66,26 +66,25 @@
                    Grid.Row="0" 
                    Margin="5" 
                    VerticalAlignment="Center" HorizontalAlignment="Center">Date of Cleaning</Label>
-        <TextBlock  
+        <TextBlock
                      Name="Date"
                      FontSize="16"
                     Height="35"
                      FontFamily="Kristen ITC"
                      Grid.Column="1" Grid.Row="0" Margin="5" VerticalAlignment="Center"/>
         <Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5">Performer:</Label>
-        <TextBlock Text="{Binding Name}"
+        <TextBlock Name="Perf"
                    Height="35"
                    Width="120"
                    Grid.Column="1" Grid.Row="1" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-        <Button Name="buttonSubmite" Template="{StaticResource btTemplate}" Content="Submite" Grid.Column="0" Grid.Row="4" Margin="5"></Button>
+        <Button Name="buttonSubmite" Click="Ok_Click" Template="{StaticResource btTemplate}" Content="Submite" Grid.Column="0" Grid.Row="4" Margin="5"></Button>
         <Button Name="buttonCancel" Template="{StaticResource btTemplate}" Content="Cancel" Grid.Column="1" Grid.Row="4" Margin="5"></Button>
         <StackPanel Margin="40,0,30,0" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2">
             <Label FontWeight="Bold" Margin="5">What did you do?</Label>
-            <CheckBox Margin="5">All</CheckBox>
             <StackPanel Margin="20,5">
-                <CheckBox Margin="5">Wash the floor</CheckBox>
-                <CheckBox Margin="5">Sweep the floor</CheckBox>
-                <CheckBox Margin="5">Throw out the trash</CheckBox>
+                <CheckBox Name ="Wash" Margin="5">Wash the floor</CheckBox>
+                <CheckBox Name ="Sweep" Margin="5">Sweep the floor</CheckBox>
+                <CheckBox Name ="Trash" Margin="5">Throw out the trash</CheckBox>
             </StackPanel>
         </StackPanel>
     </Grid>
