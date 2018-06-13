@@ -49,7 +49,6 @@
   <ItemGroup>
     <Compile Include="Algoritm.cs" />
     <Compile Include="Context.cs" />
-    <Compile Include="SubmitLogic.cs" />
     <Compile Include="Migrations\201806121409037_First.cs" />
     <Compile Include="Migrations\201806121409037_First.Designer.cs">
       <DependentUpon>201806121409037_First.cs</DependentUpon>
@@ -58,6 +57,14 @@
     <Compile Include="Migrations\201806121417127_Second.Designer.cs">
       <DependentUpon>201806121417127_Second.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806131059455_Check.cs" />
+    <Compile Include="Migrations\201806131059455_Check.Designer.cs">
+      <DependentUpon>201806131059455_Check.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806131101493_DateInInt.cs" />
+    <Compile Include="Migrations\201806131101493_DateInInt.Designer.cs">
+      <DependentUpon>201806131101493_DateInInt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Control.cs" />
     <Compile Include="Model\Room.cs" />
@@ -65,7 +72,11 @@
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\WhoWhenClean.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SwapLogic.cs" />
+    <Compile Include="Repositories and Interface\ControlRepository.cs" />
+    <Compile Include="Repositories and Interface\Interface.cs" />
+    <Compile Include="Repositories and Interface\RoomRepository.cs" />
+    <Compile Include="Repositories and Interface\SwapRepository.cs" />
+    <Compile Include="Repositories and Interface\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -77,6 +88,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806121417127_Second.resx">
       <DependentUpon>201806121417127_Second.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806131059455_Check.resx">
+      <DependentUpon>201806131059455_Check.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806131101493_DateInInt.resx">
+      <DependentUpon>201806131101493_DateInInt.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
