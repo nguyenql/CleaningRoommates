@@ -24,15 +24,29 @@ namespace CleaningRoommates
     public partial class ScheduleWindow : Window
     {
         List<WhoWhenClean> results = Algoritm.WhoWillCleanToday();
+        DateTime dateOfCleaningDateTime;
+        int today = DateTime.Now.DayOfYear;
         User user = new User() { Id = 1 };
 
         public ScheduleWindow()
         {
+            InitializeComponent();
+
             //Изначальный алгоритм
+            dateOfCleaningDateTime = SubmitLogics.GetDayOfCleaning(results, user);
 
             //User us1 = new User() { Id = 0 };
-            results = Algoritm.WhoWillCleanToday();
+            //results = Algoritm.WhoWillCleanToday();
             CreateButtons(results);
+
+            //ЛИСТ SWAPS СООБЩЕНИЙ
+            var swaps = new List<Swap>();
+            listBoxSwaps.ItemsSource = swaps;
+
+            //ЛИСТ SUBMITS СООБЩЕНИЙ
+            var submits = new List<Submit>();
+            listBoxSubmits.ItemsSource = submits;
+
 
             //Передвишаем расписание на один день вперед
             /*int maxDay = SwapLogic.GetMaxDayId(results, us1);
@@ -46,8 +60,7 @@ namespace CleaningRoommates
             RenewButtons(changedDayScheduleUsers);
             */
             //RenewButtons(results);
-            
-            
+
         }
         
         public void RenewButtons(List<WhoWhenClean> changedDaySchedule)
@@ -68,8 +81,6 @@ namespace CleaningRoommates
                 newButton.BorderBrush = Brushes.DeepSkyBlue;
                 newButton.Background = Brushes.LightBlue;
 
-
-
                 Grid.SetRow(newButton, time.UseId);
 
                 if (time.DayId <= idOfMaxDayInGrid)
@@ -87,16 +98,62 @@ namespace CleaningRoommates
 
         private void buttonLogOut_Click(object sender, RoutedEventArgs e)
         {
-            results = new List<WhoWhenClean>();
             MainWindow window = new MainWindow();
             window.Show();
             this.Close();
         }
 
-        private void Click_Submit(object sender, RoutedEventArgs e)
+        private void Click_MySubmit(object sender, RoutedEventArgs e)
         {
-            SubmiteWorkWindow window = new SubmiteWorkWindow(results, user);
+            int nextMyCleaning = dateOfCleaningDateTime.DayOfYear;
+            
+            if(today==nextMyCleaning|| today == nextMyCleaning + 1)
+            {
+                SubmiteWorkWindow window = new SubmiteWorkWindow(user, dateOfCleaningDateTime);
+                window.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Wait your turn to clean!");
+                return;
+            }
+        }
+
+        private void Click_MySwap(object sender, RoutedEventArgs e)
+        {
+            IWantToSwapWindow window = new IWantToSwapWindow(user, dateOfCleaningDateTime);
             window.ShowDialog();
+
+        }
+
+        private void buttonSwap_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedItem = listBoxSubmits.SelectedItem as Swap;
+
+            if (selectedItem == null)
+            {
+                MessageBox.Show("Select message");
+            }
+            else
+            {
+                IAgreeOrDisagreeToSwapWindow window = new IAgreeOrDisagreeToSwapWindow(selectedItem, user);
+                window.ShowDialog();
+            }
+        }
+
+        private void buttonSubmits_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedItem = listBoxSubmits.SelectedItem as Submit;
+
+            if (selectedItem == null)
+            {
+                MessageBox.Show("Select message");
+            }
+            else
+            {
+               // ControlWindow window = new ControlWindow(selectedItem, user);
+                //window.ShowDialog();
+            }
         }
     }
 }

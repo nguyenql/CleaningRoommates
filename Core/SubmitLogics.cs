@@ -10,7 +10,7 @@ namespace Core
     public class SubmitLogics
     {
         //определение дня дежурства пользователя для базы данных
-        public static int GetDayOfCleaning(List<WhoWhenClean> results, User user)
+        public static DateTime GetDayOfCleaning(List<WhoWhenClean> results, User user)
         {
             int thisYear = DateTime.Now.Year;
             int todayInYear = DateTime.Now.DayOfYear;
@@ -19,8 +19,7 @@ namespace Core
             int dayNextClean = firstDayInGrid + dayToAdd;
 
             DateTime DateTimeOfCleaning = new DateTime(thisYear, 1, 1).AddDays(dayNextClean - 1);
-            int DateOfCleaning = DateTimeOfCleaning.DayOfYear;
-            return DateOfCleaning;
+            return DateTimeOfCleaning;
         }
     }
 }

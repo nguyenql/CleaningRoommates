@@ -21,28 +21,31 @@ namespace CleaningRoommates
     /// </summary>
     public partial class SubmiteWorkWindow : Window
     {
-        List<WhoWhenClean> results;
         User user;
-        int DateOfCleaning;
+        DateTime DateOfCleaning;
 
-        public SubmiteWorkWindow(List<WhoWhenClean> list, User us)//пользователь который в системе
+        public SubmiteWorkWindow(User us, DateTime dayCleaning)//пользователь который в системе
         {
             InitializeComponent();
 
-            results = list;
             user = us;
-            DateOfCleaning = SubmitLogics.GetDayOfCleaning(results, us);
-            //Date.Text = DateOfCleaning;
+            DateOfCleaning = dayCleaning;
+
+            string DateStringOfCleaning = DateOfCleaning.ToString("MMMM dd, yyyy");
+
+            Date.Text = DateStringOfCleaning;
+            Perf.Text = user.Name;
         }
 
         private void Ok_Click(object sender, RoutedEventArgs e)
         {
             var submit = new Submit();
+            int DateIntOfCleaning = DateOfCleaning.DayOfYear;
 
             //!!!! в базе данных изменить формат даты на число. Номер дня в году
-            //submit.WhenDone = ;
-            //submit.From = user;
-           
+            submit.WhenDone = DateIntOfCleaning;
+            submit.Executer = user;
+
             if (Wash.IsChecked == true)
             {
                 submit.Wash = true;
@@ -63,20 +66,14 @@ namespace CleaningRoommates
             }
             else
                 submit.Trash = false;
-            MessageBox.Show("Please, change reason!");
+
+            if(submit.Wash==false && submit.Trash==false && submit.Sweep ==false)
+            {
+                MessageBox.Show("Please, change reason!");
                 return;
-
-            //usersFromDatabase.Add(swap);
-        }
-        
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void ListBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
-        {
-
+            }
+            //добавляем в базу данных
+            //submitsFromDatabase.Add(submit);
         }
     }
 }

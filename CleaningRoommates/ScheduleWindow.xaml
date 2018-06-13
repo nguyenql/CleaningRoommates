@@ -66,30 +66,6 @@
             </Border>
         </ControlTemplate>
 
-        <!--<Style TargetType="Button">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <Border CornerRadius="25" 
-                                    BorderBrush="CadetBlue" 
-                                    BorderThickness="2"
-                                    Background="LightBlue">
-                            <Border.Effect>
-                                <DropShadowEffect ShadowDepth="5" 
-                                                                Opacity=".5"
-                                                                Color="DarkBlue"/>
-                            </Border.Effect>
-                            <ContentControl FontSize="14"
-                                                        Margin="5"
-                                                        FontFamily="Kristen ITC"
-                                                        HorizontalAlignment="Center" 
-                                                        VerticalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>-->
-
         <ControlTemplate TargetType="{x:Type TabItem}" x:Key="tcTemp">
             <Border 
                 Width="Auto"
@@ -110,67 +86,6 @@
             <Setter Property="Margin" Value="5"/>
             <Setter Property="FontWeight" Value="Bold"/>
         </Style>
-
-        <!--<Style TargetType="{x:Type TabItem}">
-            <Setter Property="Template">
-                <Setter.Value>
-
-                    <ControlTemplate TargetType="{x:Type TabControl}">
-                        <Grid KeyboardNavigation.TabNavigation="Local">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
-
-                            <TabPanel x:Name="HeaderPanel"
-                              Grid.Row="0"
-                              Panel.ZIndex="1"
-                              Margin="0,0,4,-1"
-                              IsItemsHost="True"
-                              KeyboardNavigation.TabIndex="1"
-                              Background="Transparent" />
-
-                            <Border x:Name="Border"
-                            Grid.Row="1"
-                            BorderThickness="1"
-                            KeyboardNavigation.TabNavigation="Local"
-                            KeyboardNavigation.DirectionalNavigation="Contained"
-                            KeyboardNavigation.TabIndex="2">
-
-                                <Border.Background>
-                                    <SolidColorBrush Color="White"/>
-                                </Border.Background>
-
-                                <Border.BorderBrush>
-                                    <SolidColorBrush Color="White"/>
-                                </Border.BorderBrush>
-
-                                <ContentPresenter x:Name="PART_SelectedContentHost"
-                                          Margin="4"
-                                          ContentSource="SelectedContent" />
-                            </Border>
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>-->
-        <!--<ControlTemplate x:Key="ThreePresentersList" TargetType="ListBox">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-
-                <ItemsPresenter Grid.Column="1"/>
-
-
-            </Grid>
-        </ControlTemplate>-->
     </Window.Resources>
 
     <Grid Background="LightGray">
@@ -179,7 +94,7 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="4*"/>
         </Grid.RowDefinitions>
-        
+
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -190,7 +105,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            
+
 
             <Button 
                 Name="buttonProfile"
@@ -320,7 +235,7 @@
                         HorizontalAlignment="Center"/>
 
                     <Grid Background="White" 
-                          Name="schGrid" 
+                          Name="schGrid"
                           Grid.Column="1" 
                           Grid.ColumnSpan="7" 
                           Grid.Row="2" Grid.RowSpan="3"
@@ -345,177 +260,83 @@
                 </Grid>
             </TabItem>
 
-            <TabItem Header="Communication"
+            <TabItem Header="My submits"
                      FontSize="16"
                      FontFamily="Kristen ITC"
                      Template="{StaticResource tcTemp}">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="12*"/>
-                        <ColumnDefinition Width="61*"/>
-                        <ColumnDefinition Width="73*"/>
-                        <ColumnDefinition Width="73*"/>
-                        <ColumnDefinition Width="73*"/>
+                        <ColumnDefinition Width="24*"/>
+                        <ColumnDefinition Width="122*"/>
+                        <ColumnDefinition Width="132*"/>
+                        <ColumnDefinition Width="15*"/>
+                        <ColumnDefinition Width="147*"/>
+                        <ColumnDefinition Width="147*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <Button 
-                        Name="buttonSwap"  
+                        Name="OpenSubmits"  
                         Template="{StaticResource btTemplate}" 
-                        Content="Swap" 
-                        Margin="5" 
-                        Grid.Column="4" Grid.Row="0"></Button>
+                        Content="Open" 
+                        Margin="5.4,5,4.8,0" 
+                        Grid.Column="4" Grid.Row="0" Click="buttonSubmits_Click" Height="33" VerticalAlignment="Top"></Button>
                     <Button 
                         Name="buttonSubmit"  
                         Template="{StaticResource btTemplate}" 
-                        Content="Submit" 
-                        Click="Click_Submit"
-                        Margin="5" 
-                        Grid.Column="3" Grid.Row="0"></Button>
+                        Content="Submit myself" 
+                        Click="Click_MySubmit"
+                        Margin="5.4,5,4.8,5.2" 
+                        Grid.Column="5" Grid.Row="0"></Button>
 
-
-                    <ListBox Name="listBoxMessages" 
+                    <ListBox Name="listBoxSubmits" 
+                             DisplayMemberPath="WhenDone"
                         Grid.Column="0" 
-                        Grid.ColumnSpan="5" 
+                        Grid.ColumnSpan="6" 
                         Grid.Row="1" 
-                        Margin="5">
-                        <ListBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <Grid ShowGridLines="True">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="*"/>
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                </Grid>
-                            </ItemsPanelTemplate>
-                        </ListBox.ItemsPanel>
-                        <ListBoxItem Content="From" Margin="5" Grid.Row="0" Grid.Column="0"/>
-                        <ListBoxItem Content="Messages" Margin="5" Grid.Row="0" Grid.Column="1"/>
-                        <ListBoxItem Content="Date" Grid.Row="0" Grid.Column="2"/>
-                        <ListBoxItem Content="From Bind"  Grid.Row="1" Grid.Column="0"/>
-                        <ListBoxItem Content="Messages Bind"  Grid.Row="1" Grid.Column="1"/>
-                        <ListBoxItem Content="Date Bind" Grid.Row="1" Grid.Column="2"/>
+                        Margin="5,4.8,5,4.6">
                     </ListBox>
-
-
-                    <!--<ListBox 
-                        Name="listBoxMessages" 
-                        
-                        Grid.Column="0" 
-                        Grid.ColumnSpan="5" 
-                        Grid.Row="1" 
-                        Margin="5"
-                        Template="{StaticResource ThreePresentersList}"/>-->
-                    
-                    
-                    
-                    <!--<ListBox Name="listBoxMessages" Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="1" Margin="5">
-                        <ListBox.Template>
-                            <ControlTemplate>
-                                <DockPanel>
-                                    <Grid DockPanel.Dock="Top" Height="30">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="1*"></ColumnDefinition>
-                                            <ColumnDefinition Width="1*"></ColumnDefinition>
-                                            <ColumnDefinition Width="1*"></ColumnDefinition>
-                                        </Grid.ColumnDefinitions>
-                                        <Label Grid.Column="0">From</Label>
-                                        <Label Grid.Column="1">Message</Label>
-                                        <Label Grid.Column="2">Date</Label>
-                                    </Grid>
-                                    <ItemsPresenter></ItemsPresenter>
-                                </DockPanel>
-                            </ControlTemplate>
-                        </ListBox.Template>
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <Grid Margin="0,2">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"></ColumnDefinition>
-                                        <ColumnDefinition Width="1*"></ColumnDefinition>
-                                        <ColumnDefinition Width="1*"></ColumnDefinition>
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock Text="Система" Grid.Column="0"></TextBlock>
-                                    <TextBlock Text="а" Grid.Column="1"></TextBlock>
-                                    <TextBlock Text="вв" Grid.Column="2"></TextBlock>
-                                </Grid>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>-->
-
-                    <!--<DataGrid Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="1" Margin="5" AutoGenerateColumns="False">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="From" Width="1*"/>
-                            <DataGridTextColumn Header="Message Type" Width="1*"/>
-                            <DataGridTextColumn Header="Message Date" Width="1*"/>
-                        </DataGrid.Columns>
-
-                        <DataGrid.RowDetailsTemplate>
-                            <DataTemplate>
-                                <DockPanel>
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="2*"/>
-                                            <ColumnDefinition/>
-                                        </Grid.ColumnDefinitions>
-                                        <TextBlock Text="{Binding Details}" Grid.Column="0" Margin="5"/>
-                                        <Button Name="buttonInVisibleRow" Grid.Column="1" Margin="5" Content="Open"></Button>
-                                    </Grid>
-                                </DockPanel>
-                            </DataTemplate>
-                        </DataGrid.RowDetailsTemplate>
-                    </DataGrid>-->
                 </Grid>
             </TabItem>
 
-            <TabItem Header="Ask WWW Questions"
+            <TabItem Header="My swaps"
                      FontSize="16"
                      FontFamily="Kristen ITC"
                      Template="{StaticResource tcTemp}">
-                <Grid Margin="5">
+                <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="24*"/>
+                        <ColumnDefinition Width="122*"/>
+                        <ColumnDefinition Width="132*"/>
+                        <ColumnDefinition Width="15*"/>
+                        <ColumnDefinition Width="147*"/>
+                        <ColumnDefinition Width="147*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <TextBox Name="textBoxQuery" Grid.Column="0" Margin="5"></TextBox>
                     <Button 
-                        Grid.Column="1" 
-                        Width="35"
-                        Height="35"
-                        Margin="5 0"
-                        Template="{StaticResource btTemplate}">
-                        <Image Source="Resources/search.png" Stretch="Fill"/>
+                        Name="OpenSwaps"  
+                        Template="{StaticResource btTemplate}" 
+                        Content="Open" 
+                        Margin="5.2,5,5,5.2" 
+                        Grid.Column="4" Grid.Row="0" Click="buttonSwap_Click"></Button>
+                    <Button 
+                        Name="buttonSwap"  
+                        Template="{StaticResource btTemplate}" 
+                        Content="Miss my turn" 
+                        Margin="5.2,5,5,5.2" 
+                        Grid.Column="5" Grid.Row="0" Click="Click_MySwap"></Button>
 
-                    </Button>
-                    <Button 
-                        Grid.Column="2" 
-                        Width="35"
-                        Height="35"
-                        Margin="5 0"
-                        Template="{StaticResource btTemplate}">
-                        <Image Source="Resources/broswe_black.png" Stretch="Fill"/>
-                    </Button>
-                    <ListBox Name="listBoxResults" Grid.Row="1" Grid.ColumnSpan="3" Margin="5">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock FontSize="14" Text="{Binding Title}"/>
-                                    <TextBlock FontSize="10" Text="{Binding Description}" FontWeight="Light"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
+                    <ListBox Name="listBoxSwaps" 
+                             DisplayMemberPath="When"
+                        Grid.Column="0" 
+                        Grid.ColumnSpan="6" 
+                        Grid.Row="1" 
+                        Margin="5,4.8,5,4.6">
                     </ListBox>
                 </Grid>
             </TabItem>
