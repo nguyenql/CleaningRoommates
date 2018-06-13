@@ -25,9 +25,9 @@ namespace CleaningRoommates
         {
             InitializeComponent();
             var us = new User() { Id = 1, Name = "1" };
-            IWantToSwapWindow window = new IWantToSwapWindow(us);
-            window.ShowDialog();
- 
+
+//            SubmiteWorkWindow window = new SubmiteWorkWindow();
+            //window.ShowDialog();
         }
 
         private void ButtonClickEnterYourRoom(object sender, RoutedEventArgs e)

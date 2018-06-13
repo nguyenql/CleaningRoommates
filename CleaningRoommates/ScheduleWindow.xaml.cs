@@ -23,27 +23,28 @@ namespace CleaningRoommates
     /// </summary>
     public partial class ScheduleWindow : Window
     {
+        List<WhoWhenClean> results = Algoritm.WhoWillCleanToday();
+
         public ScheduleWindow()
         {
-           
             //Изначальный алгоритм
 
             User us1 = new User() { Id = 0 };
             User us2 = new User() { Id = 1 };
-            List<WhoWhenClean> results = Algoritm.WhoWillCleanToday();
+            results = Algoritm.WhoWillCleanToday();
             CreateButtons(results);
 
             //Передвишаем расписание на один день вперед
-            int maxDay = GetMaxDayId(results, us1);
-            List<WhoWhenClean> changedDayScheduleDays = ChangeDays(results, maxDay);
+            /*int maxDay = SwapLogic.GetMaxDayId(results, us1);
+            List<WhoWhenClean> changedDayScheduleDays = SwapLogic.ChangeDays(results, maxDay);
             RenewButtons(changedDayScheduleDays);
-
+            */
 
             //меняем пользователя
-
-            List<WhoWhenClean> changedDayScheduleUsers = ChangeUsers(results, us2,us1);
+            /*
+            List<WhoWhenClean> changedDayScheduleUsers = SwapLogic.ChangeUsers(results, us2,us1);
             RenewButtons(changedDayScheduleUsers);
-            
+            */
             //RenewButtons(results);
             
             
@@ -78,61 +79,6 @@ namespace CleaningRoommates
             }
         }
 
-        //Получаем новое расписание 
-        public List<WhoWhenClean> ChangeDays(List<WhoWhenClean> initialSchedule, int maxDay)
-        {
-            foreach (var time in initialSchedule)
-            {
-                if (time.DayId >= maxDay)
-                {
-                    time.DayId++;
-                }
-            }
-            return initialSchedule;
-        }
-
-        public List<WhoWhenClean> ChangeUsers(List<WhoWhenClean> initialSchedule, User one, User another)
-        {
-            int dayToChangeOfOne = GetMaxDayId(initialSchedule, one);
-            int dayToChangeOfAnother = GetMaxDayId(initialSchedule, another);
-
-            int daysToNextUserClean = 6;
-
-            if (dayToChangeOfAnother < 3)
-                dayToChangeOfAnother = dayToChangeOfAnother + daysToNextUserClean;
-
-            foreach (var time in initialSchedule)
-            {
-                if (time.DayId == dayToChangeOfOne)
-                {
-                   time.UseId = another.Id;
-                }
-
-                if (time.DayId == dayToChangeOfAnother)
-                {
-                   time.UseId = one.Id;
-                }
-            }
-            return initialSchedule;
-        }
-
-        //вычленить у пользователя день с максимальным номером
-        //День следующего дежурства
-        public int GetMaxDayId(List<WhoWhenClean> initialSchedule, User user)
-        {
-            int maxDay = 0;
-
-            foreach (var time in initialSchedule)
-            {
-                if (time.UseId == user.Id)
-                {
-                    if (time.DayId > maxDay)
-                        maxDay = time.DayId;
-                }
-            }
-            return maxDay;
-        }
-
         private void buttonProfile_Click(object sender, RoutedEventArgs e)
         {
             ProfileWindow window = new ProfileWindow();
@@ -144,6 +90,12 @@ namespace CleaningRoommates
             MainWindow window = new MainWindow();
             window.Show();
             this.Close();
+        }
+
+        private void Click_Submit(object sender, RoutedEventArgs e)
+        {
+            SubmiteWorkWindow window = new SubmiteWorkWindow(results);
+            window.ShowDialog();
         }
     }
 }

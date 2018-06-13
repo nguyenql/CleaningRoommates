@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Algoritm.cs" />
     <Compile Include="Context.cs" />
+    <Compile Include="SubmitLogic.cs" />
     <Compile Include="Migrations\201806121409037_First.cs" />
     <Compile Include="Migrations\201806121409037_First.Designer.cs">
       <DependentUpon>201806121409037_First.cs</DependentUpon>
