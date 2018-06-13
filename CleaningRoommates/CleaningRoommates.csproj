@@ -76,6 +76,7 @@
     <Compile Include="ProfileWindow.xaml.cs">
       <DependentUpon>ProfileWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RenewButtons\BitmapEffect.cs" />
     <Compile Include="RoomRegistrationWindow.xaml.cs">
       <DependentUpon>RoomRegistrationWindow.xaml</DependentUpon>
     </Compile>
@@ -165,14 +166,35 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\logo_blue.png" />
-    <Resource Include="Resources\welcome-photos2.png" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{528ca3a8-405f-4a0e-acdf-419c75751b67}</Project>
       <Name>Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\logo_blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\welcome-photos2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\out_black.png" />
+    <Resource Include="Resources\profile_blue.png" />
+    <Resource Include="Resources\profile_color2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\profile_black.png" />
+    <Resource Include="Resources\profile_color.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\profile_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\broswe_black.png" />
+    <Resource Include="Resources\browse_color.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\search.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
