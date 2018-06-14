@@ -20,7 +20,7 @@
                                       Color="DarkBlue"/>
                 </Border.Effect>
                 <ContentControl FontSize="14"
-                                Margin="5"
+                                Margin="50"
                                 FontFamily="Kristen ITC"
                                 HorizontalAlignment="Center" 
                                 VerticalAlignment="Center" 
@@ -130,7 +130,7 @@
                 HorizontalAlignment="Right"
                 VerticalAlignment="Top"
                 Template="{StaticResource btrTemplate}">
-                <Image Source="Resources/out_black.png" Height="25" />
+                <Image Source="Resources/out_black.png" Height="25" RenderTransformOrigin="21.062,2.859" />
             </Button>
         </Grid>
 
@@ -280,24 +280,30 @@
                     <Button 
                         Name="OpenSubmits"  
                         Template="{StaticResource btTemplate}" 
-                        Content="Open" 
-                        Margin="5.4,5,4.8,0" 
+                        Content="Open"
+                        Margin="10 5"
                         Grid.Column="4" Grid.Row="0" Click="buttonSubmits_Click" Height="33" VerticalAlignment="Top"></Button>
                     <Button 
                         Name="buttonSubmit"  
                         Template="{StaticResource btTemplate}" 
                         Content="Submit myself" 
                         Click="Click_MySubmit"
-                        Margin="5.4,5,4.8,5.2" 
+                        Margin="10 5"
                         Grid.Column="5" Grid.Row="0"></Button>
 
-                    <ListBox Name="listBoxSubmits" 
-                             DisplayMemberPath="WhenDone"
+                    <DataGrid Name="dataGridSubmit" 
+                        DisplayMemberPath="WhenDone"
                         Grid.Column="0" 
                         Grid.ColumnSpan="6" 
-                        Grid.Row="1" 
-                        Margin="5,4.8,5,4.6">
-                    </ListBox>
+                        Grid.Row="1"
+                        AutoGenerateColumns="False"
+                        Margin="5">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="From" Binding="{Binding Value}" Width="1*"/>
+                            <DataGridTextColumn Header="Messages" Binding="{Binding Value}" Width="2*"/>
+                            <DataGridTextColumn Header="Date" Binding="{Binding Value}" Width="1*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </Grid>
             </TabItem>
 
@@ -322,22 +328,28 @@
                         Name="OpenSwaps"  
                         Template="{StaticResource btTemplate}" 
                         Content="Open" 
-                        Margin="5.2,5,5,5.2" 
+                        Margin="10 5"
                         Grid.Column="4" Grid.Row="0" Click="buttonSwap_Click"></Button>
                     <Button 
                         Name="buttonSwap"  
                         Template="{StaticResource btTemplate}" 
                         Content="Miss my turn" 
-                        Margin="5.2,5,5,5.2" 
+                        Margin="10 5"
                         Grid.Column="5" Grid.Row="0" Click="Click_MySwap"></Button>
 
-                    <ListBox Name="listBoxSwaps" 
-                             DisplayMemberPath="When"
+                    <DataGrid Name="dataGridSwap" 
+                        DisplayMemberPath="When"
                         Grid.Column="0" 
                         Grid.ColumnSpan="6" 
-                        Grid.Row="1" 
-                        Margin="5,4.8,5,4.6">
-                    </ListBox>
+                        Grid.Row="1"
+                        AutoGenerateColumns="False"
+                        Margin="5">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="From" Binding="{Binding Value}" Width="1*"/>
+                            <DataGridTextColumn Header="Messages" Binding="{Binding Value}" Width="2*"/>
+                            <DataGridTextColumn Header="Date" Binding="{Binding Value}" Width="1*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </Grid>
             </TabItem>
         </TabControl>
