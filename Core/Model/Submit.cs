@@ -15,6 +15,8 @@ namespace Core.Model
         public bool Trash { get; set; }
         [NotMapped]
         public DateTime DateOfReceiving { get; set; }
+        [NotMapped]
+        public DateTime DateOfChecking { get; set; }
         public int WhenDone { get; set; }
         public int WhenChecked { get; set; }
         public User Executer { get; set; }

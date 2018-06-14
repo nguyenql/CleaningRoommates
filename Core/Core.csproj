@@ -80,7 +80,7 @@
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\WhoWhenClean.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories and Interface\ControlRepository.cs" />
+    <Compile Include="Repositories and Interface\SubmitRepository.cs" />
     <Compile Include="Repositories and Interface\Interface.cs" />
     <Compile Include="Repositories and Interface\RoomRepository.cs" />
     <Compile Include="Repositories and Interface\SwapRepository.cs" />
