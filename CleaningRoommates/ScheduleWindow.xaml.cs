@@ -29,10 +29,11 @@ namespace CleaningRoommates
         List<WhoWhenClean> results = ActualSchedule.GetActualSchedule();
 
 
-        public ScheduleWindow(User us)
+        public ScheduleWindow(User user)
         {
             InitializeComponent();
             user = us;
+            //RenewButtons();
 
             dateOfCleaningDateTime = SubmitLogics.GetDayOfCleaning(results, user);
             
