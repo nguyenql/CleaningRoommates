@@ -51,7 +51,7 @@ namespace CleaningRoommates
                         if ((user.Login == textBoxLogin.Text) && (user.Password == GetHash(passwordBox.Password)))
                         {
                             a = 1;
-                            ScheduleWindow window = new ScheduleWindow();
+                            ScheduleWindow window = new ScheduleWindow(user);
                             window.ShowDialog();
                             this.Close();
                         }

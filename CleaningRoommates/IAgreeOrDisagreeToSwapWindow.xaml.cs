@@ -60,6 +60,13 @@ namespace CleaningRoommates
 
             //ДОБАВИТЬ В СПИСОК- СОХРАНИТЬ ИЗМЕНЕНИЯ
             swapRepository.Swaps.Add(swap);
+
+            Close();
+        }
+
+        private void buttonDisagree_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

@@ -23,32 +23,31 @@ namespace CleaningRoommates
     /// </summary>
     public partial class ScheduleWindow : Window
     {
-        List<WhoWhenClean> results = ActualSchedule.GetActualSchedule();
-
         DateTime dateOfCleaningDateTime;
         int today = DateTime.Now.DayOfYear;
         User user = new User() { Id = 1 };
+        List<WhoWhenClean> results = ActualSchedule.GetActualSchedule();
 
         public ScheduleWindow(User us)
         {
             InitializeComponent();
-
             user = us;
+            //RenewButtons();
+
             dateOfCleaningDateTime = SubmitLogics.GetDayOfCleaning(results, user);
 
-            RenewButtons();
             //User us1 = new User() { Id = 0 };
             //results = Algoritm.WhoWillCleanToday();
             
-            //CreateButtons(results);
+            CreateButtons(results);
 
             //ЛИСТ SWAPS СООБЩЕНИЙ
             var swaps = SwapLogics.UserSwaps(user);
-            listBoxSwaps.ItemsSource = swaps;
+            dataGridSwap.ItemsSource = swaps;
 
             //ЛИСТ SUBMITS СООБЩЕНИЙ
             var submits = SubmitLogics.UserSubmits(user);
-            listBoxSubmits.ItemsSource = submits;
+            dataGridSubmit.ItemsSource = submits;
 
             //Передвишаем расписание на один день вперед
             /*int maxDay = SwapLogic.GetMaxDayId(results, us1);
@@ -130,7 +129,7 @@ namespace CleaningRoommates
 
         private void buttonSwap_Click(object sender, RoutedEventArgs e)
         {
-            var selectedItem = listBoxSubmits.SelectedItem as Swap;
+            var selectedItem = dataGridSubmit.SelectedItem as Swap;
 
             if (selectedItem == null)
             {
@@ -147,7 +146,7 @@ namespace CleaningRoommates
 
         private void buttonSubmits_Click(object sender, RoutedEventArgs e)
         {
-            var selectedItem = listBoxSubmits.SelectedItem as Submit;
+            var selectedItem = dataGridSubmit.SelectedItem as Submit;
 
             if (selectedItem == null)
             {
