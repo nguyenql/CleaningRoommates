@@ -192,11 +192,13 @@
     <Resource Include="Resources\profile_white.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\broswe_black.png" />
     <Resource Include="Resources\browse_color.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\broom_color.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
