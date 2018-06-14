@@ -25,8 +25,9 @@ namespace CleaningRoommates
     {
         DateTime dateOfCleaningDateTime;
         int today = DateTime.Now.DayOfYear;
-        User user = new User() { Id = 1 };
-        List<WhoWhenClean> results = ActualSchedule.GetActualSchedule();
+        int countUsers;
+        User user;
+
         private UserRepository user_repo = new UserRepository();
 
 
@@ -34,15 +35,17 @@ namespace CleaningRoommates
         {
             InitializeComponent();
             user = us;
-            List<User> PeopleWhoLiveInOneRoom = MakeList(user);
             //RenewButtons();
+            List<User> PeopleWhoLiveInOneRoom = MakeList(user);
+            countUsers = PeopleWhoLiveInOneRoom.Count;
+            List<WhoWhenClean> results = ActualSchedule.GetActualSchedule(countUsers);
 
             dateOfCleaningDateTime = SubmitLogics.GetDayOfCleaning(results, user);
             
             CreateButtons(results);
-            uOne.Text = user.Name;
-            uOne.Text = user.Name;
-            uOne.Text = user.Name;
+            uOne.Text = PeopleWhoLiveInOneRoom[0].Name;
+            uOne.Text = PeopleWhoLiveInOneRoom[1].Name;
+            uOne.Text = PeopleWhoLiveInOneRoom[2].Name;
 
             RenewSwapsSubmits();
         }
@@ -74,7 +77,7 @@ namespace CleaningRoommates
         
         public void RenewButtons()
         {
-            List<WhoWhenClean> results = ActualSchedule.GetActualSchedule();
+            List<WhoWhenClean> results = ActualSchedule.GetActualSchedule(countUsers);
             schGrid.Children.Clear();
             CreateButtons(results);
         }
