@@ -28,7 +28,7 @@ namespace CleaningRoommates
         DateTime DateOfCleaning;
         User checker = new User();
 
-        public SubmiteWorkWindow(User us, DateTime dayCleaning)//пользователь который в системе
+        public SubmiteWorkWindow(User us, DateTime dayCleaning)
         {
             InitializeComponent();
 
@@ -45,7 +45,6 @@ namespace CleaningRoommates
             var submit = new Submit();
             int DateIntOfCleaning = DateOfCleaning.DayOfYear;
 
-            //!!!! в базе данных изменить формат даты на число. Номер дня в году
             submit.WhenDone = DateIntOfCleaning;
             submit.Executer = user;
             submit.Checker = checker;

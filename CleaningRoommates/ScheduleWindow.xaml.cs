@@ -27,19 +27,23 @@ namespace CleaningRoommates
         int today = DateTime.Now.DayOfYear;
         User user = new User() { Id = 1 };
         List<WhoWhenClean> results = ActualSchedule.GetActualSchedule();
-        private UserRepository user_repo = new UserRepository();
 
-        public ScheduleWindow(User user)
+        public ScheduleWindow(User us)
         {
             InitializeComponent();
             user = us;
-            List<User> PeopleWhoLiveInOneRoom = MakeList(user);
-            //RenewButtons();
 
             dateOfCleaningDateTime = SubmitLogics.GetDayOfCleaning(results, user);
             
             CreateButtons(results);
+            uOne.Text = user.Name;
+            uOne.Text = user.Name;
+            uOne.Text = user.Name;
 
+            RenewSwapsSubmits();
+        }
+        public void RenewSwapsSubmits()
+        {
             //ЛИСТ SWAPS СООБЩЕНИЙ
             var swaps = SwapLogics.UserSwaps(user);
             dataGridSwap.ItemsSource = swaps;
@@ -47,23 +51,7 @@ namespace CleaningRoommates
             //ЛИСТ SUBMITS СООБЩЕНИЙ
             var submits = SubmitLogics.UserSubmits(user);
             dataGridSubmit.ItemsSource = submits;
-
         }
-        
-        private List<User> MakeList(User us)
-        {
-            List<User> neighbors = new List<User>();
-            neighbors.Add(us);
-            foreach (var user in user_repo.Users)
-            {
-                if (user.Room == us.Room)
-                {
-                    neighbors.Add(user);
-                }
-            }
-            return neighbors;
-        }
-
         public void RenewButtons()
         {
             List<WhoWhenClean> results = ActualSchedule.GetActualSchedule();

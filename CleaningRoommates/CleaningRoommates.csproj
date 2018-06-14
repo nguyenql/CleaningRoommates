@@ -181,21 +181,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\out_black.png" />
-    <Resource Include="Resources\profile_blue.png" />
-    <Resource Include="Resources\profile_color2.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\profile_black.png" />
-    <Resource Include="Resources\profile_color.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\profile_white.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\browse_color.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\search.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\broom_color.png" />
