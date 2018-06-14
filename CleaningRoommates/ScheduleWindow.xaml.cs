@@ -28,7 +28,6 @@ namespace CleaningRoommates
         User user = new User() { Id = 1 };
         List<WhoWhenClean> results = ActualSchedule.GetActualSchedule();
 
-
         public ScheduleWindow(User us)
         {
             InitializeComponent();
@@ -37,7 +36,9 @@ namespace CleaningRoommates
             dateOfCleaningDateTime = SubmitLogics.GetDayOfCleaning(results, user);
             
             CreateButtons(results);
-
+            uOne.Text = user.Name;
+            uOne.Text = user.Name;
+            uOne.Text = user.Name;
             //ЛИСТ SWAPS СООБЩЕНИЙ
             var swaps = SwapLogics.UserSwaps(user);
             dataGridSwap.ItemsSource = swaps;
