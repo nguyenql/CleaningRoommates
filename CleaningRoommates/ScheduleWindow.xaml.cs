@@ -159,5 +159,10 @@ namespace CleaningRoommates
                window.ShowDialog();
             }
         }
+
+        private void dataGridSwap_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

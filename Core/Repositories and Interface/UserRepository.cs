@@ -40,6 +40,29 @@ namespace Core.Repositories_and_Interface
             using (var context = new Context())
             {
                 context.SaveChanges();
+                Restore();
+            }
+        }
+
+        static void AddUser(User user)
+        {
+            using (var context = new Context())
+            {
+                context.Users.Add(user);
+                context.SaveChanges();
+            }
+        }
+
+        static void EditUser(User user)
+        {
+            using (var context = new Context())
+            {
+                var us = context.Users.Where(g => g.Id == user.Id).FirstOrDefault();
+                us.Name = user.Name;
+                us.Login = user.Login;
+                us.Password = user.Password;
+                us.Room = user.Room;
+                context.SaveChanges();
             }
         }
     }

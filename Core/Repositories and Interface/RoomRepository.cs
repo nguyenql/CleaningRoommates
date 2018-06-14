@@ -33,6 +33,16 @@ namespace Core.Repositories_and_Interface
             using (var context = new Context())
             {
                 context.SaveChanges();
+                Restore();
+            }
+        }
+
+        static void AddRoom(Room room)
+        {
+            using (var context = new Context())
+            {
+                context.Rooms.Add(room);
+                context.SaveChanges();
             }
         }
     }

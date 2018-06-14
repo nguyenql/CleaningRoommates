@@ -33,6 +33,31 @@ namespace Core.Repositories_and_Interface
             using (var context = new Context())
             {
                 context.SaveChanges();
+                Restore();
+            }
+        }
+
+        static void AddSwap(Swap swap)
+        {
+            using (var context = new Context())
+            {
+                context.Swaps.Add(swap);
+                context.SaveChanges();
+            }
+        }
+
+        static void EditSwap(Swap swap)
+        {
+            using (var context = new Context())
+            {
+                var sw = context.Swaps.Where(g => g.Id == swap.Id).FirstOrDefault();
+                sw.DeadLine = swap.DeadLine;
+                sw.Sick = swap.Sick;
+                sw.NotInTheTown = swap.NotInTheTown;
+                sw.Reason = swap.Reason;
+                sw.OnWhat = swap.OnWhat;
+                sw.Agree = swap.Agree;
+                context.SaveChanges();
             }
         }
     }
