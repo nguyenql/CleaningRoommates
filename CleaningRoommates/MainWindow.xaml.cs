@@ -28,10 +28,10 @@ namespace CleaningRoommates
         {
             InitializeComponent();
 
-            //List<WhoWhenClean> results = Algoritm.WhoWillCleanToday();
+            List<WhoWhenClean> results = Algoritm.WhoWillCleanToday();
 
-            ScheduleWindow window = new ScheduleWindow(user);
-            window.ShowDialog();
+            //ScheduleWindow window = new ScheduleWindow(user);
+            //window.ShowDialog();
         }
 
         private void ButtonClickEnterYourRoom(object sender, RoutedEventArgs e)

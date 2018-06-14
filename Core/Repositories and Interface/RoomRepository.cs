@@ -15,6 +15,7 @@ namespace Core.Repositories_and_Interface
         public RoomRepository()
         {
             Restore();
+            Save();
         }
 
         private void Restore() // reading data from database
@@ -27,9 +28,12 @@ namespace Core.Repositories_and_Interface
             return context.Rooms.ToList();
         }
 
-        public void Save(Context context)
+        public void Save()
         {
-            context.SaveChanges();
+            using (var context = new Context())
+            {
+                context.SaveChanges();
+            }
         }
     }
 }

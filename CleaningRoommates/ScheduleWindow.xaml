@@ -353,7 +353,7 @@
                             AutoGenerateColumns="False"
                               Style="{DynamicResource DGHeaderStyle}"
                               RowStyle="{StaticResource RowStyleWithAlternation}"
-                              Margin="5">
+                              Margin="5" >
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Date" Binding="{Binding Value}" Width="1*"/>
                             <DataGridTextColumn Header="From" Binding="{Binding Value}" Width="1*"/>

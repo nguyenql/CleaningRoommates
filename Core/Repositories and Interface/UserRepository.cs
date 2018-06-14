@@ -15,7 +15,7 @@ namespace Core.Repositories_and_Interface
         public UserRepository()
         {
             Restore();
-
+            Save();
         }
 
         private void Restore() // reading data from database
@@ -25,12 +25,22 @@ namespace Core.Repositories_and_Interface
 
         static List<User> Read(Context context)
         {
-            return context.Users.Include("Room").ToList() ;
+            var users = context.Users.Include("Room").ToList();
+            int a = 0;
+            foreach (var user in users)
+            {
+                user.IdForGala = a;
+                a += 1;
+            }
+            return users ;
         }
 
-        public void Save(Context context)
+        public void Save()
         {
-            context.SaveChanges();
+            using (var context = new Context())
+            {
+                context.SaveChanges();
+            }
         }
     }
 }
