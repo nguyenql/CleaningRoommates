@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActualSchedule.cs" />
     <Compile Include="Algoritm.cs" />
     <Compile Include="Context.cs" />
     <Compile Include="Migrations\201806121409037_First.cs" />
