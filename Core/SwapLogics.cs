@@ -13,7 +13,6 @@ namespace Core
         //Получаем новое расписание 
         public static List<Swap> UserSwaps (User user)
         {
-            //FROM DATASASE
             SwapRepository swapRepository = new SwapRepository();
             List<Swap> swaps = swapRepository.Swaps;
 
@@ -22,10 +21,9 @@ namespace Core
 
             foreach (var item in swaps)
             {
-
                 int ItemDayToView = DateTime.Now.DayOfYear - item.When;
 
-                if (item.From.Id != user.Id && ItemDayToView< daysInWeek)
+                if (item.From.Id != user.Id && ItemDayToView < daysInWeek)
                 {
                     item.DateOfReceiving = ActualSchedule.TransformToDateTime(item.When);
                     userSwap.Add(item);
@@ -52,23 +50,6 @@ namespace Core
                             time.DayId++;
                 }
             }
-            //тоже самое
-
-            //if (dayBetweenTodayAndDayAsked > seenInGrid)
-            //{
-            //    foreach (var time in initialSchedule)
-            //    {
-            //        time.DayId++;
-            //    }
-            //}
-            //else
-            //{
-            //    foreach (var time in initialSchedule)
-            //    {
-            //        if (time.DayId > seenInGrid - dayBetweenTodayAndDayAsked)
-            //            time.DayId++;
-            //    }
-            //}
 
             return initialSchedule;
         }
@@ -87,12 +68,12 @@ namespace Core
             {
                 if (time.DayId == dayToChangeOfOne)
                 {
-                    time.UseId = another.Id;
+                    time.UseId = another.IdForGala;
                 }
 
                 if (time.DayId == dayToChangeOfAnother)
                 {
-                    time.UseId = one.Id;
+                    time.UseId = one.IdForGala;
                 }
             }
             return initialSchedule;
@@ -106,7 +87,7 @@ namespace Core
 
             foreach (var time in initialSchedule)
             {
-                if (time.UseId == user.Id)
+                if (time.UseId == user.IdForGala)
                 {
                     if (time.DayId > maxDay)
                         maxDay = time.DayId;

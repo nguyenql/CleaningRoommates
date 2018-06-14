@@ -353,10 +353,10 @@
                             AutoGenerateColumns="False"
                               Style="{DynamicResource DGHeaderStyle}"
                               RowStyle="{StaticResource RowStyleWithAlternation}"
-                              Margin="5" >
+                              Margin="5" SelectionChanged="dataGridSubmit_SelectionChanged" >
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Date" Binding="{Binding WhenDone}" Width="1*"/>
-                            <DataGridTextColumn Header="Control" Binding="{Binding WhenChecked}" Width="1*"/>
+                            <DataGridTextColumn Header="Date" Binding="{Binding DateOfReceiving}" Width="1*"/>
+                            <DataGridTextColumn Header="Control" Binding="{Binding DateOfChecking}" Width="1*"/>
                             <DataGridTextColumn Header="From" Binding="{Binding Executer}" Width="2*"/>
                         </DataGrid.Columns>
                     </DataGrid>
@@ -402,7 +402,7 @@
                         AutoGenerateColumns="False"
                         Margin="5,5.4,5,4.6" SelectionChanged="dataGridSwap_SelectionChanged">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Date" Binding="{Binding When}" Width="1*"/>
+                            <DataGridTextColumn Header="Date" Binding="{Binding DateOfReceiving}" Width="1*"/>
                             <DataGridTextColumn Header="From" Binding="{Binding From}" Width="1*"/>
                             <DataGridTextColumn Header="Reason" Binding="{Binding Reason}" Width="2*"/>
                         </DataGrid.Columns>

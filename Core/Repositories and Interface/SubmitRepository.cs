@@ -48,7 +48,7 @@ namespace Core.Repositories_and_Interface
             }
         }
 
-        static void EditSubmit(Submit submit)
+        public void EditSubmit(Submit submit)
         {
             using (var context = new Context())
             {

@@ -20,15 +20,12 @@ namespace Core
 
             if (firstDayInGrid % 2 == 0)//все нечетные дни в году один из пользователей будет дежурить =
             {
-                //заполнение начинается с Первой колонки и в массиве 3 столбца
                 firstDayInGrid++;
                 beginToCount++;
                 timesInWeek = 3;
             }
 
             List<WhoWhenClean> results = new List<WhoWhenClean>();
-            //int[,] results = new int[WhoWhen, daysInWeekSomebodyWiilClean];
-
             results = AlgorithmOfCleaning(firstDayInGrid, beginToCount, timesInWeek, results);
 
             return results;
