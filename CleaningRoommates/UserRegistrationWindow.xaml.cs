@@ -23,12 +23,14 @@ namespace CleaningRoommates
     /// </summary>
     public partial class UserRegistrationWindow : Window
     {
-        private UserRepository user_repo = new UserRepository();
-        private RoomRepository room_repo = new RoomRepository();
+        public UserRepository user_repo { get; set; }
+        public RoomRepository room_repo { get; set; }
 
-        public UserRegistrationWindow()
+        public UserRegistrationWindow(UserRepository us, RoomRepository room)
         {
             InitializeComponent();
+            user_repo = us;
+            room_repo = room;
         }
 
         private void ButtonClickOk(object sender, RoutedEventArgs e)
@@ -75,7 +77,7 @@ namespace CleaningRoommates
                 textBoxLogin.Focus();
                 return;
             }
-            else if (room_repo.Rooms.Where(r => r.Key == passwordBoxRoomKey.Password).FirstOrDefault() == null)
+            else if (room_repo.Rooms.Where(r => r.Key == GetHash(passwordBoxRoomKey.Password)).FirstOrDefault() == null)
             {
                 MessageBox.Show("You have to registrate a room first!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 passwordBoxRoomKey.Focus();
@@ -105,7 +107,8 @@ namespace CleaningRoommates
                 user_repo.AddUser(user);
                 user_repo.Save();
                 DialogResult = true;
-                var logInWindow = new MainWindow();
+                LoginWindow window = new LoginWindow();
+                window.Show();
             }
         }
 

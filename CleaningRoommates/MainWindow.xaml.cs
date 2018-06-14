@@ -1,5 +1,6 @@
 ﻿using Core;
 using Core.Model;
+using Core.Repositories_and_Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,9 @@ namespace CleaningRoommates
     /// </summary>
     public partial class MainWindow : Window
     {
+        private RoomRepository room_repo = new RoomRepository();
+        private UserRepository user_repo = new UserRepository();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -41,7 +45,7 @@ namespace CleaningRoommates
 
         private void ButtonClickRegistrateUser(object sender, RoutedEventArgs e)
         {
-            UserRegistrationWindow window = new UserRegistrationWindow();
+            UserRegistrationWindow window = new UserRegistrationWindow(user_repo, room_repo);
             window.ShowDialog();
             this.Close();
 
@@ -49,7 +53,7 @@ namespace CleaningRoommates
 
         private void ButtonClickRegistrateRoom(object sender, RoutedEventArgs e)
         {
-            RoomRegistrationWindow window = new RoomRegistrationWindow();
+            RoomRegistrationWindow window = new RoomRegistrationWindow(room_repo);
             window.ShowDialog();
             this.Close();
         }
