@@ -10,30 +10,7 @@ namespace Core
 {
     public class SubmitLogics
     {
-        //определение крайнего дня дежурства пользователя для базы данных
-        public static DateTime GetDayOfCleaning(List<WhoWhenClean> results, User user)
-        {
-            int todayInYear = DateTime.Now.DayOfYear;
-            int dayToAdd = SwapLogics.GetMaxDayId(results, user);
-            int firstDayInGrid = todayInYear - 3;
-            int dayNextClean = firstDayInGrid + dayToAdd;
-
-            DateTime DateTimeOfCleaning = ActualSchedule.TransformToDateTime(dayNextClean);
-            return DateTimeOfCleaning;
-        } 
-
-        public static User DetermiteChecker(User user)
-        {
-            User checker = new User();
-            int checkerId = user.Id + 1;
-
-            if (checkerId < 2)
-                checker.IdForGala = checkerId;
-            else
-                checker.IdForGala = 0;
-
-            return checker;
-        }
+        //определение крайнего дня дежурства пользователя для базы данных        
 
         public static List<Submit> UserSubmits(User user)
         {
@@ -70,5 +47,30 @@ namespace Core
             return userSubmit;
 
         }
+        public static DateTime GetDayOfCleaning(List<WhoWhenClean> results, User user)
+        {
+            int todayInYear = DateTime.Now.DayOfYear;
+            int dayToAdd = SwapLogics.GetMaxDayId(results, user);
+            int firstDayInGrid = todayInYear - 3;
+            int dayNextClean = firstDayInGrid + dayToAdd;
+
+            DateTime DateTimeOfCleaning = ActualSchedule.TransformToDateTime(dayNextClean);
+            return DateTimeOfCleaning;
+        } 
+
+        public static User DetermiteChecker(User user)
+        {
+            User checker = new User();
+            int checkerId = user.Id + 1;
+
+            if (checkerId < 2)
+                checker.IdForGala = checkerId;
+            else
+                checker.IdForGala = 0;
+
+            return checker;
+        }
+
+
     }
 }

@@ -23,7 +23,8 @@ namespace Core
             {
                 int ItemDayToView = DateTime.Now.DayOfYear - item.When;
 
-                if (item.From.Id != user.Id && ItemDayToView < daysInWeek)
+                if (item.From.Id != user.Id && item.From.Room.Id == user.Room.Id
+                    && ItemDayToView < daysInWeek)
                 {
                     item.DateOfReceiving = ActualSchedule.TransformToDateTime(item.When);
                     userSwap.Add(item);
@@ -54,7 +55,8 @@ namespace Core
             return initialSchedule;
         }
 
-        public static List<WhoWhenClean> ChangeUsers(List<WhoWhenClean> initialSchedule, User one, User another)
+        public static List<WhoWhenClean> ChangeUsers(List<WhoWhenClean> initialSchedule, 
+            User one, User another)
         {
             int dayToChangeOfOne = GetMaxDayId(initialSchedule, one);
             int dayToChangeOfAnother = GetMaxDayId(initialSchedule, another);

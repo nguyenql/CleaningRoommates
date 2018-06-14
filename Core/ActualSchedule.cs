@@ -11,7 +11,6 @@ namespace Core
     {
         public static List<WhoWhenClean> GetActualSchedule()
         {
-            //SWAPS FROM DATABASE
             List<Swap> swaps = new List<Swap>();
 
             int today = DateTime.Now.DayOfYear;
