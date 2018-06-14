@@ -59,7 +59,6 @@ namespace CleaningRoommates
                 });
                 room_repo.Save();
                 DialogResult = true;
-                var logInWindow = new MainWindow();
             }
 
         }

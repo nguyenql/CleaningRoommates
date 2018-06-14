@@ -84,7 +84,7 @@ namespace CleaningRoommates
                 return;
             }
 
-            var room = room_repo.Rooms.Where(r => r.Key == passwordBoxRoomKey.Password).FirstOrDefault();
+            var room = room_repo.Rooms.Where(r => r.Key == GetHash(passwordBoxRoomKey.Password)).FirstOrDefault();
             room_repo.Save();
             var peopleInRoom = user_repo.Users.Where(u => u.Room == room).ToList();
 
@@ -96,18 +96,20 @@ namespace CleaningRoommates
             }
             else
             {
-                var user = new User()
-                {
-                    Name = textBoxFullName.Text,
-                    Login = textBoxLogin.Text,
-                    Password = GetHash(passwordBoxPassword.Password),
-                    Room = room
-                };
+               
+                    var user = new User()
+                    {
+                        Name = textBoxFullName.Text,
+                        Login = textBoxLogin.Text,
+                        Password = GetHash(passwordBoxPassword.Password),
+                        Room = room_repo.Rooms.Where(r => r.Key == GetHash(passwordBoxRoomKey.Password)).FirstOrDefault()
+                    };
+                
                 //user_repo.Users.Add(user);
                 user_repo.AddUser(user);
                 user_repo.Save();
                 DialogResult = true;
-                LoginWindow window = new LoginWindow();
+                LoginWindow window = new LoginWindow(user_repo);
                 window.Show();
             }
         }
