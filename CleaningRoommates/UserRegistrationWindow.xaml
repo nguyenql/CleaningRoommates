@@ -20,7 +20,7 @@
                 </Border.Effect>
                 <ContentControl FontSize="16"
                                 Margin="5"
-                                FontFamily="Kristen ITC"
+                                FontFamily="Comic Sans MS"
                                 HorizontalAlignment="Center" 
                                 VerticalAlignment="Center" 
                                 Content="{TemplateBinding Content}"/>
@@ -140,7 +140,7 @@
             </Setter>
         </Style>
         <Style TargetType="TextBlock">
-            <Setter Property="FontFamily" Value="Kristen ITC"/>
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
             <Setter Property="FontSize" Value="18"/>
         </Style>
     </Window.Resources>
@@ -167,20 +167,20 @@
         <TextBlock Margin="5" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right">Full Name</TextBlock>
         <TextBox 
             Name="textBoxFullName"
-            FontFamily="Kristen ITC"
+            FontFamily="Comic Sans MS"
             FontSize="18"
             Margin="5" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2"></TextBox>
         <TextBlock Margin="5" Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right">Login</TextBlock>
-        <TextBox Name="textBoxLogin" Margin="5" FontFamily="Kristen ITC"
+        <TextBox Name="textBoxLogin" Margin="5" FontFamily="Comic Sans MS"
                      FontSize="18" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3"></TextBox>
         <TextBlock Margin="5" Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Right">Password</TextBlock>
-        <PasswordBox Name="passwordBoxPassword" FontFamily="Kristen ITC"
+        <PasswordBox Name="passwordBoxPassword" FontFamily="Comic Sans MS"
                      FontSize="18" Margin="5" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="4"></PasswordBox>
         <TextBlock Margin="5" Grid.Column="0" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Right">Repeat Password</TextBlock>
-        <PasswordBox Name="passwordBoxRepeatPas" FontFamily="Kristen ITC"
+        <PasswordBox Name="passwordBoxRepeatPas" FontFamily="Comic Sans MS"
                      FontSize="18" Margin="5" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="5"></PasswordBox>
         <TextBlock Margin="5" Grid.Column="0" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Right">Room Key</TextBlock>
-        <PasswordBox Name="passwordBoxRoomKey" FontFamily="Kristen ITC"
+        <PasswordBox Name="passwordBoxRoomKey" FontFamily="Comic Sans MS"
                      FontSize="18" Margin="5" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="6"></PasswordBox>
         <DockPanel Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="7" Margin="5,10,5,10">
             <Button Name="buttonOk" Template="{StaticResource btTemplate}" Content="Ok" Click="ButtonClickOk" Margin="100,0,0,0"></Button>

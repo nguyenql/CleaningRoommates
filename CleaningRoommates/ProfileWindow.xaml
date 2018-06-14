@@ -21,7 +21,7 @@
                 </Border.Effect>
                 <ContentControl FontSize="16"
                                 Margin="5"                               
-                                FontFamily="Kristen ITC"
+                                FontFamily="Comic Sans MS"
                                 HorizontalAlignment="Center" 
                                 VerticalAlignment="Center" 
                                 Content="{TemplateBinding Content}"/>
@@ -143,7 +143,7 @@
         </Style>
 
         <Style TargetType="TextBlock">
-            <Setter Property="FontFamily" Value="Kristen ITC"/>
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="HorizontalAlignment" Value="Right"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -151,7 +151,7 @@
         </Style>
 
         <Style TargetType="Label">
-            <Setter Property="FontFamily" Value="Kristen ITC"/>
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Margin" Value="20,0,0,0"/>
@@ -191,18 +191,18 @@
             <Button Name="buttonSave" Content="Save" Template="{StaticResource btTemplate}" Margin="100,0,10,0"/>
             <Button Name="buttonCancel" Content="Cancel" Template="{StaticResource btTemplate}" Margin="10,0,50,0"/>
         </DockPanel>
-        <TextBox Name="textBoxRoomNumber" FontFamily="Kristen ITC"
+        <TextBox Name="textBoxRoomNumber" FontFamily="Comic Sans MS"
                      FontSize="14" Grid.Column="1" Grid.Row="2" />
-        <PasswordBox Name="passBoxRoomKey" FontFamily="Kristen ITC"
+        <PasswordBox Name="passBoxRoomKey" FontFamily="Comic Sans MS"
                      FontSize="14" Grid.Column="1" Grid.Row="3"/>
-        <TextBox Name="textBoxFullName" FontFamily="Kristen ITC"
+        <TextBox Name="textBoxFullName" FontFamily="Comic Sans MS"
                      FontSize="14" Grid.Column="1" Grid.Row="6"/>
-        <TextBox Name="textBoxLogin" FontFamily="Kristen ITC"
+        <TextBox Name="textBoxLogin" FontFamily="Comic Sans MS"
                      FontSize="14" Grid.Column="1" Grid.Row="7" />
-        <PasswordBox Name="passBoxPassword" FontFamily="Kristen ITC"
+        <PasswordBox Name="passBoxPassword" FontFamily="Comic Sans MS"
                      FontSize="14" Grid.Column="1" Grid.Row="8"/>
         <PasswordBox Name="passBoxRepeatPassword" 
-                     FontFamily="Kristen ITC"
+                     FontFamily="Comic Sans MS"
                      FontSize="14"
                      Grid.Column="1" Grid.Row="9"/>
 
