@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 using Core;
 using Core.Model;
 using System.Drawing;
-
+using Core.Repositories_and_Interface;
 
 namespace CleaningRoommates
 {
