@@ -18,10 +18,13 @@ namespace Core
             List<Swap> swaps = swapRepository.Swaps;
 
             List<Swap> userSwap = new List<Swap>();
+            int daysInWeek = 7;
 
             foreach (var item in swaps)
             {
-                if(item.From.Id != user.Id)
+                int ItemDayToView = DateTime.Now.DayOfYear - item.When;
+
+                if (item.From.Id != user.Id && ItemDayToView< daysInWeek)
                 {
                     userSwap.Add(item);
                 }

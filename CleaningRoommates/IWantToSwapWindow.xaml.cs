@@ -39,8 +39,6 @@ namespace CleaningRoommates
         private void Ok_Click(object sender, RoutedEventArgs e)
         {
             var swap = new Swap();
-
-            //!!!! в базе данных изменить формат даты на число. Номер дня в году
             swap.When = dateOfCleaningDateTime.DayOfYear;
             swap.From = user;
 
@@ -77,6 +75,7 @@ namespace CleaningRoommates
 
             //ДОБАВИТЬ В СПИСОК 
             swapRepository.Swaps.Add(swap);
+            this.Close();
             /*
             List<Swap> usersFromDatabase = new List<Swap>();// лист пользователей заменить на тот, что буде получать из базы данных
             usersFromDatabase.Add(swap);*/

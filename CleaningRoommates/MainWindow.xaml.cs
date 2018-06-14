@@ -39,7 +39,6 @@ namespace CleaningRoommates
             ScheduleWindow window = new ScheduleWindow(user);
             window.ShowDialog();
             this.Close();
-
         }
 
         private void ButtonClickRegistrateUser(object sender, RoutedEventArgs e)
