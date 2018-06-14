@@ -28,6 +28,7 @@ namespace CleaningRoommates
         User user = new User() { Id = 1 };
         List<WhoWhenClean> results = ActualSchedule.GetActualSchedule();
 
+
         public ScheduleWindow(User us)
         {
             InitializeComponent();
