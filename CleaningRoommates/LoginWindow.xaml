@@ -20,7 +20,7 @@
                 </Border.Effect>
                 <ContentControl FontSize="16"
                                 Margin="5"
-                                FontFamily="Kristen ITC"
+                                FontFamily="Comic Sans MS"
                                 HorizontalAlignment="Center" 
                                 VerticalAlignment="Center" 
                                 Content="{TemplateBinding Content}"/>
@@ -41,7 +41,7 @@
                                           BlurRadius="15"/>
                 </Border.Effect>
                 <ContentControl FontSize="18"
-                                FontFamily="Kristen ITC"
+                                FontFamily="Comic Sans MS"
                                 VerticalAlignment="Center"/>
             </Border>
         </ControlTemplate>-->
@@ -58,19 +58,19 @@
                                           BlurRadius="15"/>
                 </Border.Effect>
                 <ContentControl FontSize="18"
-                                FontFamily="Kristen ITC"
+                                FontFamily="Comic Sans MS"
                                 VerticalAlignment="Center"/>
             </Border>
         </ControlTemplate>-->
         
         
         <Style TargetType="TextBlock">
-            <Setter Property="FontFamily" Value="Kristen ITC"/>
-            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+            <Setter Property="FontSize" Value="20"/>
         </Style>
 
         <!--<Style TargetType="TextBox">
-            <Setter Property="FontFamily" Value="Kristen ITC"/>
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="BorderBrush" Value="CornflowerBlue"/>
@@ -214,7 +214,7 @@
                                           BlurRadius="15"/>
                             </Border.Effect>
                             <ContentControl FontSize="18"
-                                FontFamily="Kristen ITC"
+                                FontFamily="Comic Sans MS"
                                 VerticalAlignment="Center"/>
                         </Border>
                     </ControlTemplate>
@@ -250,7 +250,7 @@
         <TextBlock Margin="5" Grid.Column="0" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Right">Login</TextBlock>
         <TextBox 
             Name="textBoxLogin" 
-            FontFamily="Kristen ITC"
+            FontFamily="Comic Sans MS"
             FontSize="18"
             Margin="5" 
             Grid.Column="1" 
@@ -261,7 +261,7 @@
         
         <TextBlock Margin="5" Grid.Column="0" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Right">Password</TextBlock>
         <PasswordBox x:Name="passwordBox"
-                     FontFamily="Kristen ITC"
+                     FontFamily="Comic Sans MS"
                      FontSize="18"
                      Margin="5" Grid.Column="1"
                      Grid.ColumnSpan="2" 

@@ -20,7 +20,7 @@
                 </Border.Effect>
                 <ContentControl FontSize="16"
                                 Margin="5"
-                                FontFamily="Kristen ITC"
+                                FontFamily="Comic Sans MS"
                                 HorizontalAlignment="Center" 
                                 VerticalAlignment="Center" 
                                 Content="{TemplateBinding Content}"/>
@@ -141,8 +141,8 @@
         </Style>
         
         <Style TargetType="TextBlock">
-            <Setter Property="FontFamily" Value="Kristen ITC"/>
-            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+            <Setter Property="FontSize" Value="20"/>
         </Style>
     </Window.Resources>
 
@@ -163,10 +163,10 @@
         </Grid.RowDefinitions>
         <TextBlock Text="Registrate your room" Margin="5" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold"></TextBlock>
         <TextBlock Margin="5" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right">Room Number</TextBlock>
-        <TextBox Name="textBoxRoomNumber" FontFamily="Kristen ITC"
+        <TextBox Name="textBoxRoomNumber" FontFamily="Comic Sans MS"
                      FontSize="18" Margin="5" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2"></TextBox>
         <TextBlock Margin="5" Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right">Room Key</TextBlock>
-        <PasswordBox Name="passwordBox" FontFamily="Kristen ITC"
+        <PasswordBox Name="passwordBox" FontFamily="Comic Sans MS"
                      FontSize="18" Margin="5" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3"></PasswordBox>
         <DockPanel Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="4" Margin="5,10,5,10">
             <Button Name="buttonOk" Template="{StaticResource btTemplate}" Content="Ok" Click="ButtonClickOk" FontSize="18" Margin="100,0,0,0"></Button>
