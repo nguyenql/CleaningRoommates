@@ -9,6 +9,6 @@ namespace Core.Repositories_and_Interface
 {
     interface Interface
     {
-        void Save(Context context);
+        void Save();
     }
 }

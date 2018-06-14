@@ -15,6 +15,7 @@ namespace Core.Repositories_and_Interface
         public SwapRepository()
         {
             Restore();
+            Save();
         }
 
         private void Restore() // reading data from database
@@ -27,9 +28,12 @@ namespace Core.Repositories_and_Interface
             return context.Swaps.ToList();
         }
 
-        public void Save(Context context)
+        public void Save()
         {
-            context.SaveChanges();
+            using (var context = new Context())
+            {
+                context.SaveChanges();
+            }
         }
     }
 }
