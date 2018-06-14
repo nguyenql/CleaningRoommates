@@ -15,7 +15,6 @@ namespace Core.Repositories_and_Interface
         public RoomRepository()
         {
             Restore();
-            Save();
         }
 
         private void Restore() // reading data from database
@@ -37,7 +36,7 @@ namespace Core.Repositories_and_Interface
             }
         }
 
-        static void AddRoom(Room room)
+        public void AddRoom(Room room)
         {
             using (var context = new Context())
             {

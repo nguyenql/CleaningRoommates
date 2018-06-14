@@ -255,8 +255,7 @@
             Margin="5" 
             Grid.Column="1" 
             Grid.ColumnSpan="2" 
-            Grid.Row="5" 
-            TextChanged="textBoxLogin_TextChanged">
+            Grid.Row="5" >
             
         </TextBox>
         

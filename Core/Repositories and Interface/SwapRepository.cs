@@ -15,7 +15,6 @@ namespace Core.Repositories_and_Interface
         public SwapRepository()
         {
             Restore();
-            Save();
         }
 
         private void Restore() // reading data from database
@@ -37,7 +36,7 @@ namespace Core.Repositories_and_Interface
             }
         }
 
-        static void AddSwap(Swap swap)
+        public void AddSwap(Swap swap)
         {
             using (var context = new Context())
             {
@@ -46,7 +45,7 @@ namespace Core.Repositories_and_Interface
             }
         }
 
-        static void EditSwap(Swap swap)
+        public void EditSwap(Swap swap)
         {
             using (var context = new Context())
             {

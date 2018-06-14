@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Core.Model;
+using Core.Repositories_and_Interface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,6 +23,9 @@ namespace CleaningRoommates
     /// </summary>
     public partial class UserRegistrationWindow : Window
     {
+        private UserRepository user_repo = new UserRepository();
+        private RoomRepository room_repo = new RoomRepository();
+
         public UserRegistrationWindow()
         {
             InitializeComponent();
@@ -27,8 +33,6 @@ namespace CleaningRoommates
 
         private void ButtonClickOk(object sender, RoutedEventArgs e)
         {
-            int a = 0;
-
             if (string.IsNullOrWhiteSpace(textBoxFullName.Text))
             {
                 MessageBox.Show("Full Name cannot be empty!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -62,11 +66,55 @@ namespace CleaningRoommates
             else if (string.IsNullOrWhiteSpace(passwordBoxRoomKey.Password))
             {
                 MessageBox.Show("You have to enter your room key!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                passwordBoxRepeatPas.Focus();
+                passwordBoxRoomKey.Focus();
+                return;
+            }
+            else if (user_repo.Users.Where(u => u.Login == textBoxLogin.Text).FirstOrDefault() != null)
+            {
+                MessageBox.Show("This login is already used! Think of a new one!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                textBoxLogin.Focus();
+                return;
+            }
+            else if (room_repo.Rooms.Where(r => r.Key == passwordBoxRoomKey.Password).FirstOrDefault() == null)
+            {
+                MessageBox.Show("You have to registrate a room first!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                passwordBoxRoomKey.Focus();
                 return;
             }
 
-            // этот метод надо дописать!!!
+            var room = room_repo.Rooms.Where(r => r.Key == passwordBoxRoomKey.Password).FirstOrDefault();
+            room_repo.Save();
+            var peopleInRoom = user_repo.Users.Where(u => u.Room == room).ToList();
+
+            if (peopleInRoom.Count > 3)
+            {
+                MessageBox.Show("This room is full of people! Please, check the room key!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                passwordBoxRoomKey.Focus();
+                return;
+            }
+            else
+            {
+                var user = new User()
+                {
+                    Name = textBoxFullName.Text,
+                    Login = textBoxLogin.Text,
+                    Password = GetHash(passwordBoxPassword.Password),
+                    Room = room
+                };
+                //user_repo.Users.Add(user);
+                user_repo.AddUser(user);
+                user_repo.Save();
+                DialogResult = true;
+                var logInWindow = new MainWindow();
+            }
+        }
+
+        public string GetHash(string password)
+        {
+            var md5 = MD5.Create();
+            var hash = md5.ComputeHash(Encoding.UTF8.GetBytes(
+               password));
+            return Convert.ToBase64String(hash);
         }
 
         private void ButtonClickCancel(object sender, RoutedEventArgs e)

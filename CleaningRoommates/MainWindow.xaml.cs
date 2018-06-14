@@ -22,8 +22,6 @@ namespace CleaningRoommates
     /// </summary>
     public partial class MainWindow : Window
     {
-        User user = new User() { Id = 1, Name = "1" };
-
         public MainWindow()
         {
             InitializeComponent();
@@ -36,7 +34,7 @@ namespace CleaningRoommates
 
         private void ButtonClickEnterYourRoom(object sender, RoutedEventArgs e)
         {
-            ScheduleWindow window = new ScheduleWindow(user);
+            LoginWindow window = new LoginWindow();
             window.ShowDialog();
             this.Close();
         }
@@ -45,7 +43,7 @@ namespace CleaningRoommates
         {
             UserRegistrationWindow window = new UserRegistrationWindow();
             window.ShowDialog();
-            Close();
+            this.Close();
 
         }
 
@@ -53,7 +51,7 @@ namespace CleaningRoommates
         {
             RoomRegistrationWindow window = new RoomRegistrationWindow();
             window.ShowDialog();
-            Close();
+            this.Close();
         }
     }
 }

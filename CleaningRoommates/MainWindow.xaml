@@ -46,7 +46,7 @@
 
         <Image Source="Resources/logo_blue.png" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0" Grid.RowSpan="3" Stretch="Fill" Margin="5,10"/>
         
-        <Button x:Name="ButtonEnterYourRoom" Template="{StaticResource btTemplate}" Click="ButtonClickEnterYourRoom" Margin="5,10,5,10" Grid.Column="1" Grid.Row="3" Content="Enter Your Room"></Button>
+        <Button x:Name="ButtonEnterYourRoom" Template="{StaticResource btTemplate}" Click="ButtonClickEnterYourRoom" Margin="5,10,5,10" Grid.Column="1" Grid.Row="3" Content="You can log in here!"></Button>
         <Button x:Name="ButtonRegistrateUser" Template="{StaticResource btTemplate}" Click="ButtonClickRegistrateUser" Margin="5,10,5,10" Grid.Column="1" Grid.Row="4" Content="Registration of a new User"></Button>
         <Button x:Name="ButtonRegistrateRoom" Template="{StaticResource btTemplate}" Click="ButtonClickRegistrateRoom" Margin="5,10,5,10" Grid.Column="1" Grid.Row="5" Content="Registration of a Room"></Button>
         <!--<TextBlock Margin="5" Grid.Column="1" Grid.Row="1" FontFamily="Kristen ITC" FontSize="28" HorizontalAlignment="Center">CleaningRoommates</TextBlock>-->

@@ -14,7 +14,6 @@ namespace Core.Repositories_and_Interface
         public SubmitRepository()
         {
             Restore();
-            Save();
         }
 
         private void Restore() // reading data from database
@@ -39,7 +38,7 @@ namespace Core.Repositories_and_Interface
             }
         }
 
-        static void AddSubmit(Submit submit)
+        public void AddSubmit(Submit submit)
         {
             using (var context = new Context())
             {
@@ -48,7 +47,7 @@ namespace Core.Repositories_and_Interface
             }
         }
 
-        static void EditSubmit(Submit submit)
+        public void EditSubmit(Submit submit)
         {
             using (var context = new Context())
             {
