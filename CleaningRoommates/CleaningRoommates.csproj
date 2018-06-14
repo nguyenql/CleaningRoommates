@@ -79,7 +79,6 @@
     <Compile Include="ProfileWindow.xaml.cs">
       <DependentUpon>ProfileWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="RenewButtons\BitmapEffect.cs" />
     <Compile Include="RoomRegistrationWindow.xaml.cs">
       <DependentUpon>RoomRegistrationWindow.xaml</DependentUpon>
     </Compile>
