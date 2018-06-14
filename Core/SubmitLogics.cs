@@ -1,4 +1,5 @@
 ﻿using Core.Model;
+using Core.Repositories_and_Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,8 +38,9 @@ namespace Core
 
         public static List<Submit> UserSubmits(User user)
         {
-            //FROM DATASASE
-            List<Submit> submits = new List<Submit>();
+            //FROM DATASASE+
+            SubmitRepository submitRepository = new SubmitRepository();
+            List<Submit> submits = submitRepository.Submits;
 
             List<Submit> userSubmit = new List<Submit>();
 

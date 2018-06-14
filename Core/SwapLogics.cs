@@ -1,4 +1,5 @@
 ﻿using Core.Model;
+using Core.Repositories_and_Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,8 @@ namespace Core
         public static List<Swap> UserSwaps (User user)
         {
             //FROM DATASASE
-            List<Swap> swaps = new List<Swap>();
+            SwapRepository swapRepository = new SwapRepository();
+            List<Swap> swaps = swapRepository.Swaps;
 
             List<Swap> userSwap = new List<Swap>();
 
@@ -24,7 +26,6 @@ namespace Core
                     userSwap.Add(item);
                 }
             }
-
             return userSwap;
 
         }

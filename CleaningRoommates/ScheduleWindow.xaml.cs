@@ -24,6 +24,7 @@ namespace CleaningRoommates
     public partial class ScheduleWindow : Window
     {
         List<WhoWhenClean> results = ActualSchedule.GetActualSchedule();
+
         DateTime dateOfCleaningDateTime;
         int today = DateTime.Now.DayOfYear;
         User user = new User() { Id = 1 };
@@ -31,14 +32,15 @@ namespace CleaningRoommates
         public ScheduleWindow(User us)
         {
             InitializeComponent();
-            user = us;
 
-            //Изначальный алгоритм
+            user = us;
             dateOfCleaningDateTime = SubmitLogics.GetDayOfCleaning(results, user);
 
+            RenewButtons();
             //User us1 = new User() { Id = 0 };
             //results = Algoritm.WhoWillCleanToday();
-            CreateButtons(results);
+            
+            //CreateButtons(results);
 
             //ЛИСТ SWAPS СООБЩЕНИЙ
             var swaps = SwapLogics.UserSwaps(user);
@@ -47,7 +49,6 @@ namespace CleaningRoommates
             //ЛИСТ SUBMITS СООБЩЕНИЙ
             var submits = SubmitLogics.UserSubmits(user);
             listBoxSubmits.ItemsSource = submits;
-
 
             //Передвишаем расписание на один день вперед
             /*int maxDay = SwapLogic.GetMaxDayId(results, us1);
@@ -64,10 +65,11 @@ namespace CleaningRoommates
 
         }
         
-        public void RenewButtons(List<WhoWhenClean> changedDaySchedule)
+        public void RenewButtons()
         {
+            List<WhoWhenClean> results = ActualSchedule.GetActualSchedule();
             schGrid.Children.Clear();
-            CreateButtons(changedDaySchedule);
+            CreateButtons(results);
         }
 
         public void CreateButtons(List<WhoWhenClean> results)
@@ -139,6 +141,8 @@ namespace CleaningRoommates
                 IAgreeOrDisagreeToSwapWindow window = new IAgreeOrDisagreeToSwapWindow(selectedItem, user);
                 window.ShowDialog();
             }
+
+            RenewButtons();
         }
 
         private void buttonSubmits_Click(object sender, RoutedEventArgs e)

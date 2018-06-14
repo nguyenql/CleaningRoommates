@@ -1,4 +1,5 @@
 ﻿using Core.Model;
+using Core.Repositories_and_Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,7 @@ namespace CleaningRoommates
     /// </summary>
     public partial class IWantToSwapWindow : Window
     {
+        SwapRepository swapRepository = new SwapRepository();
         User user;
         DateTime dateOfCleaningDateTime;
 
@@ -74,8 +76,10 @@ namespace CleaningRoommates
             }
 
             //ДОБАВИТЬ В СПИСОК 
+            swapRepository.Swaps.Add(swap);
+            /*
             List<Swap> usersFromDatabase = new List<Swap>();// лист пользователей заменить на тот, что буде получать из базы данных
-            usersFromDatabase.Add(swap);
+            usersFromDatabase.Add(swap);*/
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
