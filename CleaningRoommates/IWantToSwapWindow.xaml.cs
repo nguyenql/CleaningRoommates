@@ -77,6 +77,7 @@ namespace CleaningRoommates
 
             //ДОБАВИТЬ В СПИСОК 
             swapRepository.Swaps.Add(swap);
+            this.Close();
             /*
             List<Swap> usersFromDatabase = new List<Swap>();// лист пользователей заменить на тот, что буде получать из базы данных
             usersFromDatabase.Add(swap);*/
