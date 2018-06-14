@@ -46,6 +46,21 @@ namespace CleaningRoommates
 
             RenewSwapsSubmits();
         }
+
+        public List<User> MakeList(User us)
+        {
+            List<User> neighbors = new List<User>();
+            neighbors.Add(us);
+            foreach (var user in user_repo.Users)
+            {
+                if (user.Room == us.Room)
+                {
+                    neighbors.Add(user);
+                }
+            }
+            return neighbors;
+        }
+
         public void RenewSwapsSubmits()
         {
             //ЛИСТ SWAPS СООБЩЕНИЙ
