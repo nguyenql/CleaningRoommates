@@ -61,14 +61,21 @@ namespace CleaningRoommates
             int idOfMaxDayInGrid = 6;
             foreach (var time in results)
             {
+                //ImageBrush myBrush = new ImageBrush();
+                //Image image = new Image();
+                //image.Source = new BitmapImage(
+                //    new Uri(
+                //       "pack://application:,,,/Resources/broswe_black.png"));
+                //myBrush.ImageSource = image.Source;
+
                 Button newButton = new Button();
 
-                newButton.Height = 30;
-                newButton.Width = 30;
-                newButton.BorderBrush = Brushes.DeepSkyBlue;
-                newButton.Background = Brushes.LightBlue;
+                //newButton.Height = 30;
+                //newButton.Width = 30;
+                //newButton.BorderBrush = Brushes.DeepSkyBlue;
+                //newButton.Background = Brushes.LightBlue;
 
-
+                //newButton.Background = myBrush;
 
                 Grid.SetRow(newButton, time.UseId);
 
