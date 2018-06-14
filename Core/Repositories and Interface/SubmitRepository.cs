@@ -39,7 +39,7 @@ namespace Core.Repositories_and_Interface
             }
         }
 
-        static void AddSubmit(Submit submit)
+        public void AddSubmit(Submit submit)
         {
             using (var context = new Context())
             {

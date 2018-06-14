@@ -48,11 +48,15 @@ namespace Core
                 //Пользователь проверяющий
                 if (item.Checker.Id == user.Id)
                 {
+                    item.DateOfReceiving = ActualSchedule.TransformToDateTime(item.WhenDone);
+                    item.DateOfChecking = ActualSchedule.TransformToDateTime(item.WhenChecked);
                     userSubmit.Add(item);
                 }
                 //Пользователя проверили
                 if (item.Executer.Id == user.Id&&item.WhenChecked !=0)
                 {
+                    item.DateOfChecking = ActualSchedule.TransformToDateTime(item.WhenChecked);
+                    item.DateOfReceiving = ActualSchedule.TransformToDateTime(item.WhenDone);
                     userSubmit.Add(item);
                 }
             }

@@ -22,10 +22,12 @@ namespace Core
 
             foreach (var item in swaps)
             {
+
                 int ItemDayToView = DateTime.Now.DayOfYear - item.When;
 
                 if (item.From.Id != user.Id && ItemDayToView< daysInWeek)
                 {
+                    item.DateOfReceiving = ActualSchedule.TransformToDateTime(item.When);
                     userSwap.Add(item);
                 }
             }

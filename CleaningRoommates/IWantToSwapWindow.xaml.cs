@@ -21,11 +21,11 @@ namespace CleaningRoommates
     /// </summary>
     public partial class IWantToSwapWindow : Window
     {
-        SwapRepository swapRepository = new SwapRepository();
+        private SwapRepository swapRepository = new SwapRepository();
         User user;
         DateTime dateOfCleaningDateTime;
 
-        public IWantToSwapWindow(User us, DateTime dateTime)//данные пользователя, чье окно открыто
+        public IWantToSwapWindow(User us, DateTime dateTime)
         {
             InitializeComponent();
 
@@ -73,17 +73,15 @@ namespace CleaningRoommates
                 return;
             }
 
-            //ДОБАВИТЬ В СПИСОК 
-            swapRepository.Swaps.Add(swap);
-            this.Close();
-            /*
-            List<Swap> usersFromDatabase = new List<Swap>();// лист пользователей заменить на тот, что буде получать из базы данных
-            usersFromDatabase.Add(swap);*/
+            swapRepository.AddSwap(swap);
+            swapRepository.Save();
+            Close();
+
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Close();
         }
     }
 }

@@ -21,7 +21,7 @@ namespace CleaningRoommates
     /// </summary>
     public partial class ControlWindow : Window
     {
-        SubmitRepository submitRepository = new SubmitRepository();
+        private SubmitRepository submitRepository = new SubmitRepository();
 
         User user;
         Submit submit;
@@ -103,7 +103,9 @@ namespace CleaningRoommates
                 else
                     submit.Trash = false;
                 //ДОБАВИТЬ В СПИСОК- СОХРАНИТЬ ИЗМЕНЕНИЯ
-                submitRepository.Submits.Add(submit);
+
+                submitRepository.AddSubmit(submit);
+                submitRepository.Save();
 
                 Close();
             }

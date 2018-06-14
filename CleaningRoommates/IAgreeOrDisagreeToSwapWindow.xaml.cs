@@ -21,7 +21,7 @@ namespace CleaningRoommates
     /// </summary>
     public partial class IAgreeOrDisagreeToSwapWindow : Window
     {
-        SwapRepository swapRepository = new SwapRepository();
+        private SwapRepository swapRepository = new SwapRepository();
 
         User user;
         Swap swap;
@@ -57,9 +57,8 @@ namespace CleaningRoommates
         private void Agree_Click(object sender, RoutedEventArgs e)
         {
             swap.Agree = user;
-
-            //ДОБАВИТЬ В СПИСОК- СОХРАНИТЬ ИЗМЕНЕНИЯ
-            swapRepository.Swaps.Add(swap);
+            swapRepository.AddSwap(swap);
+            swapRepository.Save();
 
             Close();
         }

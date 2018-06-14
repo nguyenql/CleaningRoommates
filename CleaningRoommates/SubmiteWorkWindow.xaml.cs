@@ -22,7 +22,7 @@ namespace CleaningRoommates
     /// </summary>
     public partial class SubmiteWorkWindow : Window
     {
-        SubmitRepository submitRepository = new SubmitRepository();
+        private SubmitRepository submitRepository = new SubmitRepository();
 
         User user;
         DateTime DateOfCleaning;
@@ -77,11 +77,10 @@ namespace CleaningRoommates
                 return;
             }
 
-            submitRepository.Submits.Add(submit);
+            submitRepository.AddSubmit(submit);
+            submitRepository.Save();
 
             Close();
-            //добавляем в базу данных
-            //submitsFromDatabase.Add(submit);
         }
     }
 }

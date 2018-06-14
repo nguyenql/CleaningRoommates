@@ -23,7 +23,7 @@ namespace Core.Repositories_and_Interface
             Swaps = Read(context);
         }
 
-        static List<Swap> Read(Context context)
+        public List<Swap> Read(Context context)
         {
             return context.Swaps.ToList();
         }
@@ -37,7 +37,7 @@ namespace Core.Repositories_and_Interface
             }
         }
 
-        static void AddSwap(Swap swap)
+        public void AddSwap(Swap swap)
         {
             using (var context = new Context())
             {
@@ -46,7 +46,7 @@ namespace Core.Repositories_and_Interface
             }
         }
 
-        static void EditSwap(Swap swap)
+        public void EditSwap(Swap swap)
         {
             using (var context = new Context())
             {

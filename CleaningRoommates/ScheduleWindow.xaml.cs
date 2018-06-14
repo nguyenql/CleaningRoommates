@@ -33,12 +33,8 @@ namespace CleaningRoommates
         {
             InitializeComponent();
             user = us;
-            //RenewButtons();
 
             dateOfCleaningDateTime = SubmitLogics.GetDayOfCleaning(results, user);
-
-            //User us1 = new User() { Id = 0 };
-            //results = Algoritm.WhoWillCleanToday();
             
             CreateButtons(results);
 
@@ -49,19 +45,6 @@ namespace CleaningRoommates
             //ЛИСТ SUBMITS СООБЩЕНИЙ
             var submits = SubmitLogics.UserSubmits(user);
             dataGridSubmit.ItemsSource = submits;
-
-            //Передвишаем расписание на один день вперед
-            /*int maxDay = SwapLogic.GetMaxDayId(results, us1);
-            List<WhoWhenClean> changedDayScheduleDays = SwapLogic.ChangeDays(results, maxDay);
-            RenewButtons(changedDayScheduleDays);
-            */
-
-            //меняем пользователя
-            /*
-            List<WhoWhenClean> changedDayScheduleUsers = SwapLogic.ChangeUsers(results, us2,us1);
-            RenewButtons(changedDayScheduleUsers);
-            */
-            //RenewButtons(results);
 
         }
         
@@ -158,11 +141,6 @@ namespace CleaningRoommates
                ControlWindow window = new ControlWindow(selectedItem, user);
                window.ShowDialog();
             }
-        }
-
-        private void dataGridSwap_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
     }
 }
