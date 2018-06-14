@@ -22,7 +22,7 @@ namespace Core.Repositories_and_Interface
             Swaps = Read(context);
         }
 
-        static List<Swap> Read(Context context)
+        public List<Swap> Read(Context context)
         {
             return context.Swaps.ToList();
         }

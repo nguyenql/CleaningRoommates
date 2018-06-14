@@ -28,33 +28,43 @@ namespace Core
             int checkerId = user.Id + 1;
 
             if (checkerId < 2)
-                checker.Id = checkerId;
+                checker.IdForGala = checkerId;
             else
-                checker.Id = 0;
+                checker.IdForGala = 0;
 
             return checker;
         }
 
         public static List<Submit> UserSubmits(User user)
         {
-            //FROM DATASASE+
             SubmitRepository submitRepository = new SubmitRepository();
             List<Submit> submits = submitRepository.Submits;
 
             List<Submit> userSubmit = new List<Submit>();
+            int daysInWeek = 7;
 
             foreach (var item in submits)
             {
+                int ItemDayToView = DateTime.Now.DayOfYear - item.WhenDone;
+
+                if (ItemDayToView < daysInWeek)
+                {
                 //Пользователь проверяющий
                 if (item.Checker.Id == user.Id)
                 {
+                    item.DateOfReceiving = ActualSchedule.TransformToDateTime(item.WhenDone);
+                    item.DateOfChecking = ActualSchedule.TransformToDateTime(item.WhenChecked);
                     userSubmit.Add(item);
                 }
                 //Пользователя проверили
                 if (item.Executer.Id == user.Id&&item.WhenChecked !=0)
                 {
+                    item.DateOfChecking = ActualSchedule.TransformToDateTime(item.WhenChecked);
+                    item.DateOfReceiving = ActualSchedule.TransformToDateTime(item.WhenDone);
                     userSubmit.Add(item);
                 }
+                }
+
             }
 
             return userSubmit;

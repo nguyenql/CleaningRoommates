@@ -1,4 +1,5 @@
-﻿using Core.Model;
+﻿using Core;
+using Core.Model;
 using Core.Repositories_and_Interface;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,7 @@ namespace CleaningRoommates
     /// </summary>
     public partial class IAgreeOrDisagreeToSwapWindow : Window
     {
-        SwapRepository swapRepository = new SwapRepository();
+        private SwapRepository swapRepository = new SwapRepository();
 
         User user;
         Swap swap;
@@ -33,7 +34,7 @@ namespace CleaningRoommates
             int thisYear = DateTime.Now.Year;
             user = us;
             swap = sw;
-            DateTime DateTimeOfCleaning = new DateTime(thisYear, 1, 1).AddDays(swap.When - 1);
+            DateTime DateTimeOfCleaning = ActualSchedule.TransformToDateTime(swap.When);
 
             Who.Text = swap.From.Name;
             When.Text = DateTimeOfCleaning.ToString("MMMM dd, yyyy");
@@ -58,8 +59,8 @@ namespace CleaningRoommates
         {
             swap.Agree = user;
 
-            //ДОБАВИТЬ В СПИСОК- СОХРАНИТЬ ИЗМЕНЕНИЯ
-            swapRepository.Swaps.Add(swap);
+            swapRepository.EditSwap(swap);
+            swapRepository.Save();
 
             Close();
         }

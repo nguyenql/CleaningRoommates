@@ -29,16 +29,12 @@ namespace CleaningRoommates
         List<WhoWhenClean> results = ActualSchedule.GetActualSchedule();
 
 
-        public ScheduleWindow(User user)
+        public ScheduleWindow(User us)
         {
             InitializeComponent();
-            //user = us;
-            //RenewButtons();
+            user = us;
 
             dateOfCleaningDateTime = SubmitLogics.GetDayOfCleaning(results, user);
-
-            //User us1 = new User() { Id = 0 };
-            //results = Algoritm.WhoWillCleanToday();
             
             CreateButtons(results);
 
@@ -49,19 +45,6 @@ namespace CleaningRoommates
             //ЛИСТ SUBMITS СООБЩЕНИЙ
             var submits = SubmitLogics.UserSubmits(user);
             dataGridSubmit.ItemsSource = submits;
-
-            //Передвишаем расписание на один день вперед
-            /*int maxDay = SwapLogic.GetMaxDayId(results, us1);
-            List<WhoWhenClean> changedDayScheduleDays = SwapLogic.ChangeDays(results, maxDay);
-            RenewButtons(changedDayScheduleDays);
-            */
-
-            //меняем пользователя
-            /*
-            List<WhoWhenClean> changedDayScheduleUsers = SwapLogic.ChangeUsers(results, us2,us1);
-            RenewButtons(changedDayScheduleUsers);
-            */
-            //RenewButtons(results);
 
         }
         

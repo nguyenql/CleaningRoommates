@@ -1,4 +1,5 @@
-﻿using Core.Model;
+﻿using Core;
+using Core.Model;
 using Core.Repositories_and_Interface;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,7 @@ namespace CleaningRoommates
     /// </summary>
     public partial class ControlWindow : Window
     {
-        SubmitRepository submitRepository = new SubmitRepository();
+        private SubmitRepository submitRepository = new SubmitRepository();
 
         User user;
         Submit submit;
@@ -33,7 +34,7 @@ namespace CleaningRoommates
             int thisYear = DateTime.Now.Year;
             user = us;
             submit = sub;
-            DateTime DateTimeOfCleaning = new DateTime(thisYear, 1, 1).AddDays(submit.WhenDone - 1);
+            DateTime DateTimeOfCleaning = ActualSchedule.TransformToDateTime(submit.WhenDone);
 
             Who.Text = submit.Executer.Name;
             When.Text = DateTimeOfCleaning.ToString("MMMM dd, yyyy");
@@ -78,9 +79,7 @@ namespace CleaningRoommates
             {
                 int DateIntOfCleaning = DateTime.Now.DayOfYear;
 
-                //!!!! в базе данных изменить формат даты на число. Номер дня в году
                 submit.WhenChecked = DateIntOfCleaning;
-                //submit.Checker = user;
 
                 if (Wash.IsChecked == true)
                 {
@@ -103,7 +102,9 @@ namespace CleaningRoommates
                 else
                     submit.Trash = false;
                 //ДОБАВИТЬ В СПИСОК- СОХРАНИТЬ ИЗМЕНЕНИЯ
-                submitRepository.Submits.Add(submit);
+
+                submitRepository.EditSubmit(submit);
+                submitRepository.Save();
 
                 Close();
             }
