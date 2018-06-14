@@ -27,11 +27,15 @@ namespace CleaningRoommates
         int today = DateTime.Now.DayOfYear;
         User user = new User() { Id = 1 };
         List<WhoWhenClean> results = ActualSchedule.GetActualSchedule();
+        private UserRepository user_repo = new UserRepository();
+
 
         public ScheduleWindow(User us)
         {
             InitializeComponent();
             user = us;
+            List<User> PeopleWhoLiveInOneRoom = MakeList(user);
+            //RenewButtons();
 
             dateOfCleaningDateTime = SubmitLogics.GetDayOfCleaning(results, user);
             
@@ -52,6 +56,7 @@ namespace CleaningRoommates
             var submits = SubmitLogics.UserSubmits(user);
             dataGridSubmit.ItemsSource = submits;
         }
+        
         public void RenewButtons()
         {
             List<WhoWhenClean> results = ActualSchedule.GetActualSchedule();
