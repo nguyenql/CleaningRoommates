@@ -1,4 +1,5 @@
 ﻿using Core.Model;
+using Core.Repositories_and_Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,8 @@ namespace CleaningRoommates
     /// </summary>
     public partial class IAgreeOrDisagreeToSwapWindow : Window
     {
+        SwapRepository swapRepository = new SwapRepository();
+
         User user;
         Swap swap;
 
@@ -54,7 +57,9 @@ namespace CleaningRoommates
         private void Agree_Click(object sender, RoutedEventArgs e)
         {
             swap.Agree = user;
+
             //ДОБАВИТЬ В СПИСОК- СОХРАНИТЬ ИЗМЕНЕНИЯ
+            swapRepository.Swaps.Add(swap);
         }
     }
 }

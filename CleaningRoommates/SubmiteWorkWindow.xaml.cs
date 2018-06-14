@@ -1,5 +1,6 @@
 ﻿using Core;
 using Core.Model;
+using Core.Repositories_and_Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,8 @@ namespace CleaningRoommates
     /// </summary>
     public partial class SubmiteWorkWindow : Window
     {
+        SubmitRepository submitRepository = new SubmitRepository();
+
         User user;
         DateTime DateOfCleaning;
         User checker = new User();
@@ -73,6 +76,9 @@ namespace CleaningRoommates
                 MessageBox.Show("Please, change reason!");
                 return;
             }
+
+            submitRepository.Submits.Add(submit);
+
             //добавляем в базу данных
             //submitsFromDatabase.Add(submit);
         }
