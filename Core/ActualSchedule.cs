@@ -9,12 +9,12 @@ namespace Core
 {
     public class ActualSchedule
     {
-        public static List<WhoWhenClean> GetActualSchedule()
+        public static List<WhoWhenClean> GetActualSchedule(int countUsers)
         {
             List<Swap> swaps = new List<Swap>();
 
             int today = DateTime.Now.DayOfYear;
-            List<WhoWhenClean> initialSchedule = Algoritm.WhoWillCleanToday();
+            List<WhoWhenClean> initialSchedule = Algoritm.WhoWillCleanToday(countUsers);
 
             foreach (var item in swaps)
             {
