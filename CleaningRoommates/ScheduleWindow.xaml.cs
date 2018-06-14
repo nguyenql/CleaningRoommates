@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 using Core;
 using Core.Model;
 using System.Drawing;
-
+using Core.Repositories_and_Interface;
 
 namespace CleaningRoommates
 {
@@ -27,12 +27,13 @@ namespace CleaningRoommates
         int today = DateTime.Now.DayOfYear;
         User user = new User() { Id = 1 };
         List<WhoWhenClean> results = ActualSchedule.GetActualSchedule();
-
+        private UserRepository user_repo = new UserRepository();
 
         public ScheduleWindow(User user)
         {
             InitializeComponent();
             user = us;
+            List<User> PeopleWhoLiveInOneRoom = MakeList(user);
             //RenewButtons();
 
             dateOfCleaningDateTime = SubmitLogics.GetDayOfCleaning(results, user);
@@ -49,6 +50,20 @@ namespace CleaningRoommates
 
         }
         
+        private List<User> MakeList(User us)
+        {
+            List<User> neighbors = new List<User>();
+            neighbors.Add(us);
+            foreach (var user in user_repo.Users)
+            {
+                if (user.Room == us.Room)
+                {
+                    neighbors.Add(user);
+                }
+            }
+            return neighbors;
+        }
+
         public void RenewButtons()
         {
             List<WhoWhenClean> results = ActualSchedule.GetActualSchedule();
