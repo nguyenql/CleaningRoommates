@@ -86,7 +86,7 @@ namespace CleaningRoommates
                 if (time.DayId <= idOfMaxDayInGrid)
                     Grid.SetColumn(newButton, time.DayId);
 
-                schGrid.Children.Add(newButton);
+                 schGrid.Children.Add(newButton);
             }
         }
 
