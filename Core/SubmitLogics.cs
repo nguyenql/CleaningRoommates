@@ -9,7 +9,7 @@ namespace Core
 {
     public class SubmitLogics
     {
-        //определение дня дежурства пользователя для базы данных
+        //определение крайнего дня дежурства пользователя для базы данных
         public static DateTime GetDayOfCleaning(List<WhoWhenClean> results, User user)
         {
             int thisYear = DateTime.Now.Year;
@@ -21,5 +21,37 @@ namespace Core
             DateTime DateTimeOfCleaning = new DateTime(thisYear, 1, 1).AddDays(dayNextClean - 1);
             return DateTimeOfCleaning;
         } 
+
+        public static User DetermiteChecker(User user)
+        {
+            User checker = new User();
+            int checkerId = user.Id + 1;
+
+            if (checkerId < 2)
+                checker.Id = checkerId;
+            else
+                checker.Id = 0;
+
+            return checker;
+        }
+
+        public static List<Submit> UserSubmits(User user)
+        {
+            //FROM DATASASE
+            List<Submit> submits = new List<Submit>();
+
+            List<Submit> userSubmit = new List<Submit>();
+
+            foreach (var item in submits)
+            {
+                if (item.Checker.Id == user.Id)
+                {
+                    userSubmit.Add(item);
+                }
+            }
+
+            return userSubmit;
+
+        }
     }
 }

@@ -23,12 +23,14 @@ namespace CleaningRoommates
     {
         User user;
         DateTime DateOfCleaning;
+        User checker = new User();
 
         public SubmiteWorkWindow(User us, DateTime dayCleaning)//пользователь который в системе
         {
             InitializeComponent();
 
             user = us;
+            checker = SubmitLogics.DetermiteChecker(user);
             DateOfCleaning = dayCleaning;
 
             Perf.Text = user.Name;
@@ -43,6 +45,7 @@ namespace CleaningRoommates
             //!!!! в базе данных изменить формат даты на число. Номер дня в году
             submit.WhenDone = DateIntOfCleaning;
             submit.Executer = user;
+            submit.Checker = checker;
 
             if (Wash.IsChecked == true)
             {

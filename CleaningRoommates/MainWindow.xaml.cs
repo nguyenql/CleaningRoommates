@@ -22,24 +22,24 @@ namespace CleaningRoommates
     /// </summary>
     public partial class MainWindow : Window
     {
+        User user = new User() { Id = 1, Name = "1" };
+
         public MainWindow()
         {
             InitializeComponent();
 
-            var user = new User() { Id = 1, Name = "1" };
             List<WhoWhenClean> results = Algoritm.WhoWillCleanToday();
 
             DateTime dateOfCleaningDateTime;
             dateOfCleaningDateTime = SubmitLogics.GetDayOfCleaning(results, user);
 
-
-            ScheduleWindow window = new ScheduleWindow();
+            ScheduleWindow window = new ScheduleWindow(user);
             window.ShowDialog();
         }
 
         private void ButtonClickEnterYourRoom(object sender, RoutedEventArgs e)
         {
-            ScheduleWindow window = new ScheduleWindow();
+            ScheduleWindow window = new ScheduleWindow(user);
             window.ShowDialog();
             this.Close();
 

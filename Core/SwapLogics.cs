@@ -10,15 +10,60 @@ namespace Core
     public class SwapLogics
     {
         //Получаем новое расписание 
-        public static List<WhoWhenClean> ChangeDays(List<WhoWhenClean> initialSchedule, int today)
+        public static List<Swap> UserSwaps (User user)
         {
+            //FROM DATASASE
+            List<Swap> swaps = new List<Swap>();
+
+            List<Swap> userSwap = new List<Swap>();
+
+            foreach (var item in swaps)
+            {
+                if(item.From.Id != user.Id)
+                {
+                    userSwap.Add(item);
+                }
+            }
+
+            return userSwap;
+
+        }
+        public static List<WhoWhenClean> ChangeDays(List<WhoWhenClean> initialSchedule, int dayAsked)
+        {
+            int today = DateTime.Now.DayOfYear;
+            int dayBetweenTodayAndDayAsked = today - dayAsked;
+            int seenInGrid = 3;
+
             foreach (var time in initialSchedule)
             {
-                if (time.DayId >= today)
+                if (dayBetweenTodayAndDayAsked > seenInGrid)
                 {
                     time.DayId++;
                 }
+                else
+                {
+                    if (time.DayId > seenInGrid - dayBetweenTodayAndDayAsked)
+                            time.DayId++;
+                }
             }
+            //тоже самое
+
+            //if (dayBetweenTodayAndDayAsked > seenInGrid)
+            //{
+            //    foreach (var time in initialSchedule)
+            //    {
+            //        time.DayId++;
+            //    }
+            //}
+            //else
+            //{
+            //    foreach (var time in initialSchedule)
+            //    {
+            //        if (time.DayId > seenInGrid - dayBetweenTodayAndDayAsked)
+            //            time.DayId++;
+            //    }
+            //}
+
             return initialSchedule;
         }
 

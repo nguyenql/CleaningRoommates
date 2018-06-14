@@ -23,14 +23,15 @@ namespace CleaningRoommates
     /// </summary>
     public partial class ScheduleWindow : Window
     {
-        List<WhoWhenClean> results = Algoritm.WhoWillCleanToday();
+        List<WhoWhenClean> results = ActualSchedule.GetActualSchedule();
         DateTime dateOfCleaningDateTime;
         int today = DateTime.Now.DayOfYear;
         User user = new User() { Id = 1 };
 
-        public ScheduleWindow()
+        public ScheduleWindow(User us)
         {
             InitializeComponent();
+            user = us;
 
             //Изначальный алгоритм
             dateOfCleaningDateTime = SubmitLogics.GetDayOfCleaning(results, user);
@@ -40,11 +41,11 @@ namespace CleaningRoommates
             CreateButtons(results);
 
             //ЛИСТ SWAPS СООБЩЕНИЙ
-            var swaps = new List<Swap>();
+            var swaps = SwapLogics.UserSwaps(user);
             listBoxSwaps.ItemsSource = swaps;
 
             //ЛИСТ SUBMITS СООБЩЕНИЙ
-            var submits = new List<Submit>();
+            var submits = SubmitLogics.UserSubmits(user);
             listBoxSubmits.ItemsSource = submits;
 
 
@@ -123,7 +124,6 @@ namespace CleaningRoommates
         {
             IWantToSwapWindow window = new IWantToSwapWindow(user, dateOfCleaningDateTime);
             window.ShowDialog();
-
         }
 
         private void buttonSwap_Click(object sender, RoutedEventArgs e)
