@@ -10,11 +10,11 @@ namespace Core
     public class SwapLogics
     {
         //Получаем новое расписание 
-        public static List<WhoWhenClean> ChangeDays(List<WhoWhenClean> initialSchedule, int maxDay)
+        public static List<WhoWhenClean> ChangeDays(List<WhoWhenClean> initialSchedule, int today)
         {
             foreach (var time in initialSchedule)
             {
-                if (time.DayId >= maxDay)
+                if (time.DayId >= today)
                 {
                     time.DayId++;
                 }

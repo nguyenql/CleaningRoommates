@@ -20,6 +20,6 @@ namespace Core
 
             DateTime DateTimeOfCleaning = new DateTime(thisYear, 1, 1).AddDays(dayNextClean - 1);
             return DateTimeOfCleaning;
-        }
+        } 
     }
 }

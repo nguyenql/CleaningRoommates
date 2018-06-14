@@ -151,8 +151,8 @@ namespace CleaningRoommates
             }
             else
             {
-               // ControlWindow window = new ControlWindow(selectedItem, user);
-                //window.ShowDialog();
+               ControlWindow window = new ControlWindow(selectedItem, user);
+               window.ShowDialog();
             }
         }
     }

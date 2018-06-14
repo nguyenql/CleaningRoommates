@@ -31,10 +31,8 @@ namespace CleaningRoommates
             user = us;
             DateOfCleaning = dayCleaning;
 
-            string DateStringOfCleaning = DateOfCleaning.ToString("MMMM dd, yyyy");
-
-            Date.Text = DateStringOfCleaning;
             Perf.Text = user.Name;
+            Date.Text = DateOfCleaning.ToString("MMMM dd, yyyy");
         }
 
         private void Ok_Click(object sender, RoutedEventArgs e)

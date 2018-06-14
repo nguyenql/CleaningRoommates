@@ -20,7 +20,7 @@ namespace CleaningRoommates
     /// </summary>
     public partial class IWantToSwapWindow : Window
     {
-        User user = new User();
+        User user;
         DateTime dateOfCleaningDateTime;
 
         public IWantToSwapWindow(User us, DateTime dateTime)//данные пользователя, чье окно открыто
@@ -29,6 +29,7 @@ namespace CleaningRoommates
 
             dateOfCleaningDateTime = dateTime;
             user = us;
+
             Who.Text = user.Name;
             When.Text = dateOfCleaningDateTime.ToString("MMMM dd, yyyy");
         }

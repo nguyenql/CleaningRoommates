@@ -20,13 +20,15 @@ namespace CleaningRoommates
     /// </summary>
     public partial class IAgreeOrDisagreeToSwapWindow : Window
     {
-        Swap swap = new Swap();
+        User user;
+        Swap swap;
 
-        public IAgreeOrDisagreeToSwapWindow(Swap sw, User user)
+        public IAgreeOrDisagreeToSwapWindow(Swap sw, User us)
         {
             InitializeComponent();
 
             int thisYear = DateTime.Now.Year;
+            user = us;
             swap = sw;
             DateTime DateTimeOfCleaning = new DateTime(thisYear, 1, 1).AddDays(swap.When - 1);
 
@@ -51,7 +53,8 @@ namespace CleaningRoommates
 
         private void Agree_Click(object sender, RoutedEventArgs e)
         {
-            //swap.Agree = 
+            swap.Agree = user;
+            //ДОБАВИТЬ В СПИСОК- СОХРАНИТЬ ИЗМЕНЕНИЯ
         }
     }
 }
