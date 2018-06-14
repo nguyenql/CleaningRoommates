@@ -337,7 +337,7 @@
                     <Button 
                         Name="buttonSubmit"  
                         Template="{StaticResource btTemplate}" 
-                        Content="Submit " 
+                        Content="Submit Myself" 
                         Click="Click_MySubmit"
                         Margin="10 5"
                         Grid.Column="2" Grid.Row="0">
@@ -354,9 +354,7 @@
                               Margin="5" 
                               SelectionChanged="dataGridSubmit_SelectionChanged">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="From" Binding="{Binding Value}" Width="1*"/>
-                            <DataGridTextColumn Header="Messages" Binding="{Binding Value}" Width="2*"/>
-                            <DataGridTextColumn Header="Date" Binding="{Binding Value}" Width="1*"/>
+                            <DataGridTextColumn Header="Messages" Binding="{Binding Value}" Width="1*"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
@@ -386,7 +384,7 @@
                     <Button 
                         Name="buttonSwap"  
                         Template="{StaticResource btTemplate}" 
-                        Content="Miss my turn" 
+                        Content="Miss My Turn" 
                         Margin="10 5"
                         Grid.Column="2" Grid.Row="0" Click="Click_MySwap"></Button>
 
@@ -400,11 +398,8 @@
                         AutoGenerateColumns="False"
                         Margin="5">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="From" 
-                                                Binding="{Binding Value}"                                               
-                                                Width="1*"/>
-                            <DataGridTextColumn Header="Messages" Binding="{Binding Value}" Width="2*"/>
-                            <DataGridTextColumn Header="Date" Binding="{Binding Value}" Width="1*"/>
+                            
+                            <DataGridTextColumn Header="Messages" Binding="{Binding Value}" Width="1*"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
