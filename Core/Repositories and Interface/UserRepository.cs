@@ -15,7 +15,6 @@ namespace Core.Repositories_and_Interface
         public UserRepository()
         {
             Restore();
-            Save();
         }
 
         private void Restore() // reading data from database
@@ -44,7 +43,7 @@ namespace Core.Repositories_and_Interface
             }
         }
 
-        static void AddUser(User user)
+        public void AddUser(User user)
         {
             using (var context = new Context())
             {
@@ -53,7 +52,7 @@ namespace Core.Repositories_and_Interface
             }
         }
 
-        static void EditUser(User user)
+        public void EditUser(User user)
         {
             using (var context = new Context())
             {

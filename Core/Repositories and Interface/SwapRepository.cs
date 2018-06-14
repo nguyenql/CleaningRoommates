@@ -15,7 +15,6 @@ namespace Core.Repositories_and_Interface
         public SwapRepository()
         {
             Restore();
-            Save();
         }
 
         private void Restore() // reading data from database

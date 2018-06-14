@@ -1,4 +1,6 @@
 ﻿using Core;
+using Core.Model;
+using Core.Repositories_and_Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -77,11 +79,6 @@ namespace CleaningRoommates
             var hash = md5.ComputeHash(Encoding.UTF8.GetBytes(
                password));
             return Convert.ToBase64String(hash);
-        }
-
-        private void textBoxLogin_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
         }
     }
 }

@@ -14,7 +14,6 @@ namespace Core.Repositories_and_Interface
         public SubmitRepository()
         {
             Restore();
-            Save();
         }
 
         private void Restore() // reading data from database
