@@ -43,6 +43,15 @@ namespace CleaningRoommates
             dateOfCleaningDateTime = SubmitLogics.GetDayOfCleaning(results, user);
             
             CreateButtons(results);
+
+            DateTime date = DateTime.Now;
+
+
+            mThree.Text = date.AddDays(-3).ToString();
+            mTwo.Text = date.AddDays(-2).ToString();
+            mOne.Text = date.AddDays(-1).ToString();
+
+
             uOne.Text = PeopleWhoLiveInOneRoom[0].Name;
             uOne.Text = PeopleWhoLiveInOneRoom[1].Name;
             uOne.Text = PeopleWhoLiveInOneRoom[2].Name;
