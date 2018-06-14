@@ -39,6 +39,11 @@ namespace CleaningRoommates
             uOne.Text = user.Name;
             uOne.Text = user.Name;
             uOne.Text = user.Name;
+
+            RenewSwapsSubmits();
+        }
+        public void RenewSwapsSubmits()
+        {
             //ЛИСТ SWAPS СООБЩЕНИЙ
             var swaps = SwapLogics.UserSwaps(user);
             dataGridSwap.ItemsSource = swaps;
@@ -46,9 +51,7 @@ namespace CleaningRoommates
             //ЛИСТ SUBMITS СООБЩЕНИЙ
             var submits = SubmitLogics.UserSubmits(user);
             dataGridSubmit.ItemsSource = submits;
-
         }
-        
         public void RenewButtons()
         {
             List<WhoWhenClean> results = ActualSchedule.GetActualSchedule();
