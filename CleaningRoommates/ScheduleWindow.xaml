@@ -20,7 +20,7 @@
                                       Color="DarkBlue"/>
                 </Border.Effect>
                 <ContentControl FontSize="14"
-                                Margin="50"
+                                Margin="5"
                                 FontFamily="Kristen ITC"
                                 HorizontalAlignment="Center" 
                                 VerticalAlignment="Center" 
@@ -80,7 +80,58 @@
 
         </ControlTemplate>
 
-        <Style TargetType="TextBlock">
+        <Style x:Key="RowStyleWithAlternation" TargetType="DataGridRow">
+            <Setter Property="Background" Value="GhostWhite"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontFamily" Value="Kristen ITC"/>
+            <Style.Triggers>
+                <Trigger Property="AlternationIndex" Value="1">
+                    <Setter Property="Background" Value="LightBlue"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="CadetBlue"/>
+                </Trigger>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="PowderBlue" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="DGHeaderStyle" TargetType="{x:Type DataGrid}">
+            <Setter Property="ColumnHeaderStyle" Value="{DynamicResource DGCHeaderStyle}"/>
+            <Setter Property="RowStyle" Value="{DynamicResource DGRowStyle}"/>
+        </Style>
+        <Style x:Key="DGRowStyle" TargetType="DataGridRow">
+            <Setter Property="Background" Value="DarkBlue"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontFamily" Value="Kristen ITC"/>
+            <Style.Triggers>
+                <Trigger Property="AlternationIndex" Value="1">
+                    <Setter Property="Background" Value="LightBlue"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="CadetBlue"/>
+                </Trigger>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="PowderBlue" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="DGCHeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Background" Value="LightBlue" />
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="BorderBrush" Value="CadetBlue"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="Kristen ITC" />
+            
+        </Style>
+
+            <Style TargetType="TextBlock">
             <Setter Property="FontFamily" Value="Kristen ITC"/>
             <Setter Property="FontSize" Value="15"/>
             <Setter Property="Margin" Value="5"/>
@@ -266,15 +317,13 @@
                      Template="{StaticResource tcTemp}">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="24*"/>
-                        <ColumnDefinition Width="122*"/>
-                        <ColumnDefinition Width="132*"/>
-                        <ColumnDefinition Width="15*"/>
-                        <ColumnDefinition Width="147*"/>
-                        <ColumnDefinition Width="147*"/>
+                        
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="50"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <Button 
@@ -282,26 +331,30 @@
                         Template="{StaticResource btTemplate}" 
                         Content="Open"
                         Margin="10 5"
-                        Grid.Column="4" Grid.Row="0" Click="buttonSubmits_Click" Height="33" VerticalAlignment="Top"></Button>
+                        Grid.Column="1" Grid.Row="0" 
+                        Click="buttonSubmits_Click">
+                    </Button>
                     <Button 
                         Name="buttonSubmit"  
                         Template="{StaticResource btTemplate}" 
-                        Content="Submit myself" 
+                        Content="Submit Myself" 
                         Click="Click_MySubmit"
                         Margin="10 5"
-                        Grid.Column="5" Grid.Row="0"></Button>
+                        Grid.Column="2" Grid.Row="0">
+                    </Button>
 
-                    <DataGrid Name="dataGridSubmit" 
-                        DisplayMemberPath="WhenDone"
-                        Grid.Column="0" 
-                        Grid.ColumnSpan="6" 
-                        Grid.Row="1"
-                        AutoGenerateColumns="False"
-                        Margin="5">
+                    <DataGrid x:Name="dataGridSubmit" 
+                            DisplayMemberPath="WhenDone"
+                            Grid.Column="0" 
+                            Grid.ColumnSpan="6" 
+                            Grid.Row="1"
+                            AutoGenerateColumns="False"
+                              Style="{DynamicResource DGHeaderStyle}"
+                              RowStyle="{StaticResource RowStyleWithAlternation}"
+                              Margin="5" 
+                              SelectionChanged="dataGridSubmit_SelectionChanged">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="From" Binding="{Binding Value}" Width="1*"/>
-                            <DataGridTextColumn Header="Messages" Binding="{Binding Value}" Width="2*"/>
-                            <DataGridTextColumn Header="Date" Binding="{Binding Value}" Width="1*"/>
+                            <DataGridTextColumn Header="Messages" Binding="{Binding Value}" Width="1*"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
@@ -313,15 +366,13 @@
                      Template="{StaticResource tcTemp}">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="24*"/>
-                        <ColumnDefinition Width="122*"/>
-                        <ColumnDefinition Width="132*"/>
-                        <ColumnDefinition Width="15*"/>
-                        <ColumnDefinition Width="147*"/>
-                        <ColumnDefinition Width="147*"/>
+                        
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="50"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <Button 
@@ -329,25 +380,26 @@
                         Template="{StaticResource btTemplate}" 
                         Content="Open" 
                         Margin="10 5"
-                        Grid.Column="4" Grid.Row="0" Click="buttonSwap_Click"></Button>
+                        Grid.Column="1" Grid.Row="0" Click="buttonSwap_Click"></Button>
                     <Button 
                         Name="buttonSwap"  
                         Template="{StaticResource btTemplate}" 
-                        Content="Miss my turn" 
+                        Content="Miss My Turn" 
                         Margin="10 5"
-                        Grid.Column="5" Grid.Row="0" Click="Click_MySwap"></Button>
+                        Grid.Column="2" Grid.Row="0" Click="Click_MySwap"></Button>
 
-                    <DataGrid Name="dataGridSwap" 
+                    <DataGrid x:Name="dataGridSwap" 
                         DisplayMemberPath="When"
                         Grid.Column="0" 
                         Grid.ColumnSpan="6" 
                         Grid.Row="1"
+                              Style="{DynamicResource DGHeaderStyle}"
+                              RowStyle="{DynamicResource DGRowStyle}"
                         AutoGenerateColumns="False"
                         Margin="5">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="From" Binding="{Binding Value}" Width="1*"/>
-                            <DataGridTextColumn Header="Messages" Binding="{Binding Value}" Width="2*"/>
-                            <DataGridTextColumn Header="Date" Binding="{Binding Value}" Width="1*"/>
+                            
+                            <DataGridTextColumn Header="Messages" Binding="{Binding Value}" Width="1*"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
