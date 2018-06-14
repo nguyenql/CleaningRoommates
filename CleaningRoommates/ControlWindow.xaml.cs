@@ -1,4 +1,5 @@
 ﻿using Core.Model;
+using Core.Repositories_and_Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,8 @@ namespace CleaningRoommates
     /// </summary>
     public partial class ControlWindow : Window
     {
+        SubmitRepository submitRepository = new SubmitRepository();
+
         User user;
         Submit submit;
 
@@ -36,52 +39,79 @@ namespace CleaningRoommates
             When.Text = DateTimeOfCleaning.ToString("MMMM dd, yyyy");
             WhoControl.Text = user.Name;
 
-            if (submit.Sweep == true)
+            if (user.Id == submit.Executer.Id)
             {
-                res_Sweep.Text = "+";
-            };
+                if (submit.Wash == true)
+                    Wash.IsChecked = true;
+                if (submit.Sweep == true)
+                    Sweep.IsChecked = true;
+                if (submit.Trash == true)
+                    Trash.IsChecked = true;
 
-            if (submit.Wash == true)
+                Wash.IsEnabled = false;
+                Sweep.IsEnabled = false;
+                Trash.IsEnabled = false;
+            }
+            else
             {
-                res_Wash.Text = "+";
-            };
+                if (submit.Sweep == true)
+                {
+                    res_Sweep.Text = "+";
+                };
 
-            if (submit.Trash == true)
-            {
-                res_Trash.Text = "+";
-            };
+                if (submit.Wash == true)
+                {
+                    res_Wash.Text = "+";
+                };
+
+                if (submit.Trash == true)
+                {
+                    res_Trash.Text = "+";
+                };
+            }
+
         }
 
         private void Ok_Click(object sender, RoutedEventArgs e)
         {
-            int DateIntOfCleaning = DateTime.Now.DayOfYear;
-
-            //!!!! в базе данных изменить формат даты на число. Номер дня в году
-            submit.WhenChecked = DateIntOfCleaning;
-            submit.Checker = user;
-
-            if (Wash.IsChecked == true)
+            if(user.Id == submit.Executer.Id)
             {
-                submit.Wash = true;
+                int DateIntOfCleaning = DateTime.Now.DayOfYear;
+
+                //!!!! в базе данных изменить формат даты на число. Номер дня в году
+                submit.WhenChecked = DateIntOfCleaning;
+                //submit.Checker = user;
+
+                if (Wash.IsChecked == true)
+                {
+                    submit.Wash = true;
+                }
+                else
+                    submit.Wash = false;
+
+                if (Sweep.IsChecked == true)
+                {
+                    submit.Sweep = true;
+                }
+                else
+                    submit.Sweep = false;
+
+                if (Trash.IsChecked == true)
+                {
+                    submit.Trash = true;
+                }
+                else
+                    submit.Trash = false;
+                //ДОБАВИТЬ В СПИСОК- СОХРАНИТЬ ИЗМЕНЕНИЯ
+                submitRepository.Submits.Add(submit);
+
+                Close();
             }
             else
-                submit.Wash = false;
-
-            if (Sweep.IsChecked == true)
             {
-                submit.Sweep = true;
+                Close();
             }
-            else
-                submit.Sweep = false;
 
-            if (Trash.IsChecked == true)
-            {
-                submit.Trash = true;
-            }
-            else
-                submit.Trash = false;
-            //ДОБАВИТЬ В СПИСОК- СОХРАНИТЬ ИЗМЕНЕНИЯ
-            
         }
 
     }

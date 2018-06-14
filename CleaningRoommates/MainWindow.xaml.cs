@@ -28,10 +28,7 @@ namespace CleaningRoommates
         {
             InitializeComponent();
 
-            List<WhoWhenClean> results = Algoritm.WhoWillCleanToday();
-
-            DateTime dateOfCleaningDateTime;
-            dateOfCleaningDateTime = SubmitLogics.GetDayOfCleaning(results, user);
+            //List<WhoWhenClean> results = Algoritm.WhoWillCleanToday();
 
             ScheduleWindow window = new ScheduleWindow(user);
             window.ShowDialog();

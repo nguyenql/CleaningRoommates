@@ -79,6 +79,7 @@ namespace CleaningRoommates
 
             submitRepository.Submits.Add(submit);
 
+            Close();
             //добавляем в базу данных
             //submitsFromDatabase.Add(submit);
         }

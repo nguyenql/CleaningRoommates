@@ -19,18 +19,27 @@ namespace Core
 
             foreach (var item in swaps)
             {
-                if(item.When< today && item.Agree == null)
+                if (item.When < today && item.Agree == null)
                 {
                     initialSchedule = SwapLogics.ChangeDays(initialSchedule, item.When);
                 }
 
-                if(item.When > today && item.Agree != null)
+                if (item.When > today && item.Agree != null)
                 {
                     initialSchedule = SwapLogics.ChangeUsers(initialSchedule, item.From, item.Agree);
                 }
-            }   
+            }
 
             return initialSchedule;
         }
+
+        public static DateTime TransformToDateTime(int day)
+        {
+            int thisYear = DateTime.Now.Year;
+
+            DateTime DayDateTime = new DateTime(thisYear, 1, 1).AddDays(day - 1);
+            return DayDateTime;
+        }
+
     }
 }

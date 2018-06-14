@@ -13,13 +13,12 @@ namespace Core
         //определение крайнего дня дежурства пользователя для базы данных
         public static DateTime GetDayOfCleaning(List<WhoWhenClean> results, User user)
         {
-            int thisYear = DateTime.Now.Year;
             int todayInYear = DateTime.Now.DayOfYear;
             int dayToAdd = SwapLogics.GetMaxDayId(results, user);
             int firstDayInGrid = todayInYear - 3;
             int dayNextClean = firstDayInGrid + dayToAdd;
 
-            DateTime DateTimeOfCleaning = new DateTime(thisYear, 1, 1).AddDays(dayNextClean - 1);
+            DateTime DateTimeOfCleaning = ActualSchedule.TransformToDateTime(dayNextClean);
             return DateTimeOfCleaning;
         } 
 
@@ -46,7 +45,13 @@ namespace Core
 
             foreach (var item in submits)
             {
+                //Пользователь проверяющий
                 if (item.Checker.Id == user.Id)
+                {
+                    userSubmit.Add(item);
+                }
+                //Пользователя проверили
+                if (item.Executer.Id == user.Id&&item.WhenChecked !=0)
                 {
                     userSubmit.Add(item);
                 }
