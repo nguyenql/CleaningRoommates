@@ -102,6 +102,7 @@
             <Setter Property="ColumnHeaderStyle" Value="{DynamicResource DGCHeaderStyle}"/>
             <Setter Property="RowStyle" Value="{DynamicResource DGRowStyle}"/>
         </Style>
+        
         <Style x:Key="DGRowStyle" TargetType="DataGridRow">
             <Setter Property="Background" Value="DarkBlue"/>
             <Setter Property="FontWeight" Value="Normal"/>
@@ -119,6 +120,7 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        
         <Style x:Key="DGCHeaderStyle" TargetType="DataGridColumnHeader">
             <Setter Property="Height" Value="30"/>
             <Setter Property="Background" Value="LightBlue" />
@@ -131,7 +133,7 @@
             
         </Style>
 
-            <Style TargetType="TextBlock">
+        <Style TargetType="TextBlock">
             <Setter Property="FontFamily" Value="Kristen ITC"/>
             <Setter Property="FontSize" Value="15"/>
             <Setter Property="Margin" Value="5"/>
@@ -354,7 +356,9 @@
                               Margin="5" 
                               SelectionChanged="dataGridSubmit_SelectionChanged">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Messages" Binding="{Binding Value}" Width="1*"/>
+                            <DataGridTextColumn Header="Date" Binding="{Binding Value}" Width="1*"/>
+                            <DataGridTextColumn Header="From" Binding="{Binding Value}" Width="1*"/>
+                            <DataGridTextColumn Header="Messages" Binding="{Binding Value}" Width="2*"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
@@ -398,8 +402,9 @@
                         AutoGenerateColumns="False"
                         Margin="5">
                         <DataGrid.Columns>
-                            
-                            <DataGridTextColumn Header="Messages" Binding="{Binding Value}" Width="1*"/>
+                            <DataGridTextColumn Header="Date" Binding="{Binding Value}" Width="1*"/>
+                            <DataGridTextColumn Header="From" Binding="{Binding Value}" Width="1*"/>
+                            <DataGridTextColumn Header="Messages" Binding="{Binding Value}" Width="2*"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
