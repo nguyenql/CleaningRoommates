@@ -23,9 +23,12 @@ namespace CleaningRoommates
     /// </summary>
     public partial class LoginWindow : Window
     {
-        public LoginWindow()
+        public UserRepository user_repo { get; set; }
+
+        public LoginWindow(UserRepository us)
         {
             InitializeComponent();
+            user_repo = us;
         }
 
         private void ButtonClickOk(object sender, RoutedEventArgs e)
@@ -46,9 +49,7 @@ namespace CleaningRoommates
             }
             else
             {
-                using (var context = new Context())
-                {
-                    foreach (var user in context.Users)
+                    foreach (var user in user_repo.Users)
                     {
                         if ((user.Login == textBoxLogin.Text) && (user.Password == GetHash(passwordBox.Password)))
                         {
@@ -58,7 +59,7 @@ namespace CleaningRoommates
                             this.Close();
                         }
                     }
-                }
+               
             }
 
             if (a == 0)

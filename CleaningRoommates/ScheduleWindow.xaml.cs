@@ -44,8 +44,14 @@ namespace CleaningRoommates
             
             CreateButtons(results);
             uOne.Text = PeopleWhoLiveInOneRoom[0].Name;
-            uOne.Text = PeopleWhoLiveInOneRoom[1].Name;
-            uOne.Text = PeopleWhoLiveInOneRoom[2].Name;
+            if (PeopleWhoLiveInOneRoom.Count==2)
+            {
+                uTwo.Text = PeopleWhoLiveInOneRoom[1].Name;
+            }
+            if (PeopleWhoLiveInOneRoom.Count == 3)
+            {
+                uThree.Text = PeopleWhoLiveInOneRoom[2].Name;
+            }
 
             RenewSwapsSubmits();
         }
