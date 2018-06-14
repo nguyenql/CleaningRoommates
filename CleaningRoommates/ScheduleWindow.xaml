@@ -270,7 +270,6 @@
                                VerticalAlignment="Center">
                     </TextBlock>
                     <TextBlock
-                        Text="{Binding Name}"
                         Grid.Column="0" 
                         Grid.Row="2"
                         Width="100"
@@ -296,7 +295,6 @@
                         HorizontalAlignment="Center"/>
 
                     <Grid Background="White" 
-                          
                           Name="schGrid"
                           Grid.Column="1" 
                           Grid.ColumnSpan="7" 
@@ -409,7 +407,7 @@
                               Style="{DynamicResource DGHeaderStyle}"
                               RowStyle="{DynamicResource DGRowStyle}"
                         AutoGenerateColumns="False"
-                        Margin="5,5.4,5,4.6" >
+                        Margin="5,5.4,5,4.6">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Date" Binding="{Binding DateOfReceiving}" Width="1*"/>
                             <DataGridTextColumn Header="From" Binding="{Binding From}" Width="1*"/>

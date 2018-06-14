@@ -10,7 +10,7 @@ namespace Core
 {
     public class Algoritm
     {
-        public static List<WhoWhenClean> WhoWillCleanToday()
+        public static List<WhoWhenClean> WhoWillCleanToday(int countUsers)
         { 
             //алгоритм на на основе номера сегодняшнего дня в году 
             int todayInYear = DateTime.Now.DayOfYear;
@@ -26,14 +26,14 @@ namespace Core
             }
 
             List<WhoWhenClean> results = new List<WhoWhenClean>();
-            results = AlgorithmOfCleaning(firstDayInGrid, beginToCount, timesInWeek, results);
+            results = AlgorithmOfCleaning(firstDayInGrid, beginToCount, timesInWeek, results, countUsers);
 
             return results;
         }
 
-        public static List<WhoWhenClean> AlgorithmOfCleaning(int firstDayInGrid, int beginToCount, int timesInWeek, List<WhoWhenClean> results)
+        public static List<WhoWhenClean> AlgorithmOfCleaning(int firstDayInGrid, int beginToCount, int timesInWeek, List<WhoWhenClean> results, int numberUs)
         {
-            int numberOfUsers = 3; //количество пользователей 
+            int numberOfUsers = numberUs; //количество пользователей (3)
             int daysBetweenDuties = 1; //дежурство через день
             int firstDayWhenDutiesBegun = 1; //конкретно день дежурства, к которому потом прибавим интервал и получим день следующего дежурства
             int daysToNextDuty = daysBetweenDuties + 1;

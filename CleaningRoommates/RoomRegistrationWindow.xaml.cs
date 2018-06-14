@@ -22,11 +22,12 @@ namespace CleaningRoommates
     /// </summary>
     public partial class RoomRegistrationWindow : Window
     {
-        private RoomRepository room_repo = new RoomRepository();
+        public RoomRepository room_repo { get; set; }
 
-        public RoomRegistrationWindow()
+        public RoomRegistrationWindow(RoomRepository room)
         {
             InitializeComponent();
+            room_repo = room;
         }
 
         private void ButtonClickOk(object sender, RoutedEventArgs e)
