@@ -73,9 +73,8 @@
                    Grid.Row="0" 
                    VerticalAlignment="Center" HorizontalAlignment="Center">Date of Cleaning</Label>
         
-        
-        <ListBox 
-            IsEnabled="True" 
+        <TextBlock
+            Name="When"
             Grid.Column="1" Grid.Row="0" 
             Margin="5"
             Height="40"
@@ -84,9 +83,9 @@
             FontSize="16"
             FontFamily="Kristen ITC"/>
         <Label Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">Performer:</Label>
-        <TextBlock Text="{Binding Name}" Grid.Column="1" Grid.Row="1" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+        <TextBlock Name="Who" Height="35" Width="120" Grid.Column="1" Grid.Row="1" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Left"/>
         <Label Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">Supervisor:</Label>
-        <TextBlock Text="{Binding Name}" Grid.Column="1" Grid.Row="2" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+        <TextBlock Name="WhoControl" Height="35" Width="120" Grid.Column="1" Grid.Row="2" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Left"/>
         <Button Name="buttonOk" Template="{StaticResource btTemplate}" Content="Ok" Grid.Column="0" Grid.Row="4"></Button>
         <Button Name="buttonCancel" Template="{StaticResource btTemplate}" Content="Cancel" Grid.Column="1" Grid.Row="4"></Button>
         <Grid Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" Margin="5">
@@ -107,12 +106,14 @@
             <TextBlock Text="Wash the floor" Grid.Row="1"/>
             <TextBlock Text="Sweep the floor" Grid.Row="2"/>
             <TextBlock Text="Throw out the trash" Grid.Row="3"/>
-            <ListBox Grid.Column="1" Grid.Row="1" Width="50"/>
-            <ListBox Grid.Column="1" Grid.Row="2" Width="50"/>
-            <ListBox Grid.Column="1" Grid.Row="3" Width="50"/>
-            <CheckBox Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" Margin="5"/>
-            <CheckBox Grid.Column="2" Grid.Row="2" HorizontalAlignment="Center" Margin="5"/>
-            <CheckBox Grid.Column="2" Grid.Row="3" HorizontalAlignment="Center" Margin="5"/>
+            
+            <TextBlock Name="res_Wash" Grid.Column="1" Grid.Row="1" Width="50"/>
+            <TextBlock Name="res_Sweep" Grid.Column="1" Grid.Row="2" Width="50"/>
+            <TextBlock Name="res_Trash" Grid.Column="1" Grid.Row="3" Width="50"/>
+
+            <CheckBox Name ="Wash" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" Margin="89.4,5.2,89,0" Height="19" VerticalAlignment="Top"/>
+            <CheckBox Name ="Sweep" Grid.Column="2" Grid.Row="2" HorizontalAlignment="Center" Margin="5"/>
+            <CheckBox Name ="Trash" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Center" Margin="5"/>
         </Grid>
 
     </Grid>

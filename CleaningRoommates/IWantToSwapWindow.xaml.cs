@@ -20,14 +20,18 @@ namespace CleaningRoommates
     /// </summary>
     public partial class IWantToSwapWindow : Window
     {
-        User user = new User();
+        User user;
+        DateTime dateOfCleaningDateTime;
 
-        public IWantToSwapWindow(User us)//данные пользователя, чье окно открыто
+        public IWantToSwapWindow(User us, DateTime dateTime)//данные пользователя, чье окно открыто
         {
             InitializeComponent();
 
+            dateOfCleaningDateTime = dateTime;
             user = us;
+
             Who.Text = user.Name;
+            When.Text = dateOfCleaningDateTime.ToString("MMMM dd, yyyy");
         }
 
         private void Ok_Click(object sender, RoutedEventArgs e)
@@ -35,7 +39,7 @@ namespace CleaningRoommates
             var swap = new Swap();
 
             //!!!! в базе данных изменить формат даты на число. Номер дня в году
-            swap.When = DateTime.Now.DayOfYear;
+            swap.When = dateOfCleaningDateTime.DayOfYear;
             swap.From = user;
 
             if (Deadline.IsChecked == true)
@@ -69,6 +73,7 @@ namespace CleaningRoommates
                 return;
             }
 
+            //ДОБАВИТЬ В СПИСОК 
             List<Swap> usersFromDatabase = new List<Swap>();// лист пользователей заменить на тот, что буде получать из базы данных
             usersFromDatabase.Add(swap);
         }

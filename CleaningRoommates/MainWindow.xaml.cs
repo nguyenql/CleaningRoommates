@@ -1,4 +1,5 @@
-﻿using Core.Model;
+﻿using Core;
+using Core.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,18 +22,24 @@ namespace CleaningRoommates
     /// </summary>
     public partial class MainWindow : Window
     {
+        User user = new User() { Id = 1, Name = "1" };
+
         public MainWindow()
         {
             InitializeComponent();
-            var us = new User() { Id = 1, Name = "1" };
 
-//            SubmiteWorkWindow window = new SubmiteWorkWindow();
-            //window.ShowDialog();
+            List<WhoWhenClean> results = Algoritm.WhoWillCleanToday();
+
+            DateTime dateOfCleaningDateTime;
+            dateOfCleaningDateTime = SubmitLogics.GetDayOfCleaning(results, user);
+
+            ScheduleWindow window = new ScheduleWindow(user);
+            window.ShowDialog();
         }
 
         private void ButtonClickEnterYourRoom(object sender, RoutedEventArgs e)
         {
-            ScheduleWindow window = new ScheduleWindow();
+            ScheduleWindow window = new ScheduleWindow(user);
             window.ShowDialog();
             this.Close();
 
