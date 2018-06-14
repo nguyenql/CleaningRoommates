@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,8 @@ namespace Core.Model
         public bool Sweep { get; set; }
         public bool Wash { get; set; }
         public bool Trash { get; set; }
+        [NotMapped]
+        public DateTime DateOfReceiving { get; set; }
         public int WhenDone { get; set; }
         public int WhenChecked { get; set; }
         public User Executer { get; set; }
