@@ -40,6 +40,7 @@ namespace CleaningRoommates
 
             PeopleWhoLiveInOneRoom = SubmitLogics.MakeList(user, user_repo.Users);
             countUsers = PeopleWhoLiveInOneRoom.Count;
+            user = SubmitLogics.GetUserWitnSpecialId(user, PeopleWhoLiveInOneRoom);
 
             results = ActualSchedule.GetActualSchedule(countUsers, PeopleWhoLiveInOneRoom);
             int dayToAdd = SwapLogics.GetMaxDayId(results, user);

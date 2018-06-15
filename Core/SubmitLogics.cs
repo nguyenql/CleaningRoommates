@@ -78,14 +78,6 @@ namespace Core
         {
             int minDay = 100;
 
-            foreach (var item in usersInRoom)
-            {
-                if (user.Id==item.Id)
-                {
-                    user.IdForGala = item.IdForGala;
-                }
-            }
-
             foreach (var time in initialSchedule)
             {
                 if (time.UseId == user.IdForGala)
@@ -112,6 +104,18 @@ namespace Core
                 }
             }
             return neighbors;
+        }
+
+        public static User GetUserWitnSpecialId(User user, List<User> users)
+        {
+            foreach (var item in users)
+            {
+                if (user.Id == item.Id)
+                {
+                    user.IdForGala = item.IdForGala;
+                }
+            }
+            return user;
         }
     }
 }
