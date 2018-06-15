@@ -15,6 +15,7 @@ using Core;
 using Core.Model;
 using System.Drawing;
 using Core.Repositories_and_Interface;
+using System.Globalization;
 
 namespace CleaningRoommates
 {
@@ -45,6 +46,18 @@ namespace CleaningRoommates
             dateOfCleaningDateTime = SubmitLogics.GetDayOfCleaning(results, user);
             
             CreateButtons(results);
+
+            DateTime date = DateTime.Now;
+            
+            mThree.Text = date.AddDays(-3).ToString("MMM dd", CultureInfo.CreateSpecificCulture("en-US"));
+            mTwo.Text = date.AddDays(-2).ToString("MMM dd", CultureInfo.CreateSpecificCulture("en-US"));
+            mOne.Text = date.AddDays(-1).ToString("MMM dd", CultureInfo.CreateSpecificCulture("en-US"));
+            pOne.Text = date.AddDays(+1).ToString("MMM dd", CultureInfo.CreateSpecificCulture("en-US"));
+            pTwo.Text = date.AddDays(+2).ToString("MMM dd", CultureInfo.CreateSpecificCulture("en-US"));
+            pThree.Text = date.AddDays(+3).ToString("MMM dd", CultureInfo.CreateSpecificCulture("en-US"));
+
+
+
             uOne.Text = PeopleWhoLiveInOneRoom[0].Name;
             if (PeopleWhoLiveInOneRoom.Count == 2)
             {

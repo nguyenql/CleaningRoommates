@@ -135,9 +135,13 @@
 
         <Style TargetType="TextBlock">
             <Setter Property="FontFamily" Value="Comic Sans MS"/>
-            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontSize" Value="14"/>
             <Setter Property="Margin" Value="5"/>
             <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <!--<Setter Property="Language" Value="en-US"/>-->
         </Style>
     </Window.Resources>
 
@@ -215,7 +219,7 @@
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="30"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
@@ -226,96 +230,107 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
 
-                    <TextBlock Text="-3" 
-                               Grid.Column="1" 
-                               Grid.Row="1" 
-                               Margin="5"
-                               VerticalAlignment="Center" 
-                               HorizontalAlignment="Center">
-                    </TextBlock>
-                    <TextBlock Text="-2" 
-                               Grid.Column="2" 
-                               Grid.Row="1" 
-                               Margin="5" 
-                               VerticalAlignment="Center"
-                               HorizontalAlignment="Center">
+                    <Border BorderThickness="2"
+                            BorderBrush="LightBlue"
+                            Grid.Column="1" 
+                            Grid.Row="1">
+                        <TextBlock Name="mThree"
+                                   Height="Auto"
+                                   Width="Auto">
+                        </TextBlock>
+                    </Border>
+                    <Border BorderThickness="2"
+                            BorderBrush="LightBlue"
+                            Grid.Column="2" 
+                            Grid.Row="1">
+                        <TextBlock Name="mTwo"
+                               Height="Auto"
+                               Width="Auto">
+                        </TextBlock>
+                    </Border>
+                    <Border BorderThickness="2"
+                            BorderBrush="LightBlue"
+                            Grid.Column="3" 
+                            Grid.Row="1">
+                        <TextBlock Name="mOne"
+                                   Height="Auto"
+                                   Width="Auto">
+                        </TextBlock>
+                    </Border>
+                    <Border BorderThickness="2"
+                            BorderBrush="LightBlue"
+                            Grid.Column="4" 
+                            Grid.Row="1">
+                        <TextBlock Text="{Binding Source={x:Static sys:DateTime.Today}, StringFormat='{}{0:MMM dd}'}" >
+                        </TextBlock>
+                    </Border>
 
-                    </TextBlock>
-                    <TextBlock Text="-1" 
-                               Grid.Column="3" 
-                               Grid.Row="1" 
-                               Margin="5" 
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center">
-                    </TextBlock>
-                    <TextBlock Text="{Binding Source={x:Static sys:DateTime.Today}, StringFormat='{}{0:MMM dd}'}" 
-                               Grid.Column="4" Grid.Row="1" Margin="5" 
-                               VerticalAlignment="Center">
-                    </TextBlock>
-                    <TextBlock Text="+1" 
-                               Grid.Column="5" Grid.Row="1" 
-                               Margin="5" 
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"></TextBlock>
-                    <TextBlock Text="+2" 
-                               Grid.Column="6" Grid.Row="1" 
-                               Margin="5" 
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center">
-                    </TextBlock>
-                    <TextBlock Text="+3" 
-                               Grid.Column="7" Grid.Row="1" 
-                               Margin="5" 
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center">
-                    </TextBlock>
+                    <Border BorderThickness="2"
+                            BorderBrush="LightBlue"
+                            Grid.Column="5" 
+                            Grid.Row="1">
+                        <TextBlock Name="pOne"></TextBlock>
+                    </Border>
+                    <Border BorderThickness="2"
+                            BorderBrush="LightBlue"
+                            Grid.Column="6" 
+                            Grid.Row="1">
+                        <TextBlock Name="pTwo">
+                        </TextBlock>
+                    </Border>
+                    <Border BorderThickness="2"
+                            BorderBrush="LightBlue"
+                            Grid.Column="7" 
+                            Grid.Row="1">
+                        <TextBlock Name="pThree">
+                        </TextBlock>
+                    </Border>
+                    
                     <TextBlock
                         Grid.Column="0" 
                         Grid.Row="2"
                         Width="100"
                         Name="uOne"
-                        Height="30"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center"/>
+                        Height="30"/>
                     <TextBlock
                         Grid.Column="0" 
                         Grid.Row="3"
                         Height="30"
                         Name="uTwo"
-                        Width="100"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center"/>
+                        Width="100"/>
                     <TextBlock
                         Grid.Column="0" 
                         Grid.Row="4"
                         Name="uThree"
                         Height="30"
-                        Width="100"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center"/>
+                        Width="100"/>
 
-                    <Grid Background="White" 
+                    <Border Grid.Column="1"
+                            Grid.ColumnSpan="7" 
+                            Grid.Row="2" 
+                            Grid.RowSpan="3"
+                            BorderThickness="3"
+                            BorderBrush="CadetBlue">
+                        <Grid Background="White" 
                           Name="schGrid"
-                          Grid.Column="1" 
-                          Grid.ColumnSpan="7" 
-                          Grid.Row="2" Grid.RowSpan="3"
                           ShowGridLines="True">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
 
-                    </Grid>
+                        </Grid>
+                    </Border>
 
                 </Grid>
             </TabItem>
