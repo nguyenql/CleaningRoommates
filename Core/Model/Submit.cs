@@ -21,5 +21,6 @@ namespace Core.Model
         public int WhenChecked { get; set; }
         public User Executer { get; set; }
         public User Checker { get; set; }
+        public int AlreadyChecked { get; set; }
     }
 }

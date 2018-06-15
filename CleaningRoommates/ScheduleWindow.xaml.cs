@@ -29,9 +29,9 @@ namespace CleaningRoommates
         int countUsers;
         User user;
         List<User> PeopleWhoLiveInOneRoom;
+        List<WhoWhenClean> results;
 
         private UserRepository user_repo = new UserRepository();
-
 
         public ScheduleWindow(User us)
         {
@@ -41,22 +41,20 @@ namespace CleaningRoommates
             PeopleWhoLiveInOneRoom = MakeList(user);
             countUsers = PeopleWhoLiveInOneRoom.Count;
 
-            List<WhoWhenClean> results = ActualSchedule.GetActualSchedule(countUsers, PeopleWhoLiveInOneRoom);
+            results = ActualSchedule.GetActualSchedule(countUsers, PeopleWhoLiveInOneRoom);
+            int dayToAdd = SwapLogics.GetMaxDayId(results, user);
+            dateOfCleaningDateTime = SubmitLogics.GetDayOfCleaning(results, dayToAdd);
 
-            dateOfCleaningDateTime = SubmitLogics.GetDayOfCleaning(results, user);
-            
             CreateButtons(results);
 
             DateTime date = DateTime.Now;
-            
+
             mThree.Text = date.AddDays(-3).ToString("MMM dd", CultureInfo.CreateSpecificCulture("en-US"));
             mTwo.Text = date.AddDays(-2).ToString("MMM dd", CultureInfo.CreateSpecificCulture("en-US"));
             mOne.Text = date.AddDays(-1).ToString("MMM dd", CultureInfo.CreateSpecificCulture("en-US"));
             pOne.Text = date.AddDays(+1).ToString("MMM dd", CultureInfo.CreateSpecificCulture("en-US"));
             pTwo.Text = date.AddDays(+2).ToString("MMM dd", CultureInfo.CreateSpecificCulture("en-US"));
             pThree.Text = date.AddDays(+3).ToString("MMM dd", CultureInfo.CreateSpecificCulture("en-US"));
-
-
 
             uOne.Text = PeopleWhoLiveInOneRoom[0].Name;
             if (PeopleWhoLiveInOneRoom.Count == 2)
@@ -94,12 +92,12 @@ namespace CleaningRoommates
             //ЛИСТ SWAPS СООБЩЕНИЙ
             var swaps = SwapLogics.UserSwaps(user);
             dataGridSwap.ItemsSource = swaps;
-            
+
             //ЛИСТ SUBMITS СООБЩЕНИЙ
             var submits = SubmitLogics.UserSubmits(user);
             dataGridSubmit.ItemsSource = submits;
         }
-        
+
         public void RenewButtons()
         {
             List<WhoWhenClean> results = ActualSchedule.GetActualSchedule(countUsers, PeopleWhoLiveInOneRoom);
@@ -111,7 +109,7 @@ namespace CleaningRoommates
         {
             int idOfMaxDayInGrid = 6;
             foreach (var time in results)
-            {                
+            {
                 Image newButton = new Image();
 
                 newButton.Height = 30;
@@ -124,7 +122,7 @@ namespace CleaningRoommates
                 if (time.DayId <= idOfMaxDayInGrid)
                     Grid.SetColumn(newButton, time.DayId);
 
-                 schGrid.Children.Add(newButton);
+                schGrid.Children.Add(newButton);
             }
         }
 
@@ -138,10 +136,13 @@ namespace CleaningRoommates
         private void Click_MySubmit(object sender, RoutedEventArgs e)
         {
             int nextMyCleaning = dateOfCleaningDateTime.DayOfYear;
-            
-            if(today==nextMyCleaning|| today == nextMyCleaning + 1)
+            int interval = Algoritm.GetIntervalBerweenUserCleaning(countUsers);
+            int previousCleaning = SubmitLogics.GetMinDayId(results,user,PeopleWhoLiveInOneRoom);
+            int dayCheck = SubmitLogics.GetDayOfCleaning(results, previousCleaning).DayOfYear;
+
+            if (today == dayCheck || today == dayCheck + 1)
             {
-                SubmiteWorkWindow window = new SubmiteWorkWindow(user, dateOfCleaningDateTime);
+                SubmiteWorkWindow window = new SubmiteWorkWindow(user, dayCheck, PeopleWhoLiveInOneRoom);
                 window.ShowDialog();
             }
             else
@@ -157,8 +158,6 @@ namespace CleaningRoommates
             {
                 IWantToSwapWindow window = new IWantToSwapWindow(user, dateOfCleaningDateTime);
                 window.ShowDialog();
-
-
             }
             else
             {
@@ -175,6 +174,10 @@ namespace CleaningRoommates
             if (selectedItem == null)
             {
                 MessageBox.Show("Select message");
+            }
+            else if (selectedItem.Agree != null)
+            {
+                MessageBox.Show(selectedItem.Agree.Name + "has already agreed!");
             }
             else
             {
@@ -193,11 +196,18 @@ namespace CleaningRoommates
             {
                 MessageBox.Show("Select message");
             }
+            else if (selectedItem.AlreadyChecked == 1 
+                && user.Id == selectedItem.Checker.Id)
+            {
+                MessageBox.Show("Already Checked!");
+            }
             else
             {
                ControlWindow window = new ControlWindow(selectedItem, user);
                window.ShowDialog();
             }
+
+
         }
 
         private void buttonProfile_Click(object sender, RoutedEventArgs e)

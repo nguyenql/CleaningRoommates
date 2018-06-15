@@ -77,6 +77,10 @@
     <Compile Include="Migrations\201806151340473_room.Designer.cs">
       <DependentUpon>201806151340473_room.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806151751204_already.cs" />
+    <Compile Include="Migrations\201806151751204_already.Designer.cs">
+      <DependentUpon>201806151751204_already.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Submit.cs" />
     <Compile Include="Model\Room.cs" />
@@ -114,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806151340473_room.resx">
       <DependentUpon>201806151340473_room.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806151751204_already.resx">
+      <DependentUpon>201806151751204_already.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

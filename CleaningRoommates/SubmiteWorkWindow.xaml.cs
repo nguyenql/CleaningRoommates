@@ -28,13 +28,13 @@ namespace CleaningRoommates
         DateTime DateOfCleaning;
         User checker = new User();
 
-        public SubmiteWorkWindow(User us, DateTime dayCleaning)
+        public SubmiteWorkWindow(User us, int dayCleaning, List<User> users)
         {
             InitializeComponent();
 
             user = us;
-            checker = SubmitLogics.DetermiteChecker(user);
-            DateOfCleaning = dayCleaning;
+            checker = SubmitLogics.DetermiteChecker(user, users);
+            DateOfCleaning = ActualSchedule.TransformToDateTime(dayCleaning);
 
             Perf.Text = user.Name;
             Date.Text = DateOfCleaning.ToString("MMMM dd, yyyy");
@@ -45,7 +45,7 @@ namespace CleaningRoommates
             var submit = new Submit();
             int DateIntOfCleaning = DateOfCleaning.DayOfYear;
 
-            submit.WhenDone = DateIntOfCleaning;
+            submit.WhenDone = DateOfCleaning.DayOfYear;
             submit.Executer = user;
             submit.Checker = checker;
 

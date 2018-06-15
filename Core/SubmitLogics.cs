@@ -47,10 +47,9 @@ namespace Core
             return userSubmit;
 
         }
-        public static DateTime GetDayOfCleaning(List<WhoWhenClean> results, User user)
+        public static DateTime GetDayOfCleaning(List<WhoWhenClean> results, int dayToAdd)
         {
             int todayInYear = DateTime.Now.DayOfYear;
-            int dayToAdd = SwapLogics.GetMaxDayId(results, user);
             int firstDayInGrid = todayInYear - 3;
             int dayNextClean = firstDayInGrid + dayToAdd;
 
@@ -58,19 +57,46 @@ namespace Core
             return DateTimeOfCleaning;
         } 
 
-        public static User DetermiteChecker(User user)
+        public static User DetermiteChecker(User user, List<User> usersInRoom)
         {
             User checker = new User();
-            int checkerId = user.Id + 1;
 
-            if (checkerId < 2)
-                checker.IdForGala = checkerId;
-            else
-                checker.IdForGala = 0;
+            int checkerId = user.IdForGala + 1;
 
+            if (checkerId > 2)
+                checkerId = 0;
+
+            foreach (var item in usersInRoom)
+            {
+                if (item.IdForGala == checkerId)
+                {
+                    checker = item;
+                }
+            }
             return checker;
         }
 
+        public static int GetMinDayId(List<WhoWhenClean> initialSchedule, User user, List<User> usersInRoom)
+        {
+            int minDay = 100;
 
-    }
+            foreach (var item in usersInRoom)
+            {
+                if (user.Id==item.Id)
+                {
+                    user.IdForGala = item.IdForGala;
+                }
+            }
+
+            foreach (var time in initialSchedule)
+            {
+                if (time.UseId == user.IdForGala)
+                {
+                    if (time.DayId < minDay)
+                        minDay = time.DayId;
+                }
+            }
+            return minDay;
+        }
+}
 }

@@ -11,7 +11,7 @@ namespace Core
     public class Algoritm
     {
         public static List<WhoWhenClean> WhoWillCleanToday(int countUsers)
-        { 
+        {
             //алгоритм на на основе номера сегодняшнего дня в году 
             int todayInYear = DateTime.Now.DayOfYear;
             int firstDayInGrid = todayInYear - 3;
@@ -33,11 +33,9 @@ namespace Core
 
         public static List<WhoWhenClean> AlgorithmOfCleaning(int firstDayInGrid, int beginToCount, int timesInWeek, List<WhoWhenClean> results, int numberUs)
         {
-            int numberOfUsers = numberUs; //количество пользователей (3)
-            int daysBetweenDuties = 1; //дежурство через день
+            int intervalDutiesOfOneUser = GetIntervalBerweenUserCleaning(numberUs);
+            int daysToNextDuty = intervalDutiesOfOneUser / numberUs;
             int firstDayWhenDutiesBegun = 1; //конкретно день дежурства, к которому потом прибавим интервал и получим день следующего дежурства
-            int daysToNextDuty = daysBetweenDuties + 1;
-            int intervalDutiesOfOneUser = numberOfUsers * daysToNextDuty; //один человек дежурит через 6 дней. То есть сегодняшняя дата плюс 6 = дата следующего дежурства
             int Who;
 
             //Дежурит Первый пользователь
@@ -62,13 +60,21 @@ namespace Core
                 time.DayId = beginToCount;
 
                 Who++;
-                if (Who > numberOfUsers - 1)
+                if (Who > numberUs - 1)
                     Who = 0;
                 beginToCount = beginToCount + 2;
 
                 results.Add(time);
             }
             return results;
+        }
+
+        public static int GetIntervalBerweenUserCleaning(int numberOfusers)
+        {
+            int numberOfUsers = numberOfusers; //количество пользователей (3)
+            int daysBetweenDuties = 1; //дежурство через день
+            int daysToNextDuty = daysBetweenDuties + 1;
+            return numberOfUsers * daysToNextDuty; //один человек дежурит через 6 дней. То есть сегодняшняя дата плюс 6 = дата следующего дежурства
         }
     }
 }

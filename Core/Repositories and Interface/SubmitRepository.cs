@@ -41,12 +41,22 @@ namespace Core.Repositories_and_Interface
             }
         }
 
-        public void AddSubmit(Submit submit)
+        public void AddSubmit(Submit sub)
         {
             using (var context = new Context())
             {
+                var submit = new Submit()
+                {
+                    Sweep = sub.Sweep,
+                    Wash = sub.Wash,
+                    Trash = sub.Trash,
+                    WhenDone = sub.WhenDone,
+                    Executer = context.Users.Single(x => x.Id == sub.Executer.Id),
+                    Checker = context.Users.Single(x => x.Id == sub.Checker.Id)
+                };
+
                 context.Submits.Add(submit);
-                 context.SaveChanges();
+                context.SaveChanges();
             }
         }
 
@@ -54,11 +64,12 @@ namespace Core.Repositories_and_Interface
         {
             using (var context = new Context())
             {
-                var sub = context.Submits.Where(g => g.Id == submit.Id).FirstOrDefault();
+                Submit sub = context.Submits.Single(g => g.Id == submit.Id);
                 sub.Sweep = submit.Sweep;
                 sub.Wash = submit.Wash;
                 sub.Trash = submit.Trash;
                 sub.WhenChecked = submit.WhenChecked;
+                sub.AlreadyChecked = 1;
                 context.SaveChanges();
             }
         }

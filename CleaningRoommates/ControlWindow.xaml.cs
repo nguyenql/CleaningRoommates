@@ -75,7 +75,7 @@ namespace CleaningRoommates
 
         private void Ok_Click(object sender, RoutedEventArgs e)
         {
-            if(user.Id == submit.Executer.Id)
+            if(user.Id == submit.Checker.Id)
             {
                 int DateIntOfCleaning = DateTime.Now.DayOfYear;
 
@@ -115,5 +115,9 @@ namespace CleaningRoommates
 
         }
 
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }
