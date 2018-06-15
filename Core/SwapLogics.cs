@@ -2,6 +2,7 @@
 using Core.Repositories_and_Interface;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +27,7 @@ namespace Core
                     && ItemDayToView < daysInWeek)
                 {
                     item.DateOfReceiving = ActualSchedule.TransformToDateTime(item.When);
+                    item.DateOfReceiving.ToString("MMM dd", CultureInfo.CreateSpecificCulture("en-US"));
                     userSwap.Add(item);
                 }
             }

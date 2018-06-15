@@ -104,7 +104,7 @@
         </Style>
 
         <Style x:Key="DGRowStyle" TargetType="DataGridRow">
-            <Setter Property="Background" Value="DarkBlue"/>
+            <Setter Property="Background" Value="GhostWhite"/>
             <Setter Property="FontWeight" Value="Normal"/>
             <Setter Property="FontSize" Value="12"/>
             <Setter Property="FontFamily" Value="Comic Sans MS"/>
@@ -204,15 +204,15 @@
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
-                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="10"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="20"/>
                         <RowDefinition/>
                         <RowDefinition/>
                         <RowDefinition/>
                         <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
+                        <RowDefinition Height="20"/>
                     </Grid.RowDefinitions>
 
                     <Border BorderThickness="2"
@@ -226,7 +226,8 @@
                     </Border>
                     <Border BorderThickness="2"
                             BorderBrush="LightBlue"
-                            Grid.Column="2" Margin="0.4,42,0,42.2" Grid.RowSpan="3">
+                            Grid.Column="2" 
+                            Grid.Row="1">
                         <TextBlock Name="mTwo"
                                Height="Auto"
                                Width="Auto">
@@ -241,8 +242,8 @@
                                    Width="Auto">
                         </TextBlock>
                     </Border>
-                    <Border BorderThickness="2"
-                            BorderBrush="LightBlue"
+                    <Border BorderThickness="3"
+                            BorderBrush="CadetBlue"
                             Grid.Column="4" 
                             Grid.Row="1">
                         <TextBlock Text="{Binding Source={x:Static sys:DateTime.Today}, StringFormat='{}{0:MMM dd}'}" >
@@ -270,24 +271,37 @@
                         </TextBlock>
                     </Border>
 
-                    <TextBlock
-                        Grid.Column="0" 
-                        Grid.Row="2"
+
+                    <Border BorderThickness="2"
+                            BorderBrush="CadetBlue"
+                            Grid.Column="0" 
+                            Grid.Row="2"
+                            Margin="5">
+                        <TextBlock
                         Width="100"
-                        Name="uOne"
-                        Height="30"/>
-                    <TextBlock
-                        Grid.Column="0" 
-                        Grid.Row="3"
-                        Height="30"
+                        Name="uOne"/>
+                    </Border>
+
+                    <Border BorderThickness="2"
+                            BorderBrush="CadetBlue"
+                            Grid.Column="0" 
+                            Grid.Row="3"
+                            Margin="5">
+                        <TextBlock                        
                         Name="uTwo"
                         Width="100"/>
+                    </Border>
+
+                    <Border BorderThickness="2"
+                            BorderBrush="CadetBlue"
+                            Grid.Column="0" 
+                            Grid.Row="4"
+                            Margin="5">
                     <TextBlock
-                        Grid.Column="0" 
-                        Grid.Row="4"
                         Name="uThree"
-                        Height="30"
                         Width="100"/>
+                    </Border>
+
 
                     <Border Grid.Column="1"
                             Grid.ColumnSpan="7" 
@@ -376,10 +390,9 @@
                 <Grid>
                     <Grid.ColumnDefinitions>
 
-                        <ColumnDefinition Width="121*"/>
-                        <ColumnDefinition Width="173*"/>
-                        <ColumnDefinition Width="147*"/>
-                        <ColumnDefinition Width="147*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50"/>
@@ -389,14 +402,14 @@
                         Name="OpenSwaps"  
                         Template="{StaticResource btTemplate}" 
                         Content="Open" 
-                        Margin="10.4,5,9.8,4.6"
-                        Grid.Column="2" Grid.Row="0" Click="buttonSwap_Click"></Button>
+                        Margin="10 5"
+                        Grid.Column="1" Grid.Row="0" Click="buttonSwap_Click"></Button>
                     <Button 
                         Name="buttonSwap"  
                         Template="{StaticResource btTemplate}" 
                         Content="Miss My Turn" 
-                        Margin="10.2,5,10,4.6"
-                        Grid.Column="3" Grid.Row="0" Click="Click_MySwap"></Button>
+                        Margin="10 5"
+                        Grid.Column="2" Grid.Row="0" Click="Click_MySwap"></Button>
 
                     <DataGrid x:Name="dataGridSwap" 
                         DisplayMemberPath="Submit"
@@ -406,7 +419,7 @@
                               Style="{DynamicResource DGHeaderStyle}"
                               RowStyle="{DynamicResource DGRowStyle}"
                         AutoGenerateColumns="False"
-                        Margin="5,5.4,5,4.6">
+                        Margin="5">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Date" Binding="{Binding DateOfReceiving}" Width="1*"/>
                             <DataGridTextColumn Header="From" Binding="{Binding From.Name}" Width="1*"/>
