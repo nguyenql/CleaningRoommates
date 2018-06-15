@@ -141,6 +141,7 @@
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="TextAlignment" Value="Center"/>
+            <!--<Setter Property="Language" Value="en-US"/>-->
         </Style>
     </Window.Resources>
 
@@ -218,7 +219,7 @@
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="30"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
@@ -229,51 +230,62 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
 
-                    <Border BorderThickness="3"
+                    <Border BorderThickness="2"
                             BorderBrush="LightBlue"
                             Grid.Column="1" 
                             Grid.Row="1">
                         <TextBlock Name="mThree"
-                                   Margin="5"
                                    Height="Auto"
                                    Width="Auto">
                         </TextBlock>
                     </Border>
-                    <Border BorderThickness="3"
+                    <Border BorderThickness="2"
                             BorderBrush="LightBlue"
                             Grid.Column="2" 
                             Grid.Row="1">
                         <TextBlock Name="mTwo"
                                Height="Auto"
-                               Width="Auto" 
-                               Margin="5" >
+                               Width="Auto">
                         </TextBlock>
                     </Border>
-                    <Border BorderThickness="3"
+                    <Border BorderThickness="2"
                             BorderBrush="LightBlue"
                             Grid.Column="3" 
                             Grid.Row="1">
                         <TextBlock Name="mOne"
                                    Height="Auto"
-                                   Width="Auto"
-                                   Margin="5" >
+                                   Width="Auto">
                         </TextBlock>
                     </Border>
-                    <TextBlock Text="{Binding Source={x:Static sys:DateTime.Today}, StringFormat='{}{0:MMM dd}'}" 
-                               Grid.Column="4" Grid.Row="1" Margin="5" >
-                    </TextBlock>
-                    <TextBlock Text="+1" 
-                               Grid.Column="5" Grid.Row="1" 
-                               Margin="5">
-                    </TextBlock>
-                    <TextBlock Text="+2" 
-                               Grid.Column="6" Grid.Row="1" 
-                               Margin="5" >
-                    </TextBlock>
-                    <TextBlock Text="+3" 
-                               Grid.Column="7" Grid.Row="1" 
-                               Margin="5" >
-                    </TextBlock>
+                    <Border BorderThickness="2"
+                            BorderBrush="LightBlue"
+                            Grid.Column="4" 
+                            Grid.Row="1">
+                        <TextBlock Text="{Binding Source={x:Static sys:DateTime.Today}, StringFormat='{}{0:MMM dd}'}" >
+                        </TextBlock>
+                    </Border>
+
+                    <Border BorderThickness="2"
+                            BorderBrush="LightBlue"
+                            Grid.Column="5" 
+                            Grid.Row="1">
+                        <TextBlock Name="pOne"></TextBlock>
+                    </Border>
+                    <Border BorderThickness="2"
+                            BorderBrush="LightBlue"
+                            Grid.Column="6" 
+                            Grid.Row="1">
+                        <TextBlock Name="pTwo">
+                        </TextBlock>
+                    </Border>
+                    <Border BorderThickness="2"
+                            BorderBrush="LightBlue"
+                            Grid.Column="7" 
+                            Grid.Row="1">
+                        <TextBlock Name="pThree">
+                        </TextBlock>
+                    </Border>
+                    
                     <TextBlock
                         Grid.Column="0" 
                         Grid.Row="2"
