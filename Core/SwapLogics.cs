@@ -10,7 +10,6 @@ namespace Core
 {
     public class SwapLogics
     {
-        //Получаем новое расписание 
         public static List<Swap> UserSwaps (User user)
         {
             SwapRepository swapRepository = new SwapRepository();
@@ -94,8 +93,6 @@ namespace Core
             return initialSchedule;
         }
 
-        //вычленить у пользователя день с максимальным номером
-        //День следующего дежурства
         public static int GetMaxDayId(List<WhoWhenClean> initialSchedule, User user)
         {
             int maxDay = 0;

@@ -101,7 +101,6 @@ namespace CleaningRoommates
                 }
                 else
                     submit.Trash = false;
-                //ДОБАВИТЬ В СПИСОК- СОХРАНИТЬ ИЗМЕНЕНИЯ
 
                 submitRepository.EditSubmit(submit);
                 submitRepository.Save();

@@ -25,20 +25,20 @@ namespace CleaningRoommates
     public partial class ScheduleWindow : Window
     {
         DateTime dateOfCleaningDateTime;
-        int today = DateTime.Now.DayOfYear;
-        int countUsers;
         User user;
         List<User> PeopleWhoLiveInOneRoom;
         List<WhoWhenClean> results;
-
+        int today = DateTime.Now.DayOfYear;
+        int countUsers;
         private UserRepository user_repo = new UserRepository();
+
 
         public ScheduleWindow(User us)
         {
             InitializeComponent();
             user = us;
 
-            PeopleWhoLiveInOneRoom = MakeList(user);
+            PeopleWhoLiveInOneRoom = SubmitLogics.MakeList(user, user_repo.Users);
             countUsers = PeopleWhoLiveInOneRoom.Count;
 
             results = ActualSchedule.GetActualSchedule(countUsers, PeopleWhoLiveInOneRoom);
@@ -70,22 +70,6 @@ namespace CleaningRoommates
             RenewSwapsSubmits();
         }
 
-        public List<User> MakeList(User us)
-        {
-            List<User> neighbors = new List<User>();
-            int a = 0;
-
-            foreach (var user in user_repo.Users)
-            {
-                if (user.Room.Id == us.Room.Id)
-                {
-                    user.IdForGala = a;
-                    a += 1;
-                    neighbors.Add(user);
-                }
-            }
-            return neighbors;
-        }
 
         public void RenewSwapsSubmits()
         {
@@ -206,13 +190,6 @@ namespace CleaningRoommates
                ControlWindow window = new ControlWindow(selectedItem, user);
                window.ShowDialog();
             }
-
-
-        }
-
-        private void buttonProfile_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

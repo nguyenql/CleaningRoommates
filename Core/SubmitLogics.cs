@@ -10,8 +10,6 @@ namespace Core
 {
     public class SubmitLogics
     {
-        //определение крайнего дня дежурства пользователя для базы данных        
-
         public static List<Submit> UserSubmits(User user)
         {
             SubmitRepository submitRepository = new SubmitRepository();
@@ -98,5 +96,22 @@ namespace Core
             }
             return minDay;
         }
-}
+
+        public static List<User> MakeList(User us, List<User> users)
+        {
+            List<User> neighbors = new List<User>();
+            int a = 0;
+
+            foreach (var user in users)
+            {
+                if (user.Room.Id == us.Room.Id)
+                {
+                    user.IdForGala = a;
+                    a += 1;
+                    neighbors.Add(user);
+                }
+            }
+            return neighbors;
+        }
+    }
 }
