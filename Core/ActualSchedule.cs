@@ -1,4 +1,5 @@
 ﻿using Core.Model;
+using Core.Repositories_and_Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,10 @@ namespace Core
 {
     public class ActualSchedule
     {
-        public static List<WhoWhenClean> GetActualSchedule(int countUsers)
+        public static List<WhoWhenClean> GetActualSchedule(int countUsers, List<User> usersInRoom)
         {
-            List<Swap> swaps = new List<Swap>();
+            SwapRepository swapRepository = new SwapRepository();
+            List<Swap> swaps = swapRepository.Swaps;
 
             int today = DateTime.Now.DayOfYear;
             List<WhoWhenClean> initialSchedule = Algoritm.WhoWillCleanToday(countUsers);
@@ -25,7 +27,7 @@ namespace Core
 
                 if (item.When > today && item.Agree != null)
                 {
-                    initialSchedule = SwapLogics.ChangeUsers(initialSchedule, item.From, item.Agree);
+                    initialSchedule = SwapLogics.ChangeUsers(initialSchedule, item.From, item.Agree, usersInRoom);
                 }
             }
 

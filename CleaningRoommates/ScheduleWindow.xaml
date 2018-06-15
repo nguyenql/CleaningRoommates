@@ -409,9 +409,9 @@
                         AutoGenerateColumns="False"
                         Margin="5,5.4,5,4.6">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Date" Binding="{Binding DateOfReceiving}" Width="1*"/>
-                            <DataGridTextColumn Header="From" Binding="{Binding From}" Width="1*"/>
-                            <DataGridTextColumn Header="Reason" Binding="{Binding Reason}" Width="2*"/>
+                            <DataGridTextColumn Header="Date" Binding="{Binding Swap.DateOfReceiving}" Width="1*"/>
+                            <DataGridTextColumn Header="From" Binding="{Binding Swap.From.Name}" Width="1*"/>
+                            <DataGridTextColumn Header="Reason" Binding="{Binding Value}" Width="2*"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>

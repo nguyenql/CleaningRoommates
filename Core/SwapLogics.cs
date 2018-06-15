@@ -20,10 +20,10 @@ namespace Core
             int daysInWeek = 7;
 
             foreach (var item in swaps)
-            {
+            {                
                 int ItemDayToView = DateTime.Now.DayOfYear - item.When;
 
-                if (item.From.Id != user.Id && item.From.Room.Id == user.Room.Id
+                if (item.From.Id != user.Id && item.Room.Id == user.Room.Id
                     && ItemDayToView < daysInWeek)
                 {
                     item.DateOfReceiving = ActualSchedule.TransformToDateTime(item.When);
@@ -56,8 +56,21 @@ namespace Core
         }
 
         public static List<WhoWhenClean> ChangeUsers(List<WhoWhenClean> initialSchedule, 
-            User one, User another)
+            User one, User another, List<User> usersInRoom)
         {
+
+            foreach (var user in usersInRoom)
+            {
+                if (one.Id==user.Id)
+                {
+                    one.IdForGala = user.IdForGala;
+                };
+                if (another.Id == user.Id)
+                {
+                    another.IdForGala = user.IdForGala;
+                };
+            }
+
             int dayToChangeOfOne = GetMaxDayId(initialSchedule, one);
             int dayToChangeOfAnother = GetMaxDayId(initialSchedule, another);
 

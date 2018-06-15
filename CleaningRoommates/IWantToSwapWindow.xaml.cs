@@ -41,6 +41,7 @@ namespace CleaningRoommates
             var swap = new Swap();
             swap.When = dateOfCleaningDateTime.DayOfYear;
             swap.From = user;
+            swap.Room = user.Room;
 
             if (Deadline.IsChecked == true)
             {

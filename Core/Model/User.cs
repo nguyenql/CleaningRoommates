@@ -20,5 +20,6 @@ namespace Core.Model
         public List<Submit> Submits { get; set; }
         [NotMapped]
         public List<Swap> Swaps { get; set; }
+
     }
 }

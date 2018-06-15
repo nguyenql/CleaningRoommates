@@ -24,14 +24,7 @@ namespace Core.Repositories_and_Interface
 
         static List<User> Read(Context context)
         {
-            var users = context.Users.Include("Room").ToList();
-            int a = 0;
-            foreach (var user in users)
-            {
-                user.IdForGala = a;
-                a += 1;
-            }
-            return users ;
+            return context.Users.Include("Room").ToList();
         }
 
         public void Save()
@@ -61,6 +54,24 @@ namespace Core.Repositories_and_Interface
                 us.Login = user.Login;
                 us.Password = user.Password;
                 us.Room = user.Room;
+                context.SaveChanges();
+            }
+        }
+
+        public void RegisterUser(User us)
+        {
+            using (var context = new Context())
+            {
+                var user = new User()
+                {
+                    Name = us.Name,
+                    Login = us.Login,
+                    Password = us.Password,
+                    Room = context.Rooms.Single(x => x.Key == us.Room.Key),
+
+                };
+
+                context.Users.Add(user);
                 context.SaveChanges();
             }
         }

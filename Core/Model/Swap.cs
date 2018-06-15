@@ -19,6 +19,7 @@ namespace Core.Model
         public int When { get; set; }
         public int OnWhat { get; set; } 
         public User From { get; set; }
-        public User Agree { get; set; }    
+        public User Agree { get; set; }
+        public Room Room { get; set; }
     }
 }

@@ -24,7 +24,11 @@ namespace Core.Repositories_and_Interface
 
         public List<Swap> Read(Context context)
         {
-            return context.Swaps.ToList();
+            return context.Swaps
+                .Include("From")
+                .Include("Room")
+                .Include("Agree")
+                .ToList();
         }
 
         public void Save()
@@ -36,10 +40,21 @@ namespace Core.Repositories_and_Interface
             }
         }
 
-        public void AddSwap(Swap swap)
+        public void AddSwap(Swap sw)
         {
             using (var context = new Context())
             {
+                var swap = new Swap()
+                {
+                    DeadLine = sw.DeadLine,
+                    Sick = sw.Sick,
+                    NotInTheTown = sw.NotInTheTown,
+                    Reason = sw.Reason,
+                    When = sw.When,
+                    From = context.Users.Single(x => x.Id == sw.From.Id),
+                    Room = context.Rooms.Single(x => x.Id == sw.Room.Id)
+                };
+
                 context.Swaps.Add(swap);
                 context.SaveChanges();
             }
@@ -49,13 +64,9 @@ namespace Core.Repositories_and_Interface
         {
             using (var context = new Context())
             {
-                var sw = context.Swaps.Where(g => g.Id == swap.Id).FirstOrDefault();
-                sw.DeadLine = swap.DeadLine;
-                sw.Sick = swap.Sick;
-                sw.NotInTheTown = swap.NotInTheTown;
-                sw.Reason = swap.Reason;
+                Swap sw = context.Swaps.Single(g => g.Id == swap.Id);
+                sw.Agree = context.Users.Single(x => x.Id == swap.Agree.Id);
                 sw.OnWhat = swap.OnWhat;
-                sw.Agree = swap.Agree;
                 context.SaveChanges();
             }
         }

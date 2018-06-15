@@ -1,4 +1,5 @@
 ﻿using Core.Model;
+using Core;
 using Core.Repositories_and_Interface;
 using System;
 using System.Collections.Generic;
@@ -88,7 +89,7 @@ namespace CleaningRoommates
             room_repo.Save();
             var peopleInRoom = user_repo.Users.Where(u => u.Room == room).ToList();
 
-            if (peopleInRoom.Count > 3)
+            if (peopleInRoom.Count >= 3)
             {
                 MessageBox.Show("This room is full of people! Please, check the room key!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 passwordBoxRoomKey.Focus();
@@ -96,18 +97,16 @@ namespace CleaningRoommates
             }
             else
             {
-               
-                    var user = new User()
-                    {
-                        Name = textBoxFullName.Text,
-                        Login = textBoxLogin.Text,
-                        Password = GetHash(passwordBoxPassword.Password),
-                        Room = room_repo.Rooms.Where(r => r.Key == GetHash(passwordBoxRoomKey.Password)).FirstOrDefault()
-                    };
-                
-                //user_repo.Users.Add(user);
-                user_repo.AddUser(user);
-                user_repo.Save();
+                var user = new User()
+                {
+                    Name = textBoxFullName.Text,
+                    Login = textBoxLogin.Text,
+                    Password = GetHash(passwordBoxPassword.Password),
+                    Room = room_repo.Rooms.Single(r => r.Key == GetHash(passwordBoxRoomKey.Password))
+                };
+
+                user_repo.RegisterUser(user);
+
                 DialogResult = true;
                 LoginWindow window = new LoginWindow(user_repo);
                 window.Show();

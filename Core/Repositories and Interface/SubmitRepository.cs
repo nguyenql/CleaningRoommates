@@ -25,7 +25,10 @@ namespace Core.Repositories_and_Interface
         {
             using (var context = new Context())
             {
-                return context.Submits.ToList();
+                return context.Submits
+                    .Include("Checker")
+                    .Include("Executer")
+                    .ToList();
             }
         }
 

@@ -27,6 +27,7 @@ namespace CleaningRoommates
         int today = DateTime.Now.DayOfYear;
         int countUsers;
         User user;
+        List<User> PeopleWhoLiveInOneRoom;
 
         private UserRepository user_repo = new UserRepository();
 
@@ -35,21 +36,23 @@ namespace CleaningRoommates
         {
             InitializeComponent();
             user = us;
-            //RenewButtons();
-            List<User> PeopleWhoLiveInOneRoom = MakeList(user);
+
+            PeopleWhoLiveInOneRoom = MakeList(user);
             countUsers = PeopleWhoLiveInOneRoom.Count;
-            List<WhoWhenClean> results = ActualSchedule.GetActualSchedule(countUsers);
+
+            List<WhoWhenClean> results = ActualSchedule.GetActualSchedule(countUsers, PeopleWhoLiveInOneRoom);
 
             dateOfCleaningDateTime = SubmitLogics.GetDayOfCleaning(results, user);
             
             CreateButtons(results);
             uOne.Text = PeopleWhoLiveInOneRoom[0].Name;
-            if (PeopleWhoLiveInOneRoom.Count==2)
+            if (PeopleWhoLiveInOneRoom.Count == 2)
             {
                 uTwo.Text = PeopleWhoLiveInOneRoom[1].Name;
             }
             if (PeopleWhoLiveInOneRoom.Count == 3)
             {
+                uTwo.Text = PeopleWhoLiveInOneRoom[1].Name;
                 uThree.Text = PeopleWhoLiveInOneRoom[2].Name;
             }
 
@@ -59,11 +62,14 @@ namespace CleaningRoommates
         public List<User> MakeList(User us)
         {
             List<User> neighbors = new List<User>();
-            neighbors.Add(us);
+            int a = 0;
+
             foreach (var user in user_repo.Users)
             {
-                if (user.Room == us.Room)
+                if (user.Room.Id == us.Room.Id)
                 {
+                    user.IdForGala = a;
+                    a += 1;
                     neighbors.Add(user);
                 }
             }
@@ -75,7 +81,7 @@ namespace CleaningRoommates
             //ЛИСТ SWAPS СООБЩЕНИЙ
             var swaps = SwapLogics.UserSwaps(user);
             dataGridSwap.ItemsSource = swaps;
-
+            
             //ЛИСТ SUBMITS СООБЩЕНИЙ
             var submits = SubmitLogics.UserSubmits(user);
             dataGridSubmit.ItemsSource = submits;
@@ -83,7 +89,7 @@ namespace CleaningRoommates
         
         public void RenewButtons()
         {
-            List<WhoWhenClean> results = ActualSchedule.GetActualSchedule(countUsers);
+            List<WhoWhenClean> results = ActualSchedule.GetActualSchedule(countUsers, PeopleWhoLiveInOneRoom);
             schGrid.Children.Clear();
             CreateButtons(results);
         }
@@ -107,12 +113,6 @@ namespace CleaningRoommates
 
                  schGrid.Children.Add(newButton);
             }
-        }
-
-        private void buttonProfile_Click(object sender, RoutedEventArgs e)
-        {
-            ProfileWindow window = new ProfileWindow();
-            window.Show();
         }
 
         private void buttonLogOut_Click(object sender, RoutedEventArgs e)
@@ -140,13 +140,24 @@ namespace CleaningRoommates
 
         private void Click_MySwap(object sender, RoutedEventArgs e)
         {
-            IWantToSwapWindow window = new IWantToSwapWindow(user, dateOfCleaningDateTime);
-            window.ShowDialog();
+            if (dateOfCleaningDateTime >= DateTime.Now.Date)
+            {
+                IWantToSwapWindow window = new IWantToSwapWindow(user, dateOfCleaningDateTime);
+                window.ShowDialog();
+
+
+            }
+            else
+            {
+                MessageBox.Show("Too early!");
+                return;
+            };
+            
         }
 
         private void buttonSwap_Click(object sender, RoutedEventArgs e)
         {
-            var selectedItem = dataGridSubmit.SelectedItem as Swap;
+            var selectedItem = dataGridSwap.SelectedItem as Swap;
 
             if (selectedItem == null)
             {
@@ -174,6 +185,11 @@ namespace CleaningRoommates
                ControlWindow window = new ControlWindow(selectedItem, user);
                window.ShowDialog();
             }
+        }
+
+        private void buttonProfile_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

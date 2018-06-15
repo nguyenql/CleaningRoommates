@@ -57,6 +57,7 @@ namespace CleaningRoommates
 
         private void Agree_Click(object sender, RoutedEventArgs e)
         {
+            swap.OnWhat = DateTime.Now.DayOfYear;
             swap.Agree = user;
 
             swapRepository.EditSwap(swap);
