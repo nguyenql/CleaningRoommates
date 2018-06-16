@@ -27,7 +27,6 @@ namespace Core
                     && ItemDayToView < daysInWeek)
                 {
                     item.DateOfReceiving = ActualSchedule.TransformToDateTime(item.When);
-                    item.DateOfReceiving.ToString("MMM dd", CultureInfo.CreateSpecificCulture("en-US"));
                     userSwap.Add(item);
                 }
             }
