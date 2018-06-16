@@ -164,7 +164,7 @@ namespace CleaningRoommates
             }
             else if (selectedItem.Agree != null)
             {
-                MessageBox.Show(selectedItem.Agree.Name + "has already agreed!");
+                MessageBox.Show(selectedItem.Agree.Name + "  has already agreed!");
             }
             else
             {
