@@ -162,7 +162,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            
+
             <Button 
                  Name="buttonProfile"
                  Click="buttonProfile_Click"
@@ -310,7 +310,7 @@
                             Grid.Column="0" 
                             Grid.Row="4"
                             Margin="5">
-                    <TextBlock
+                        <TextBlock
                         Name="uThree"
                         Width="100"/>
                     </Border>
@@ -349,7 +349,7 @@
             <TabItem Header="My submits"
                      FontSize="16"
                      FontFamily="Comic Sans MS"
-                     Template="{StaticResource tcTemp}" Height="35" Margin="-0.4,0,-0.2,0.2" VerticalAlignment="Bottom">
+                     Template="{StaticResource tcTemp}" Margin="-0.4,0,-0.2,0.2">
                 <Grid>
                     <Grid.ColumnDefinitions>
 
@@ -388,7 +388,7 @@
                               RowStyle="{StaticResource RowStyleWithAlternation}"
                               Margin="5">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Date" Binding="{Binding DateOfReceiving}" Width="1*"/>
+                            <DataGridTextColumn Header="Date" Binding="{Binding DateOfReceiving, StringFormat=d}" Width="1*"/>
                             <DataGridTextColumn Header="From" Binding="{Binding Executer.Name}" Width="2*"/>
                             <DataGridTextColumn Header="Control" Binding="{Binding DateOfChecking}" Width="1*"/>
                         </DataGrid.Columns>

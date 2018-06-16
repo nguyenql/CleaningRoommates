@@ -24,11 +24,13 @@ namespace CleaningRoommates
     public partial class LoginWindow : Window
     {
         public UserRepository user_repo { get; set; }
+        public RoomRepository room_repo { get; set; }
 
-        public LoginWindow(UserRepository us)
+        public LoginWindow(UserRepository us, RoomRepository r)
         {
             InitializeComponent();
             user_repo = us;
+            room_repo = r;
         }
 
         private void ButtonClickOk(object sender, RoutedEventArgs e)
@@ -54,8 +56,8 @@ namespace CleaningRoommates
                         if ((user.Login == textBoxLogin.Text) && (user.Password == GetHash(passwordBox.Password)))
                         {
                             a = 1;
-                            ScheduleWindow window = new ScheduleWindow(user);
-                            window.ShowDialog();
+                            ScheduleWindow window = new ScheduleWindow(user, user_repo, room_repo);
+                            window.Show();
                             this.Close();
                         }
                     }

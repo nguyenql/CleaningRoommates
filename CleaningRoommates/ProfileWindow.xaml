@@ -187,8 +187,8 @@
         <TextBlock Text="Password" Grid.Column="0" Grid.Row="8"/>
         <TextBlock Text="Repeat Password" Grid.Column="0" Grid.Row="9"/>
         <DockPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="10" Grid.RowSpan="2">
-            <Button Name="buttonSave" Content="Save" Template="{StaticResource btTemplate}" Margin="100,0,10,0"/>
-            <Button Name="buttonCancel" Content="Cancel" Template="{StaticResource btTemplate}" Margin="10,0,50,0"/>
+            <Button Click="buttonSave_Click" Name="buttonSave" Content="Save" Template="{StaticResource btTemplate}" Margin="100,0,10,0"/>
+            <Button Name="buttonCancel" Click="buttonCancel_Click" Content="Cancel" Template="{StaticResource btTemplate}" Margin="10,0,50,0"/>
         </DockPanel>
         <TextBox Name="textBoxRoomNumber" FontFamily="Comic Sans MS"
                       FontSize="14" Grid.Column="1" Grid.Row="2" />
