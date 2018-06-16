@@ -105,10 +105,11 @@ namespace CleaningRoommates
                     Room = room_repo.Rooms.Single(r => r.Key == GetHash(passwordBoxRoomKey.Password))
                 };
 
-                user_repo.RegisterUser(user);
+                user_repo.AddUser(user);
+                user_repo.Save();
 
                 DialogResult = true;
-                LoginWindow window = new LoginWindow(user_repo);
+                LoginWindow window = new LoginWindow(user_repo, room_repo);
                 window.Show();
             }
         }

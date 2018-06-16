@@ -36,29 +36,7 @@ namespace Core.Repositories_and_Interface
             }
         }
 
-        public void AddUser(User user)
-        {
-            using (var context = new Context())
-            {
-                context.Users.Add(user);
-                context.SaveChanges();
-            }
-        }
-
-        public void EditUser(User user)
-        {
-            using (var context = new Context())
-            {
-                var us = context.Users.Where(g => g.Id == user.Id).FirstOrDefault();
-                us.Name = user.Name;
-                us.Login = user.Login;
-                us.Password = user.Password;
-                us.Room = user.Room;
-                context.SaveChanges();
-            }
-        }
-
-        public void RegisterUser(User us)
+        public void AddUser(User us)
         {
             using (var context = new Context())
             {
@@ -72,6 +50,18 @@ namespace Core.Repositories_and_Interface
                 };
 
                 context.Users.Add(user);
+                context.SaveChanges();
+            }
+        }
+
+        public void EditUser(User user)
+        {
+            using (var context = new Context())
+            {
+                context.Users.Where(g => g.Id == user.Id).FirstOrDefault().Name = user.Name;
+                context.Users.Where(g => g.Id == user.Id).FirstOrDefault().Login = user.Login;
+                context.Users.Where(g => g.Id == user.Id).FirstOrDefault().Password = user.Password;
+                context.Users.Where(g => g.Id == user.Id).FirstOrDefault().Room = context.Rooms.Where(x => x.Number == user.Room.Number).FirstOrDefault();
                 context.SaveChanges();
             }
         }

@@ -25,18 +25,20 @@ namespace CleaningRoommates
     public partial class ScheduleWindow : Window
     {
         DateTime dateOfCleaningDateTime;
-        User user;
+        public User user { get; set; }
         List<User> PeopleWhoLiveInOneRoom;
         List<WhoWhenClean> results;
         int today = DateTime.Now.DayOfYear;
         int countUsers;
-        private UserRepository user_repo = new UserRepository();
+        public UserRepository user_repo { get; set; }
+        public RoomRepository room_repo { get; set; }
 
-
-        public ScheduleWindow(User us)
+        public ScheduleWindow(User us, UserRepository u, RoomRepository r)
         {
             InitializeComponent();
             user = us;
+            user_repo = u;
+            room_repo = r;
 
             PeopleWhoLiveInOneRoom = SubmitLogics.MakeList(user, user_repo.Users);
             countUsers = PeopleWhoLiveInOneRoom.Count;
@@ -191,6 +193,12 @@ namespace CleaningRoommates
                ControlWindow window = new ControlWindow(selectedItem, user);
                window.ShowDialog();
             }
+        }
+
+        private void buttonProfile_Click(object sender, RoutedEventArgs e)
+        {
+            ProfileWindow profile = new ProfileWindow(user,user_repo,room_repo);
+            profile.ShowDialog();
         }
     }
 }

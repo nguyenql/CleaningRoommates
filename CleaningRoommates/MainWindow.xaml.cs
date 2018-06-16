@@ -33,7 +33,7 @@ namespace CleaningRoommates
 
         private void ButtonClickEnterYourRoom(object sender, RoutedEventArgs e)
         {
-            LoginWindow window = new LoginWindow(user_repo);
+            LoginWindow window = new LoginWindow(user_repo, room_repo);
             window.ShowDialog();
             this.Close();
         }
